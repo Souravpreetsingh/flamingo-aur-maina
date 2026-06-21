@@ -26,20 +26,19 @@ async function loadRooms() {
         allRooms = await res.json();
     } catch (err) {
         allRooms = FALLBACK_ROOMS;
-    }
-    const prices = allRooms.map(r => r.price);
-    const minPrice = Math.min(...prices);
-    const maxPrice = Math.max(...prices);
-    document.getElementById("price-min").value = minPrice;
-    document.getElementById("price-max").value = maxPrice;
-    document.getElementById("price-min-label").textContent = "₹" + formatINR(minPrice);
-    document.getElementById("price-max-label").textContent = "₹" + formatINR(maxPrice) + "+";
-    activeFilters.priceMin = minPrice;
-    activeFilters.priceMax = maxPrice;
-    populateRoomTypes();
-    renderRooms(allRooms);
-    document.getElementById("room-count").textContent = allRooms.length + " rooms available";
-} finally {
+    } finally {
+        const prices = allRooms.map(r => r.price);
+        const minPrice = Math.min(...prices);
+        const maxPrice = Math.max(...prices);
+        document.getElementById("price-min").value = minPrice;
+        document.getElementById("price-max").value = maxPrice;
+        document.getElementById("price-min-label").textContent = "₹" + formatINR(minPrice);
+        document.getElementById("price-max-label").textContent = "₹" + formatINR(maxPrice) + "+";
+        activeFilters.priceMin = minPrice;
+        activeFilters.priceMax = maxPrice;
+        populateRoomTypes();
+        renderRooms(allRooms);
+        document.getElementById("room-count").textContent = allRooms.length + " rooms available";
         document.getElementById("skeleton-grid").style.display = "none";
         const grid = document.getElementById("real-grid");
         grid.classList.remove("hidden");
