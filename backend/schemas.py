@@ -47,6 +47,7 @@ class RoomResponse(BaseModel):
     price: float
     capacity: int
     image_url: Optional[str] = None
+    room_type: Optional[str] = None
 
     class Config:
         from_attributes = True

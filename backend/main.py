@@ -5,7 +5,7 @@ from datetime import date
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, text
 from dotenv import load_dotenv
 
 from database import engine, Base, get_db
@@ -24,6 +24,7 @@ async def lifespan(app: FastAPI):
     import models
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        await conn.execute(text("ALTER TABLE rooms ADD COLUMN IF NOT EXISTS room_type VARCHAR(50)"))
     yield
 
 
@@ -42,12 +43,12 @@ app.add_middleware(
 # ─── SAMPLE ROOMS DATA ───────────────────────────────────────────────
 
 SAMPLE_ROOMS = [
-    {"room_name": "Oceanfront Suite", "description": "Suite with private balcony and ocean view, king bed, marble bathroom.", "price": 9999, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427"},
-    {"room_name": "Penthouse Loft", "description": "Modern penthouse with panoramic city views, full kitchen, jacuzzi.", "price": 18999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9"},
-    {"room_name": "Garden Villa", "description": "Private garden villa, pet-friendly, indoor-outdoor living.", "price": 11999, "capacity": 3, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
-    {"room_name": "Royal Suite", "description": "Pinnacle of luxury with separate living, dining, butler service, grand terrace.", "price": 25999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd"},
-    {"room_name": "Cozy Studio", "description": "Compact studio for solo travelers with workspace and kitchenette.", "price": 4499, "capacity": 1, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9"},
-    {"room_name": "Family Suite", "description": "Two-bedroom suite with kids play area, full kitchen, living room.", "price": 15499, "capacity": 6, "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a"},
+    {"room_name": "Oceanfront Suite", "description": "Suite with private balcony and ocean view, king bed, marble bathroom.", "price": 9999, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427", "room_type": "Suite"},
+    {"room_name": "Penthouse Loft", "description": "Modern penthouse with panoramic city views, full kitchen, jacuzzi.", "price": 18999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9", "room_type": "Penthouse"},
+    {"room_name": "Garden Villa", "description": "Private garden villa, pet-friendly, indoor-outdoor living.", "price": 11999, "capacity": 3, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", "room_type": "Villa"},
+    {"room_name": "Royal Suite", "description": "Pinnacle of luxury with separate living, dining, butler service, grand terrace.", "price": 25999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd", "room_type": "Suite"},
+    {"room_name": "Cozy Studio", "description": "Compact studio for solo travelers with workspace and kitchenette.", "price": 4499, "capacity": 1, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", "room_type": "Studio"},
+    {"room_name": "Family Suite", "description": "Two-bedroom suite with kids play area, full kitchen, living room.", "price": 15499, "capacity": 6, "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a", "room_type": "Suite"},
 ]
 
 

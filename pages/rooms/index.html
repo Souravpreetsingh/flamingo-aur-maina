@@ -32,54 +32,44 @@
 <div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_24px_rgba(13,28,47,0.03)] border border-outline-variant/20 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
 <div class="flex flex-col">
 <h1 class="text-headline-md font-headline-md text-primary">Available Suites</h1>
-<p class="text-body-md font-body-md text-on-surface-variant mt-1">Paris, France • Sep 12 - Sep 15 • 2 Guests</p>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1" id="room-count">Loading rooms...</p>
 </div>
-<button class="border border-outline-variant text-on-surface rounded-full px-6 py-3 text-label-md font-label-md hover:bg-surface-container-low transition-colors flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">edit</span>
-Modify Search
-</button>
 </div>
 </header>
 <div class="max-w-container-max mx-auto px-gutter flex flex-col lg:flex-row gap-gutter">
 <aside class="w-full lg:w-1/4 flex-shrink-0 space-y-8">
 <div class="border-b border-outline-variant/20 pb-8">
 <h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Price Range</h3>
-<div class="px-2">
-<div class="h-1 bg-surface-variant rounded-full relative mb-4">
-<div class="absolute left-1/4 right-1/4 h-full bg-primary rounded-full"></div>
-<div class="absolute left-1/4 -ml-3 -mt-2.5 w-6 h-6 bg-surface-container-lowest border-2 border-primary rounded-full shadow-sm"></div>
-<div class="absolute right-1/4 -mr-3 -mt-2.5 w-6 h-6 bg-surface-container-lowest border-2 border-primary rounded-full shadow-sm"></div>
+<div class="space-y-4">
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span id="price-min-label">₹0</span>
+<span id="price-max-label">₹25,000+</span>
 </div>
-<div class="flex justify-between text-body-md font-body-md text-on-surface-variant"><span>₹8,000</span><span>₹25,000+</span></div>
+<div class="space-y-3">
+<div class="flex items-center gap-4">
+<label class="text-label-md font-label-md text-on-surface-variant w-16">Min</label>
+<input type="range" id="price-min" class="w-full accent-primary" min="0" max="30000" step="500"/>
+</div>
+<div class="flex items-center gap-4">
+<label class="text-label-md font-label-md text-on-surface-variant w-16">Max</label>
+<input type="range" id="price-max" class="w-full accent-primary" min="0" max="30000" step="500" value="30000"/>
+</div>
+</div>
 </div>
 </div>
 <div class="border-b border-outline-variant/20 pb-8">
 <h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Room Type</h3>
-<div class="space-y-4">
-<label class="flex items-center gap-3 cursor-pointer group">
-<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors"></div>
-<span class="text-body-md font-body-md text-on-surface">Deluxe Room</span>
-</label>
-<label class="flex items-center gap-3 cursor-pointer group">
-<div class="w-5 h-5 rounded bg-primary border border-primary flex items-center justify-center text-on-primary">
-<span class="material-symbols-outlined text-[14px]">check</span>
-</div>
-<span class="text-body-md font-body-md text-on-surface">Premium Suite</span>
-</label>
-<label class="flex items-center gap-3 cursor-pointer group">
-<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors"></div>
-<span class="text-body-md font-body-md text-on-surface">Penthouse</span>
-</label>
+<div class="space-y-4" id="room-type-filters">
 </div>
 </div>
 <div>
 <h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Amenities</h3>
 <div class="flex flex-wrap gap-2">
-<span class="px-4 py-2 rounded-full bg-secondary-container/20 text-primary border border-secondary-container/30 text-label-md font-label-md cursor-pointer hover:bg-secondary-container/40 transition-colors">WiFi Included</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors">Air Conditioning</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors">Private Pool</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors">Balcony</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors">Spa Access</span>
+<span class="px-4 py-2 rounded-full bg-secondary-container/20 text-primary border border-secondary-container/30 text-label-md font-label-md cursor-pointer hover:bg-secondary-container/40 transition-colors amenity-tag" data-amenity="wifi">WiFi Included</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="ac">Air Conditioning</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="pool">Private Pool</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="balcony">Balcony</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="spa">Spa Access</span>
 </div>
 </div>
 </aside>
@@ -105,54 +95,6 @@ Modify Search
 </div>
 </div>
 <div class="hidden grid-cols-1 md:grid-cols-2 gap-8 opacity-0 transition-opacity duration-700 ease-in-out" id="real-grid">
-<article class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_24px_rgba(13,28,47,0.03)] hover:shadow-[0_12px_48px_rgba(13,28,47,0.08)] border border-outline-variant/10 overflow-hidden group transition-shadow duration-500 flex flex-col">
-<div class="w-full h-64 overflow-hidden relative">
-<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="text-label-md font-label-md text-primary">4.9</span>
-</div>
-<img alt="Premium Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlB1jR1SDUmY_DzQuccSJlbz-yd5WdoDqi5TP_0k1hvkS2iHf0G2hZT6v69NDK_aepKtV5-Z8vaxtzMtqLUUGZQIuowD4jkl1WU_orDtj6Q31zYdcgWZ6fH3xyRFZExEZ4Sx0uuS0jzDgJ_9otMHsn8UlhH1mdQYtk4YcYW-seYQtj3Y9RhIjmADhQ1vAGYUiKrARMZhd5-SvhkyxAJCAfEA7xuVbJ7LliuZ-keoUvz0MgLPn-YK7T1IXqWY4OFtuSPEK2mxN8p_I"/>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h2 class="text-headline-md font-headline-md text-primary text-[24px]">The Elysian Suite</h2>
-</div>
-<p class="text-body-md font-body-md text-on-surface-variant mb-6 line-clamp-2">Experience ultimate comfort in our signature suite, featuring panoramic city views, a separate living area, and exclusive access to the wellness lounge.</p>
-<div class="flex gap-4 mb-8 text-on-surface-variant">
-<div class="flex items-center gap-1" title="2 Guests"><span class="material-symbols-outlined text-[20px]">person</span><span class="text-label-md font-label-md">2</span></div>
-<div class="flex items-center gap-1" title="King Bed"><span class="material-symbols-outlined text-[20px]">bed</span><span class="text-label-md font-label-md">1 King</span></div>
-<div class="flex items-center gap-1" title="65 sq meters"><span class="material-symbols-outlined text-[20px]">straighten</span><span class="text-label-md font-label-md">65m²</span></div>
-</div>
-<div class="mt-auto flex justify-between items-end">
-<div><span class="text-label-md font-label-md text-on-surface-variant block mb-1">From</span><span class="text-headline-md font-headline-md text-primary">₹11,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span></div>
-<button class="bg-primary text-on-primary rounded-full px-6 py-3 text-label-md font-label-md hover:scale-105 transition-transform duration-300 shadow-md shadow-primary/10" onclick="window.location.href='../room-details/index.html'">Book Now</button>
-</div>
-</div>
-</article>
-<article class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_24px_rgba(13,28,47,0.03)] hover:shadow-[0_12px_48px_rgba(13,28,47,0.08)] border border-outline-variant/10 overflow-hidden group transition-shadow duration-500 flex flex-col">
-<div class="w-full h-64 overflow-hidden relative">
-<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="text-label-md font-label-md text-primary">5.0</span>
-</div>
-<img alt="Grand Penthouse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Di8yj70GYFJvF6Ju2WuyajYLuXEbC4ASm-MSDi_btwq9mSfTSNrSMY-jZYEJS6exqkdBqzja_JRa-SzAhmtwaQkVXKKANm1XUQCZF6_M4IbD7gJUT7rm3r8AltyORZh8mBBvcCEZNBJCXRt4TUhZybrYr3so3Kbh9FKaKYpmDs51yd3XWkQeGJ_oSKM4qZLB6Mpo_TH3rvcga4DI3o-rgED2ucUKBLwGxbMlhOOiwPrdUyazr5MXS5fy5wCWO4dPxu-3hc1iPbc"/>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h2 class="text-headline-md font-headline-md text-primary text-[24px]">Grand Penthouse</h2>
-</div>
-<p class="text-body-md font-body-md text-on-surface-variant mb-6 line-clamp-2">Our crowning jewel. A sprawling residence featuring a private terrace, dining room, and dedicated butler service for an unforgettable stay.</p>
-<div class="flex gap-4 mb-8 text-on-surface-variant">
-<div class="flex items-center gap-1" title="4 Guests"><span class="material-symbols-outlined text-[20px]">group</span><span class="text-label-md font-label-md">4</span></div>
-<div class="flex items-center gap-1" title="2 King Beds"><span class="material-symbols-outlined text-[20px]">bed</span><span class="text-label-md font-label-md">2 King</span></div>
-<div class="flex items-center gap-1" title="120 sq meters"><span class="material-symbols-outlined text-[20px]">straighten</span><span class="text-label-md font-label-md">120m²</span></div>
-</div>
-<div class="mt-auto flex justify-between items-end">
-<div><span class="text-label-md font-label-md text-on-surface-variant block mb-1">From</span><span class="text-headline-md font-headline-md text-primary">₹25,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span></div>
-<button class="bg-primary text-on-primary rounded-full px-6 py-3 text-label-md font-label-md hover:scale-105 transition-transform duration-300 shadow-md shadow-primary/10" onclick="window.location.href='../room-details/index.html'">Book Now</button>
-</div>
-</div>
-</article>
 </div>
 </div>
 </div>
@@ -174,20 +116,6 @@ Modify Search
 <div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline-variant/10 text-body-md font-body-md text-on-primary-container/60">© 2024 LuxeStay Hospitality. All rights reserved.</div>
 </div>
 </footer>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const skeletonGrid = document.getElementById('skeleton-grid');
-        const realGrid = document.getElementById('real-grid');
-        skeletonGrid.style.display = 'none';
-        realGrid.classList.remove('hidden');
-        realGrid.classList.add('grid');
-        setTimeout(() => {
-            realGrid.classList.remove('opacity-0');
-            realGrid.classList.add('opacity-100');
-        }, 50);
-    }, 1500);
-});
-</script>
+<script src="../../js/rooms.js"></script>
 </body>
 </html>

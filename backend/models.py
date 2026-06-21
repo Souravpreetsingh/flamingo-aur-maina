@@ -24,6 +24,7 @@ class Room(Base):
     price = Column(Float, nullable=False)
     capacity = Column(Integer, nullable=False)
     image_url = Column(String(500), nullable=True)
+    room_type = Column(String(50), nullable=True)
 
     bookings = relationship("Booking", back_populates="room", cascade="all, delete-orphan")
 
