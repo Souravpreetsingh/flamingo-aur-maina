@@ -12,7 +12,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        value: '["https://luxestay-teal.vercel.app","https://luxestay.vercel.app"]'
+        value: '["https://luxestay-eosin.vercel.app","https://luxestay.vercel.app"]'
       - key: ALGORITHM
         value: HS256
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
