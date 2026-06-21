@@ -134,7 +134,8 @@ def app(environ, start_response):
     user = get_token_user(hdrs)
 
     if path == "/api/health":
-        db_ok = bool(SUPABASE_REST and supabase_request("GET", "users", params={"select": "id", "limit": "1"}) is not None)
+        db_result = supabase_request("GET", "users", params={"select": "id", "limit": "1"}) if SUPABASE_REST else None
+        db_ok = isinstance(db_result, list)
         return respond({"status": "healthy", "database": "connected" if db_ok else "disconnected"}, start_response)
 
     elif path == "/api/register":
