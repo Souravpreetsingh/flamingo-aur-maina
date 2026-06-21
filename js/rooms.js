@@ -1,4 +1,4 @@
-const API_BASE = window.__API_URL__ || "http://localhost:8000";
+const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "http://localhost:8000" : "/api";
 
 const FALLBACK_ROOMS = [
     {id: 1, room_name: "Oceanfront Suite", description: "Suite with private balcony and ocean view, king bed, marble bathroom.", price: 9999, capacity: 2, image_url: "https://images.unsplash.com/photo-1590490360182-c33d57733427", room_type: "Suite"},

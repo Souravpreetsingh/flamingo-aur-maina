@@ -1,4 +1,4 @@
-const API_BASE = window.__API_URL__ || "http://localhost:8000";
+const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "http://localhost:8000" : "/api";
 
 const AuthAPI = {
     setToken(data) {

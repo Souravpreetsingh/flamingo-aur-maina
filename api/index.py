@@ -5,6 +5,7 @@ import hmac
 from datetime import datetime, timedelta
 from urllib.parse import parse_qs
 
+
 USERS = []
 ROOMS = [
     {"id": 1, "room_name": "Oceanfront Suite", "description": "Suite with private balcony and ocean view, king bed, marble bathroom.", "price": 9999, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427", "room_type": "Suite"},
@@ -18,17 +19,21 @@ BOOKINGS = []
 NEXT_ID = {"user": 1, "booking": 1}
 JWT_SECRET = os.getenv("SECRET_KEY", "lxstay-demo-secret-key")
 
+CORS_HEADERS = [
+    ("Access-Control-Allow-Origin", "*"),
+    ("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS"),
+    ("Access-Control-Allow-Headers", "Content-Type, Authorization"),
+]
 
-def json_res(data, status=200):
-    body = json.dumps(data, default=str)
-    headers = [
-        ("Content-Type", "application/json"),
-        ("Content-Length", str(len(body))),
-        ("Access-Control-Allow-Origin", "*"),
-        ("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS"),
-        ("Access-Control-Allow-Headers", "Content-Type, Authorization"),
-    ]
-    return status, headers, [body.encode()]
+
+STATUS_TEXT = {200: "200 OK", 201: "201 Created", 400: "400 Bad Request", 401: "401 Unauthorized", 404: "404 Not Found", 500: "500 Internal Server Error"}
+
+
+def respond(data, start_response, status=200):
+    body = json.dumps(data, default=str).encode("utf-8")
+    headers = [("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(body)))] + CORS_HEADERS
+    start_response(STATUS_TEXT.get(status, f"{status} Unknown"), headers)
+    return [body]
 
 
 def read_body(environ):
@@ -50,7 +55,7 @@ def get_headers(environ):
 
 
 def get_token_user(headers):
-    auth = headers.get("authorization", "") or headers.get("Authorization", "")
+    auth = headers.get("authorization", "")
     if not auth.startswith("Bearer "):
         return None
     try:
@@ -85,7 +90,7 @@ def app(environ, start_response):
     body = read_body(environ)
 
     if method == "OPTIONS":
-        return json_res("ok")
+        return respond("ok", start_response)
 
     try:
         data = json.loads(body) if body.strip() else {}
@@ -94,73 +99,73 @@ def app(environ, start_response):
 
     user = get_token_user(headers)
 
-    if path == "/api/health" or path == "/health":
-        return json_res({"status": "healthy"})
+    if path == "/api/health":
+        return respond({"status": "healthy"}, start_response)
 
-    elif path == "/api/register" or path == "/register":
+    elif path == "/api/register":
         email = data.get("email", "").strip().lower()
         password = data.get("password", "")
         full_name = data.get("full_name", "").strip()
         if not email or not password:
-            return json_res({"detail": "Email and password required"}, 400)
+            return respond({"detail": "Email and password required"}, start_response, 400)
         if len(password) < 4:
-            return json_res({"detail": "Password too short"}, 400)
+            return respond({"detail": "Password too short"}, start_response, 400)
         if any(u["email"] == email for u in USERS):
-            return json_res({"detail": "Email already registered"}, 400)
+            return respond({"detail": "Email already registered"}, start_response, 400)
         uid = NEXT_ID["user"]; NEXT_ID["user"] += 1
         salt = os.urandom(16).hex()
         pwd = hashlib.sha256((password + salt).encode()).hexdigest()
         USERS.append({"id": uid, "full_name": full_name, "email": email, "phone": data.get("phone", ""), "pwd": pwd, "salt": salt})
         token = make_token(uid)
-        return json_res({"access_token": token, "user": {"id": uid, "full_name": full_name, "email": email, "phone": data.get("phone", "")}})
+        return respond({"access_token": token, "user": {"id": uid, "full_name": full_name, "email": email, "phone": data.get("phone", "")}}, start_response)
 
-    elif path == "/api/login" or path == "/login":
+    elif path == "/api/login":
         email = data.get("email", "").strip().lower()
         password = data.get("password", "")
         u = next((x for x in USERS if x["email"] == email), None)
         if not u or hashlib.sha256((password + u["salt"]).encode()).hexdigest() != u["pwd"]:
-            return json_res({"detail": "Invalid email or password"}, 401)
+            return respond({"detail": "Invalid email or password"}, start_response, 401)
         token = make_token(u["id"])
-        return json_res({"access_token": token, "user": {"id": u["id"], "full_name": u["full_name"], "email": u["email"], "phone": u.get("phone", "")}})
+        return respond({"access_token": token, "user": {"id": u["id"], "full_name": u["full_name"], "email": u["email"], "phone": u.get("phone", "")}}, start_response)
 
-    elif path == "/api/profile" or path == "/profile":
+    elif path == "/api/profile":
         if not user:
-            return json_res({"detail": "Not authenticated"}, 401)
-        return json_res({"id": user["id"], "full_name": user["full_name"], "email": user["email"], "phone": user.get("phone", "")})
+            return respond({"detail": "Not authenticated"}, start_response, 401)
+        return respond({"id": user["id"], "full_name": user["full_name"], "email": user["email"], "phone": user.get("phone", "")}, start_response)
 
-    elif path == "/api/rooms" or path == "/rooms":
-        return json_res(ROOMS)
+    elif path == "/api/rooms":
+        return respond(ROOMS, start_response)
 
-    elif path == "/api/bookings" or path == "/bookings":
+    elif path == "/api/bookings":
         if method == "POST":
             if not user:
-                return json_res({"detail": "Not authenticated"}, 401)
+                return respond({"detail": "Not authenticated"}, start_response, 401)
             room_id = data.get("room_id")
             ci = data.get("check_in")
             co = data.get("check_out")
             if not room_id or not ci or not co:
-                return json_res({"detail": "room_id, check_in, check_out required"}, 400)
+                return respond({"detail": "room_id, check_in, check_out required"}, start_response, 400)
             if ci >= co:
-                return json_res({"detail": "Check-out must be after check-in"}, 400)
+                return respond({"detail": "Check-out must be after check-in"}, start_response, 400)
             bid = NEXT_ID["booking"]; NEXT_ID["booking"] += 1
             b = {"id": bid, "user_id": user["id"], "room_id": room_id, "check_in": ci, "check_out": co, "booking_status": "CONFIRMED"}
             BOOKINGS.append(b)
-            return json_res(b, 201)
+            return respond(b, start_response, 201)
         elif method == "GET":
             if not user:
-                return json_res({"detail": "Not authenticated"}, 401)
-            return json_res([b for b in BOOKINGS if b["user_id"] == user["id"]])
+                return respond({"detail": "Not authenticated"}, start_response, 401)
+            return respond([b for b in BOOKINGS if b["user_id"] == user["id"]], start_response)
 
-    elif path.startswith("/api/bookings/") or path.startswith("/bookings/"):
+    elif path.startswith("/api/bookings/"):
         if method == "DELETE":
             if not user:
-                return json_res({"detail": "Not authenticated"}, 401)
+                return respond({"detail": "Not authenticated"}, start_response, 401)
             parts = path.strip("/").split("/")
             bid = int(parts[-1]) if parts[-1].isdigit() else None
             b = next((x for x in BOOKINGS if x["id"] == bid and x["user_id"] == user["id"]), None)
             if not b:
-                return json_res({"detail": "Booking not found"}, 404)
+                return respond({"detail": "Booking not found"}, start_response, 404)
             BOOKINGS.remove(b)
-            return json_res({"message": "Booking cancelled"})
+            return respond({"message": "Booking cancelled"}, start_response)
 
-    return json_res({"detail": "Not found", "path": path}, 404)
+    return respond({"detail": "Not found", "path": path}, start_response, 404)
