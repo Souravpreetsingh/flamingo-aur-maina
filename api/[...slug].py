@@ -25,7 +25,6 @@ CORS_HEADERS = [
     ("Access-Control-Allow-Headers", "Content-Type, Authorization"),
 ]
 
-
 STATUS_TEXT = {200: "200 OK", 201: "201 Created", 400: "400 Bad Request", 401: "401 Unauthorized", 404: "404 Not Found", 500: "500 Internal Server Error"}
 
 
