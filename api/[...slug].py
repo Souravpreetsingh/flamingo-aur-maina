@@ -2,21 +2,15 @@ import json
 import os
 import hashlib
 import hmac
+import urllib.request
 from datetime import datetime, timedelta
-from urllib.parse import parse_qs
+from urllib.parse import quote as url_quote
 
 
-USERS = []
-ROOMS = [
-    {"id": 1, "room_name": "Oceanfront Suite", "description": "Suite with private balcony and ocean view, king bed, marble bathroom.", "price": 9999, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427", "room_type": "Suite"},
-    {"id": 2, "room_name": "Penthouse Loft", "description": "Modern penthouse with panoramic city views, full kitchen, jacuzzi.", "price": 18999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9", "room_type": "Penthouse"},
-    {"id": 3, "room_name": "Garden Villa", "description": "Private garden villa, pet-friendly, indoor-outdoor living.", "price": 11999, "capacity": 3, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", "room_type": "Villa"},
-    {"id": 4, "room_name": "Royal Suite", "description": "Pinnacle of luxury with separate living, dining, butler service, grand terrace.", "price": 25999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd", "room_type": "Suite"},
-    {"id": 5, "room_name": "Cozy Studio", "description": "Compact studio for solo travelers with workspace and kitchenette.", "price": 4499, "capacity": 1, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", "room_type": "Studio"},
-    {"id": 6, "room_name": "Family Suite", "description": "Two-bedroom suite with kids play area, full kitchen, living room.", "price": 15499, "capacity": 6, "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a", "room_type": "Suite"},
-]
-BOOKINGS = []
-NEXT_ID = {"user": 1, "booking": 1}
+SUPABASE_URL = os.getenv("SUPABASE_URL", "").rstrip("/")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY", "")
+SUPABASE_REST = f"{SUPABASE_URL}/rest/v1" if SUPABASE_URL else ""
+
 JWT_SECRET = os.getenv("SECRET_KEY", "lxstay-demo-secret-key")
 
 CORS_HEADERS = [
@@ -53,18 +47,47 @@ def get_headers(environ):
     return h
 
 
-def get_token_user(headers):
-    auth = headers.get("authorization", "")
-    if not auth.startswith("Bearer "):
+def supabase_request(method, table, params=None, body=None):
+    if not SUPABASE_REST:
         return None
+    url = f"{SUPABASE_REST}/{table}"
+    if params:
+        url += "?" + "&".join(f"{k}={url_quote(str(v), safe='')}" for k, v in params.items())
+    req = urllib.request.Request(url, data=body, method=method)
+    req.add_header("apikey", SUPABASE_KEY)
+    req.add_header("Authorization", f"Bearer {SUPABASE_KEY}")
+    req.add_header("Content-Type", "application/json")
+    if method == "POST" or method == "PATCH":
+        req.add_header("Prefer", "return=representation")
     try:
-        parts = auth[7:].split(".")
-        payload = json.loads(base64_decode(parts[1]))
-        for u in USERS:
-            if str(u["id"]) == str(payload.get("sub")):
-                return u
-    except Exception:
-        pass
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            text = resp.read().decode()
+            return json.loads(text) if text else None
+    except urllib.error.HTTPError as e:
+        body_text = e.read().decode()
+        return {"_error": True, "status": e.code, "body": body_text}
+    except Exception as e:
+        return {"_error": True, "status": 500, "body": str(e)}
+
+
+def find_user_by_email(email):
+    result = supabase_request("GET", "users", params={"select": "*", "email": f"eq.{email}"})
+    if result and isinstance(result, list) and len(result) > 0:
+        return result[0]
+    return None
+
+
+def find_user_by_id(uid):
+    result = supabase_request("GET", "users", params={"select": "*", "id": f"eq.{uid}"})
+    if result and isinstance(result, list) and len(result) > 0:
+        return result[0]
+    return None
+
+
+def get_rooms_from_db():
+    result = supabase_request("GET", "rooms", params={"select": "*", "order": "id.asc"})
+    if result and isinstance(result, list):
+        return result
     return None
 
 
@@ -82,10 +105,22 @@ def make_token(user_id):
     return f"{header}.{payload}.{sig}"
 
 
+def get_token_user(headers):
+    auth = headers.get("authorization", "")
+    if not auth.startswith("Bearer "):
+        return None
+    try:
+        parts = auth[7:].split(".")
+        payload = json.loads(base64_decode(parts[1]))
+        return find_user_by_id(payload.get("sub"))
+    except Exception:
+        return None
+
+
 def app(environ, start_response):
     path = environ.get("PATH_INFO", "")
     method = environ.get("REQUEST_METHOD", "GET")
-    headers = get_headers(environ)
+    hdrs = get_headers(environ)
     body = read_body(environ)
 
     if method == "OPTIONS":
@@ -96,10 +131,11 @@ def app(environ, start_response):
     except json.JSONDecodeError:
         data = {}
 
-    user = get_token_user(headers)
+    user = get_token_user(hdrs)
 
     if path == "/api/health":
-        return respond({"status": "healthy"}, start_response)
+        db_ok = bool(SUPABASE_REST and supabase_request("GET", "users", params={"select": "id", "limit": "1"}) is not None)
+        return respond({"status": "healthy", "database": "connected" if db_ok else "disconnected"}, start_response)
 
     elif path == "/api/register":
         email = data.get("email", "").strip().lower()
@@ -109,20 +145,27 @@ def app(environ, start_response):
             return respond({"detail": "Email and password required"}, start_response, 400)
         if len(password) < 4:
             return respond({"detail": "Password too short"}, start_response, 400)
-        if any(u["email"] == email for u in USERS):
+        existing = find_user_by_email(email)
+        if existing:
             return respond({"detail": "Email already registered"}, start_response, 400)
-        uid = NEXT_ID["user"]; NEXT_ID["user"] += 1
         salt = os.urandom(16).hex()
-        pwd = hashlib.sha256((password + salt).encode()).hexdigest()
-        USERS.append({"id": uid, "full_name": full_name, "email": email, "phone": data.get("phone", ""), "pwd": pwd, "salt": salt})
+        pwd_hash = hashlib.sha256((password + salt).encode()).hexdigest()
+        insert = supabase_request("POST", "users", body=json.dumps({
+            "full_name": full_name, "email": email, "phone": data.get("phone", ""),
+            "pwd_hash": pwd_hash, "salt": salt
+        }).encode())
+        if not insert or isinstance(insert, dict) and insert.get("_error"):
+            return respond({"detail": "Registration failed"}, start_response, 500)
+        new_user = insert[0] if isinstance(insert, list) else insert
+        uid = new_user.get("id")
         token = make_token(uid)
         return respond({"access_token": token, "user": {"id": uid, "full_name": full_name, "email": email, "phone": data.get("phone", "")}}, start_response)
 
     elif path == "/api/login":
         email = data.get("email", "").strip().lower()
         password = data.get("password", "")
-        u = next((x for x in USERS if x["email"] == email), None)
-        if not u or hashlib.sha256((password + u["salt"]).encode()).hexdigest() != u["pwd"]:
+        u = find_user_by_email(email)
+        if not u or hashlib.sha256((password + u["salt"]).encode()).hexdigest() != u["pwd_hash"]:
             return respond({"detail": "Invalid email or password"}, start_response, 401)
         token = make_token(u["id"])
         return respond({"access_token": token, "user": {"id": u["id"], "full_name": u["full_name"], "email": u["email"], "phone": u.get("phone", "")}}, start_response)
@@ -133,7 +176,10 @@ def app(environ, start_response):
         return respond({"id": user["id"], "full_name": user["full_name"], "email": user["email"], "phone": user.get("phone", "")}, start_response)
 
     elif path == "/api/rooms":
-        return respond(ROOMS, start_response)
+        rooms = get_rooms_from_db()
+        if rooms is None:
+            return respond({"detail": "Database unavailable"}, start_response, 503)
+        return respond(rooms, start_response)
 
     elif path == "/api/bookings":
         if method == "POST":
@@ -146,25 +192,36 @@ def app(environ, start_response):
                 return respond({"detail": "room_id, check_in, check_out required"}, start_response, 400)
             if ci >= co:
                 return respond({"detail": "Check-out must be after check-in"}, start_response, 400)
-            bid = NEXT_ID["booking"]; NEXT_ID["booking"] += 1
-            b = {"id": bid, "user_id": user["id"], "room_id": room_id, "check_in": ci, "check_out": co, "booking_status": "CONFIRMED"}
-            BOOKINGS.append(b)
-            return respond(b, start_response, 201)
+            insert = supabase_request("POST", "bookings", body=json.dumps({
+                "user_id": user["id"], "room_id": room_id, "check_in": ci, "check_out": co
+            }).encode())
+            if not insert or isinstance(insert, dict) and insert.get("_error"):
+                return respond({"detail": "Booking failed"}, start_response, 500)
+            new_b = insert[0] if isinstance(insert, list) else insert
+            return respond(new_b, start_response, 201)
         elif method == "GET":
             if not user:
                 return respond({"detail": "Not authenticated"}, start_response, 401)
-            return respond([b for b in BOOKINGS if b["user_id"] == user["id"]], start_response)
+            result = supabase_request("GET", "bookings", params={
+                "select": "*", "user_id": f"eq.{user['id']}", "order": "created_at.desc"
+            })
+            return respond(result if isinstance(result, list) else [], start_response)
 
     elif path.startswith("/api/bookings/"):
         if method == "DELETE":
             if not user:
                 return respond({"detail": "Not authenticated"}, start_response, 401)
             parts = path.strip("/").split("/")
-            bid = int(parts[-1]) if parts[-1].isdigit() else None
-            b = next((x for x in BOOKINGS if x["id"] == bid and x["user_id"] == user["id"]), None)
-            if not b:
+            bid = parts[-1] if parts[-1].isdigit() else None
+            if not bid:
+                return respond({"detail": "Invalid booking id"}, start_response, 400)
+            # Verify ownership
+            check = supabase_request("GET", "bookings", params={
+                "select": "id", "id": f"eq.{bid}", "user_id": f"eq.{user['id']}"
+            })
+            if not check or len(check) == 0:
                 return respond({"detail": "Booking not found"}, start_response, 404)
-            BOOKINGS.remove(b)
+            supabase_request("DELETE", "bookings", params={"id": f"eq.{bid}"})
             return respond({"message": "Booking cancelled"}, start_response)
 
     return respond({"detail": "Not found", "path": path}, start_response, 404)
