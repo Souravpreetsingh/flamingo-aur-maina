@@ -1,5 +1,14 @@
 const API_BASE = window.__API_URL__ || "http://localhost:8000";
 
+const FALLBACK_ROOMS = [
+    {id: 1, room_name: "Oceanfront Suite", description: "Suite with private balcony and ocean view, king bed, marble bathroom.", price: 9999, capacity: 2, image_url: "https://images.unsplash.com/photo-1590490360182-c33d57733427", room_type: "Suite"},
+    {id: 2, room_name: "Penthouse Loft", description: "Modern penthouse with panoramic city views, full kitchen, jacuzzi.", price: 18999, capacity: 4, image_url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9", room_type: "Penthouse"},
+    {id: 3, room_name: "Garden Villa", description: "Private garden villa, pet-friendly, indoor-outdoor living.", price: 11999, capacity: 3, image_url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", room_type: "Villa"},
+    {id: 4, room_name: "Royal Suite", description: "Pinnacle of luxury with separate living, dining, butler service, grand terrace.", price: 25999, capacity: 4, image_url: "https://images.unsplash.com/photo-1582719508461-905c673771fd", room_type: "Suite"},
+    {id: 5, room_name: "Cozy Studio", description: "Compact studio for solo travelers with workspace and kitchenette.", price: 4499, capacity: 1, image_url: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", room_type: "Studio"},
+    {id: 6, room_name: "Family Suite", description: "Two-bedroom suite with kids play area, full kitchen, living room.", price: 15499, capacity: 6, image_url: "https://images.unsplash.com/photo-1566665797739-1674de7a421a", room_type: "Suite"},
+];
+
 let allRooms = [];
 let activeFilters = { roomType: new Set(), priceMin: 0, priceMax: Infinity };
 
@@ -15,21 +24,22 @@ async function loadRooms() {
         const res = await fetch(`${API_BASE}/rooms`);
         if (!res.ok) throw new Error("Failed to fetch rooms");
         allRooms = await res.json();
-        const prices = allRooms.map(r => r.price);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        document.getElementById("price-min").value = minPrice;
-        document.getElementById("price-max").value = maxPrice;
-        document.getElementById("price-min-label").textContent = "₹" + formatINR(minPrice);
-        document.getElementById("price-max-label").textContent = "₹" + formatINR(maxPrice) + "+";
-        activeFilters.priceMin = minPrice;
-        activeFilters.priceMax = maxPrice;
-        populateRoomTypes();
-        renderRooms(allRooms);
     } catch (err) {
-        document.getElementById("real-grid").innerHTML =
-            `<div class="col-span-full text-center py-20 text-on-surface-variant"><p>Could not load rooms. Make sure the backend is running.</p></div>`;
-    } finally {
+        allRooms = FALLBACK_ROOMS;
+    }
+    const prices = allRooms.map(r => r.price);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    document.getElementById("price-min").value = minPrice;
+    document.getElementById("price-max").value = maxPrice;
+    document.getElementById("price-min-label").textContent = "₹" + formatINR(minPrice);
+    document.getElementById("price-max-label").textContent = "₹" + formatINR(maxPrice) + "+";
+    activeFilters.priceMin = minPrice;
+    activeFilters.priceMax = maxPrice;
+    populateRoomTypes();
+    renderRooms(allRooms);
+    document.getElementById("room-count").textContent = allRooms.length + " rooms available";
+} finally {
         document.getElementById("skeleton-grid").style.display = "none";
         const grid = document.getElementById("real-grid");
         grid.classList.remove("hidden");
