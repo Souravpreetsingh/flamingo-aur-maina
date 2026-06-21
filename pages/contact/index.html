@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - LuxeStay Hospitality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="../../js/tailwind-config.js"></script>
+<link href="../../css/shared.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary/30">
+<header class="bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm fixed top-0 w-full z-50 transition-all ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">LuxeStay</div>
+<nav class="hidden md:flex space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../../index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../rooms/index.html">Rooms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../about/index.html">About</a>
+<a class="text-primary font-bold border-b-2 border-secondary pb-1 font-label-md text-label-md" href="#">Contact</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button aria-label="Toggle Dark Mode" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dark_mode</span>
+</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" onclick="window.location.href='../login/index.html'">Sign In</button>
+<button class="md:hidden text-primary"><span class="material-symbols-outlined">menu</span></button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-margin-desktop px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="text-center mb-24">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">Get in Touch</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">We are here to elevate your experience. Reach out to us for reservations, inquiries, or special requests. Our dedicated team is at your service.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+<div class="lg:col-span-7 glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
+<h2 class="text-headline-md font-headline-md text-primary mb-8 relative z-10">Send a Message</h2>
+<form class="space-y-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative input-line group/input">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="firstName" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="firstName">First Name</label>
+</div>
+<div class="relative input-line group/input">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="lastName" placeholder=" " required="" type="text"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="lastName">Last Name</label>
+</div>
+</div>
+<div class="relative input-line group/input">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="email" placeholder=" " required="" type="email"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="email">Email Address</label>
+</div>
+<div class="relative input-line group/input">
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary text-body-md font-body-md appearance-none cursor-pointer" id="subject">
+<option disabled="" hidden="" selected="" value="">Select a Subject</option>
+<option value="reservation">Reservation Inquiry</option>
+<option value="events">Events &amp; Meetings</option>
+<option value="feedback">Guest Feedback</option>
+<option value="other">Other</option>
+</select>
+<div class="absolute right-0 top-2 pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined">expand_more</span></div>
+</div>
+<div class="relative input-line group/input pt-2">
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer resize-none" id="message" placeholder=" " required="" rows="4"></textarea>
+<label class="absolute left-0 top-4 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="message">Your Message</label>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-full font-label-md text-label-md hover:bg-inverse-surface hover:scale-[1.02] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn" type="submit">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Visit Us</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">123 Luxury Avenue,<br/>Metropolis, NY 10001</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Call Us</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">+1 (800) 555-0199<br/><span class="text-sm opacity-70">24/7 Concierge Support</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4 sm:col-span-2 lg:col-span-1">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Email Us</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="mailto:reservations@luxestay.com">reservations@luxestay.com</a>
+</div>
+</div>
+</div>
+<div class="flex-grow min-h-[300px] bg-surface-container rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHbOffDqx9Ulh92YMDElPiUuxnzi26Mi7XluB3eJ4CvYK3OiWgPYb7ZjcLLUMvgrNbTKCc77OFaYMnUNOmyXJ526Af3x8dEKPtHSqxWq1j6FYbRwufl0PMEyT6orX_uATh6TBSA18gOcNmn8T3LU7n7Dx8HAxH-y5pYQyLN_dmVTl0MxG9VkmyvvbG2KWgVSVIRG8R7JMltDGsGvJRo_u9dbW5EeeDO7nVuAFEEhe6XwqDV4osZ-jzIJVkfF9OPD7MXXd3rE98wFA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<button class="bg-white/90 backdrop-blur-sm text-primary px-4 py-2 rounded-full font-label-md text-label-md shadow-sm hover:bg-white transition-colors flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+Get Directions
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-24 border-t border-outline-variant/20 pt-16">
+<div class="text-center mb-12">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">Need Immediate Assistance?</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Explore our support hub for quick answers.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="#">
+<div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">help</span></div>
+<h4 class="font-label-md text-label-md text-primary mb-2">FAQ</h4>
+<p class="text-sm text-on-surface-variant">Find answers to common questions about your stay.</p>
+</a>
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="#">
+<div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">policy</span></div>
+<h4 class="font-label-md text-label-md text-primary mb-2">Policies</h4>
+<p class="text-sm text-on-surface-variant">Review our cancellation and hotel policies.</p>
+</a>
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="../login/index.html">
+<div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">luggage</span></div>
+<h4 class="font-label-md text-label-md text-primary mb-2">Manage Booking</h4>
+<p class="text-sm text-on-surface-variant">View or modify your upcoming reservations.</p>
+</a>
+</div>
+</div>
+</main>
+<footer class="bg-primary-container border-t border-outline-variant/10 w-full mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto text-on-primary-container">
+<div class="md:col-span-1">
+<div class="text-headline-md font-headline-md font-bold text-on-primary-fixed mb-6">LuxeStay</div>
+<p class="text-body-md font-body-md mb-6 max-w-xs opacity-80">Experience comfort and luxury redefined. Your serene escape awaits.</p>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary-container hover:text-primary-container transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Explore</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-primary-container/70">
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="../rooms/index.html">Rooms &amp; Suites</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Dining</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Spa &amp; Wellness</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Offers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Legal</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-primary-container/70">
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">FAQ</a></li>
+<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Newsletter</h4>
+<p class="text-body-md font-body-md mb-4 opacity-80 text-sm">Subscribe for exclusive offers and updates.</p>
+<form class="flex gap-2">
+<input class="bg-surface/10 border border-on-primary-container/30 rounded-full px-4 py-2 text-sm text-on-primary-container placeholder-on-primary-container/50 focus:outline-none focus:border-secondary w-full" placeholder="Email address" type="email"/>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-full text-sm font-label-md hover:opacity-90 transition-opacity" type="submit"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+</form>
+</div>
+</div>
+<div class="border-t border-on-primary-container/10 px-gutter py-6 text-center">
+<p class="text-sm font-body-md text-on-primary-container/50">© 2024 LuxeStay Hospitality. All rights reserved.</p>
+</div>
+</footer>
+<script src="../../js/shared.js"></script>
+</body>
+</html>

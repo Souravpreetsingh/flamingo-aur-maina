@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Checkout - LuxeStay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="../../js/tailwind-config.js"></script>
+<link href="../../css/shared.css" rel="stylesheet"/>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<header class="w-full py-6 px-gutter flex justify-between items-center z-40 relative">
+<div class="text-primary font-headline-md font-bold tracking-tight">LuxeStay</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-label-md">Secure Checkout</span>
+</div>
+</header>
+<main class="flex-grow px-gutter py-8 md:py-16 w-full max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+<div class="lg:col-span-7 space-y-8">
+<div class="mb-4">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Complete your reservation</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Review your details and complete payment to confirm your stay.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow overflow-hidden">
+<div class="relative h-64 w-full">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLuZfErei8KSqDXEvCbNUP0uEWSMlbp49zWtKJHtAywi_yFXXyKq3Dtyv5Zznnx8jCXOz5qbD8Tdyz3LpbLG6Q71QWbxfWqdAWOtoKD9sOlF8mAos2y7cKuvqrK5PMDFddahQPKaT4jK8JKvRZk1dhrPw0SAZE5aOfDK9Q4xNPGatkqgL3Ee4RTCpo_ah83sJ8Av8VDILFXvRh-Bv03IzaHkbw5AjCj2WZ3BRA-7bxStDJ5Y7sPQ7hsdYVGTpvyFIMWHfQgY8ppv0')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<span class="inline-block px-3 py-1 bg-surface-container-lowest/20 backdrop-blur-md rounded-full font-label-md text-label-md mb-2 text-white border border-white/30">Ocean View Suite</span>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<div class="flex justify-between items-start pb-6 border-b border-outline-variant/20">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Stay Details</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calendar_month</span> Oct 15 - Oct 20, 2024 · 5 Nights</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Order ID</span>
+<span class="font-body-md text-body-md text-primary font-medium">#LX-98273</span>
+</div>
+</div>
+<div class="space-y-4 font-body-md text-body-md">
+<div class="flex justify-between text-on-surface-variant"><span>Room Rate (5 nights x ₹9,999)</span><span>₹49,995</span></div>
+<div class="flex justify-between text-on-surface-variant"><span>Taxes &amp; Fees</span><span>₹4,999</span></div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-end">
+<span class="font-headline-md text-headline-md text-primary">Total Amount</span>
+<span class="font-headline-lg text-headline-lg text-primary">₹54,994</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative mt-8 lg:mt-24">
+<div class="sticky top-24 bg-surface-container-lowest rounded-2xl ambient-shadow p-8">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Payment Method</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">You will be securely redirected to our payment partner, Razorpay, to complete your transaction. We accept all major credit cards, UPI, and net banking.</p>
+<div class="flex items-center gap-4 mb-8 text-outline">
+<span class="material-symbols-outlined text-3xl">credit_card</span>
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+<span class="material-symbols-outlined text-3xl">qr_code_scanner</span>
+<div class="h-6 w-px bg-outline-variant/30 mx-2"></div>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+Secured by Razorpay
+</span>
+</div>
+<button class="w-full bg-primary text-on-primary rounded-full py-4 px-6 font-label-md text-label-md uppercase tracking-wider hover:scale-[1.02] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-md shadow-primary/20 flex items-center justify-center gap-2" onclick="openRazorpayModal()">
+Pay Securely
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_right_alt</span>
+</button>
+<p class="text-center font-label-md text-label-md text-on-surface-variant mt-4 opacity-70">By clicking pay, you agree to our Terms of Service.</p>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-primary-container/20 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="modal-overlay">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-margin-mobile overflow-hidden flex-col hidden transform scale-95 transition-all duration-300 opacity-0" id="razorpay-modal">
+<div class="bg-primary px-6 py-4 flex justify-between items-center text-on-primary">
+<div><div class="font-headline-md text-[20px] font-medium tracking-tight">LuxeStay</div><div class="font-body-md text-[14px] opacity-80 mt-1">Order #LX-98273</div></div>
+<div class="text-right"><div class="font-body-md text-[14px] opacity-80">Amount</div><div class="font-headline-md text-[20px] font-medium">₹54,994</div></div>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-label-md text-label-md text-primary">Contact Details</h4>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="closeModals()"><span class="material-symbols-outlined text-[20px]">close</span></button>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Email</label><input class="input-minimal font-body-md text-primary w-full" readonly="" type="email" value="guest@example.com"/></div>
+<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Phone</label><input class="input-minimal font-body-md text-primary w-full" readonly="" type="tel" value="+1 (555) 000-0000"/></div>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<h4 class="font-label-md text-label-md text-primary mb-4">Cards, UPI &amp; More</h4>
+<div class="space-y-4">
+<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Card Number</label><div class="relative"><input class="input-minimal font-body-md text-primary w-full pl-8" placeholder="4111 1111 1111 1111" type="text"/><span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">credit_card</span></div></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Expiry</label><input class="input-minimal font-body-md text-primary w-full" placeholder="MM/YY" type="text"/></div>
+<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">CVV</label><input class="input-minimal font-body-md text-primary w-full" placeholder="123" type="password"/></div>
+</div>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant opacity-60"><span class="material-symbols-outlined text-[14px]">lock</span><span class="font-body-md text-[12px]">Secured by Razorpay</span></div>
+<button class="bg-[#3399cc] hover:bg-[#2b82ad] text-white rounded px-6 py-3 font-label-md text-[14px] uppercase tracking-wide transition-colors duration-200" onclick="processPayment()">Pay ₹54,994</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-all duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-pending">
+<svg class="spinner w-16 h-16 mb-6 stroke-secondary" viewbox="0 0 50 50">
+<circle class="spinner-path" cx="25" cy="25" fill="none" r="20" stroke-width="3"></circle>
+</svg>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Processing Payment</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Please do not close this window or press back.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-all duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-success">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-[#10b981]">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Payment Successful</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Your reservation is confirmed. A receipt has been sent to your email.</p>
+<div class="bg-surface rounded-lg p-4 w-full mb-8">
+<span class="font-label-md text-[12px] text-on-surface-variant uppercase tracking-widest block mb-1">Transaction ID</span>
+<span class="font-body-md text-body-md text-primary font-medium">pay_L8x9Qr2sTk</span>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container rounded-full py-3 px-6 font-label-md text-label-md uppercase tracking-wider hover:bg-secondary-fixed transition-colors duration-300" onclick="window.location.href='../../index.html'">Return to Home</button>
+</div>
+</div>
+<script>
+const overlay = document.getElementById('modal-overlay');
+const rzpModal = document.getElementById('razorpay-modal');
+const pendingState = document.getElementById('state-pending');
+const successState = document.getElementById('state-success');
+
+function showElement(el) {
+    el.classList.remove('hidden');
+    el.classList.add('flex');
+    setTimeout(() => {
+        el.classList.remove('opacity-0', 'scale-95');
+        el.classList.add('opacity-100', 'scale-100');
+    }, 10);
+}
+
+function hideElement(el, hideFully = true) {
+    el.classList.remove('opacity-100', 'scale-100');
+    el.classList.add('opacity-0', 'scale-95');
+    if(hideFully) {
+        setTimeout(() => {
+            el.classList.add('hidden');
+            el.classList.remove('flex');
+        }, 300);
+    }
+}
+
+function openRazorpayModal() {
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+    showElement(rzpModal);
+}
+
+function closeModals() {
+    hideElement(rzpModal, true);
+    hideElement(pendingState, true);
+    hideElement(successState, true);
+    overlay.classList.add('opacity-0');
+    setTimeout(() => {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+    }, 300);
+}
+
+function processPayment() {
+    hideElement(rzpModal, true);
+    setTimeout(() => {
+        showElement(pendingState);
+        setTimeout(() => {
+            hideElement(pendingState, true);
+            setTimeout(() => {
+                showElement(successState);
+            }, 300);
+        }, 2500);
+    }, 300);
+}
+</script>
+</body>
+</html>

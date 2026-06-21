@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LuxeStay | Find Your Perfect Stay</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="./js/tailwind-config.js"></script>
+<link href="./css/shared.css" rel="stylesheet"/>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="index.html">LuxeStay</a>
+<ul class="hidden md:flex space-x-8 items-center">
+<li><a class="text-label-md font-label-md text-primary font-bold border-b-2 border-secondary pb-1 block" href="index.html">Home</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/rooms/index.html">Rooms</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/about/index.html">About</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/contact/index.html">Contact</a></li>
+</ul>
+<div class="flex items-center space-x-4">
+<button aria-label="Toggle Dark Mode" class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] w-10 h-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-[24px]">dark_mode</span>
+</button>
+<div id="authNav">
+<a class="hidden md:flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm" href="pages/login/index.html">Sign In</a>
+</div>
+<button class="md:hidden text-primary"><span class="material-symbols-outlined text-[28px]">menu</span></button>
+</div>
+</div>
+</nav>
+<main>
+<section class="relative min-h-[921px] flex flex-col items-center justify-center pt-20 pb-16 px-gutter md:px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center bg-no-repeat scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBB3GWD6uJCCBJcEVQsZc1JFNes4koJtTNiOqPmFCZ0UANmfjqQHp0DZq33bej7FxAaiqBaKg-5MVRUkek4-Lw8-JJgbW1Kx5dpkOUPLg6UIJSOiUMDVc5JIzus5emU1JC0cTw_TwMH5eDTTIuA50E2Zpaa7UhErDHKRUe6SHtdx-OJhYeYt4GW46APrG_AoC0oA-eqTizIKnF4lcxeo-hi_d1KUuuoPcl1nR051t1frD9r8w_T2tE-6msy8e4c_FUNE8dqHuJ9gr0')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/10 to-surface"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto text-center mt-12 md:mt-24 reveal">
+<span class="inline-block px-4 py-1.5 rounded-full bg-surface-container-lowest/20 backdrop-blur-md text-on-tertiary text-label-md font-label-md tracking-widest uppercase mb-6 border border-white/20">Experience Luxury</span>
+<h1 class="text-display-lg-mobile font-display-lg-mobile md:text-display-lg md:font-display-lg text-on-tertiary mb-6 drop-shadow-lg">Find Your Perfect Stay</h1>
+<p class="text-body-lg font-body-lg text-on-tertiary/90 max-w-2xl mx-auto mb-16 drop-shadow-md">Luxury rooms, premium services, and unforgettable experiences curated for the modern traveler seeking effortless elegance.</p>
+</div>
+<div class="relative z-20 w-full max-w-5xl mx-auto mt-auto reveal delay-200">
+<div class="glass-panel rounded-2xl p-6 md:p-8 ambient-shadow border border-white/40">
+<form class="flex flex-col md:flex-row gap-6 md:gap-8 items-end">
+<div class="w-full md:w-1/4 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Check In</label>
+<div class="flex items-center w-full">
+<span class="material-symbols-outlined text-outline mr-2 text-[20px]">calendar_today</span>
+<input class="w-full text-body-md font-body-md text-on-surface bg-transparent" placeholder="Select Date" type="date"/>
+</div>
+</div>
+<div class="w-full md:w-1/4 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Check Out</label>
+<div class="flex items-center w-full">
+<span class="material-symbols-outlined text-outline mr-2 text-[20px]">calendar_today</span>
+<input class="w-full text-body-md font-body-md text-on-surface bg-transparent" placeholder="Select Date" type="date"/>
+</div>
+</div>
+<div class="w-full md:w-1/4 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Guests</label>
+<div class="flex items-center w-full relative">
+<span class="material-symbols-outlined text-outline mr-2 text-[20px]">person</span>
+<select class="w-full text-body-md font-body-md text-on-surface bg-transparent appearance-none">
+<option>2 Adults, 1 Room</option>
+<option>1 Adult, 1 Room</option>
+<option>2 Adults, 2 Children</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<div class="w-full md:w-auto mt-4 md:mt-0 flex-shrink-0">
+<button class="w-full md:w-auto bg-primary text-on-primary px-8 py-3.5 rounded-full text-label-md font-label-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center justify-center" type="button" onclick="window.location.href='pages/rooms/index.html'">
+Search Rooms
+<span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto bg-surface relative">
+<div class="text-center mb-16 reveal">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-4">The LuxeStay Standard</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Experience hospitality redefined through our commitment to unparalleled comfort and service.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+<div class="flex flex-col items-center text-center reveal delay-100">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[32px]">workspace_premium</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Premium Quality</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Meticulously designed spaces featuring top-tier materials and bespoke furnishings.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-200">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[32px]">room_service</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">24/7 Service</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Anticipatory service round the clock, ensuring your every need is met effortlessly.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-300">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[32px]">pool</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Exclusive Amenities</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Access to world-class spas, infinity pools, and private cabanas.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal delay-100">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[32px]">location_on</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Prime Locations</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Situated in the heart of cultural districts or secluded natural paradises.</p>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto" id="rooms">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+<div class="max-w-xl">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-4">Curated Accommodations</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Discover our range of meticulously designed suites, each offering a unique perspective on luxury living.</p>
+</div>
+<a class="mt-6 md:mt-0 text-label-md font-label-md text-primary uppercase tracking-widest border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors inline-flex items-center" href="pages/rooms/index.html">
+View All Rooms
+<span class="material-symbols-outlined ml-1 text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-100">
+<div class="relative h-[300px] img-hover-zoom">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV6FmdcHNlFv8zRxsweaQ1eAqlaC8K8ezRy3_npU2kM9jRZsfs3RpQZvQWP1g2eRGfyeDZKDwtX0_zhbNPxDGxhOIzWm1Np6943kpYkMa2on_4AjYYe_TnszHKWnjYg7gciO76b7sPdjJMtC4kIlX5d3YSCs_AO845p3pm0NsUzlIVjUHkaIjg2Ap23BB9aZaU3q1nBAL2RN57jne-tFPcVu1KiJWLyPDjg6s7Y8QuaN_ae1AZz0m2YmR87EDoKf-9_jlRPUzRegI"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary-fixed/90 backdrop-blur text-on-secondary-fixed text-label-md font-label-md px-3 py-1 rounded-full text-[12px]">Popular</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Oceanfront Suite</h3>
+<div class="text-right">
+<span class="block text-body-md font-body-md text-on-surface-variant line-through text-[14px]">₹14,999</span>
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹9,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">king_bed</span> King Bed</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">balcony</span> Balcony</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">wifi</span> Free Wifi</span>
+</div>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-200">
+<div class="relative h-[300px] img-hover-zoom">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdnmZUIjjJqIDG9jWuAnB9A3dSDANptNEkIXzpq5UDbaSLl-GhCrOZ8zVa8OnFpx6-A6oc86MdC0LNvRHPNf0W-4oAS1MZUTECot_dCO1DsOA3KivKyHzbLeHVj_fqn5apCoWvwtf6F0fTh15z3t4SvScp5nQ2bkfXXxPR-QmdTFetajjr9IXQttvFU-35kpES6xMZzE_0oCdGRc68yk94mpZrGWhBJV9v_NnOPsQlm9OOGcGWLgu8jQIkt2fNyHJAPpu3W3Ee1gQ"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Penthouse Loft</h3>
+<div class="text-right">
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹18,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">kitchen</span> Kitchenette</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">hot_tub</span> Jacuzzi</span>
+</div>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-300">
+<div class="relative h-[300px] img-hover-zoom">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu3XZZm2gNTJ9QfDkeL11C4YOVvS8bXaz-8TBnJmE0E3sS5n5l83Mpe6jqaEQPffZcdbF2kPHlPOsMakj7Qb05DS6SPue2kde9Xsw-3IBL9h5Eo2xPhbbXUyHD2_vrPr8OtOrBWMs_TiI3LLESJBus-x-zxYBDzb1zJptbQT_EUwyWgl4RL364bXPKZrrL4L3PesFrlThIMMKpBMWVHOroZZAsx8zse2UDog9ON2I4jT5z88JWut23MA2guyNtKmr-456HGrhzI8c"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Garden Villa</h3>
+<div class="text-right">
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹11,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">yard</span> Private Garden</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">pets</span> Pet Friendly</span>
+</div>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-[120px] bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-5/12 reveal">
+<span class="text-label-md font-label-md text-secondary uppercase tracking-widest mb-4 block">Wellness &amp; Dining</span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-6">Indulge the Senses</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8">Our resort offers a sanctuary for rejuvenation and culinary delight. From ancient spa therapies to avant-garde gastronomy, every experience is designed to elevate your stay.</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-primary">spa</span>
+</div>
+<div>
+<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Tranquility Spa</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Holistic treatments utilizing indigenous ingredients.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+</div>
+<div>
+<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Michelin-Star Dining</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Culinary masterpieces crafted by globally renowned chefs.</p>
+</div>
+</div>
+</div>
+<button class="mt-10 border border-primary text-primary px-8 py-3.5 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300 inline-flex items-center" onclick="window.location.href='pages/contact/index.html'">
+Explore Services
+<span class="material-symbols-outlined ml-2 text-[18px]">east</span>
+</button>
+</div>
+<div class="w-full lg:w-7/12 relative h-[500px] md:h-[600px] reveal delay-200">
+<div class="absolute top-0 right-0 w-3/4 h-4/5 rounded-2xl overflow-hidden ambient-shadow z-10">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAopm-V_wbeH9OJ5kIZq9besYmg_twcact7EHtFonoEDJENhRqWFDXGig6BvdJdP17EBw-ryu8r_SWmlMtSqHPef80r0HUJX6jp3uMp7XncryfEG13MqeKllDtzSQDF4RYABIZO6_tw_mvd3mAvOtaxM_oiv6uhdpjcJzgNd__GQvebLz0vYr3KRifYfySyu7A1oKkXwpLcMkJ_jzFeUbd6U-F3rRW0VPEsJeWvIJsnt8BVVnwmug_YBGrOA3N0UuJp9k5RyKfAEO4"/>
+</div>
+<div class="absolute bottom-0 left-0 w-1/2 h-3/5 rounded-2xl overflow-hidden ambient-shadow z-20 border-4 border-surface-container-low">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMtWWKTZbKEOfTg_IzVr1GNbnksNo_wbNH4bjEicOtkEX_qtJKhYiXduER7aoBvwD__rtLZQOPuMOx-x9xi4l5kGG8dkRbTLNE7Acs6yuElxAPpQF3UMC4aHm0sq7edxAHUIossf3fhA7bV-j7iRSmHcDq7N1FsjGR_Y--RpRfn0iL5u9gWoIxapQVEzOINXMfa6PuGw7tws2ZqIMjjFlkSBQmDWFhLCA6WsSq9W5YUpzA_87iqYlGpK0TUIFhAARG1D50fZ3Pwk"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto">
+<div class="bg-primary-container rounded-3xl p-10 md:p-16 relative overflow-hidden flex flex-col items-center text-center reveal">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
+<span class="material-symbols-outlined text-[48px] text-secondary mb-6">drafts</span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-on-primary-container mb-4">Join The Luxe Club</h2>
+<p class="text-body-lg font-body-lg text-on-primary-container/80 max-w-xl mx-auto mb-10">Subscribe to receive exclusive offers, early access to new properties, and curated travel inspiration directly to your inbox.</p>
+<form class="w-full max-w-md flex flex-col sm:flex-row gap-4">
+<input class="flex-1 bg-surface-container-lowest/10 border-b border-on-primary-container/30 text-on-primary-container placeholder:text-on-primary-container/50 px-4 py-3 text-body-md font-body-md focus:border-secondary transition-colors" placeholder="Enter your email address" required="" type="email"/>
+<button class="bg-secondary text-on-secondary-container px-8 py-3 rounded-full text-label-md font-label-md hover:bg-secondary-fixed transition-colors duration-300 font-bold" type="submit">Subscribe</button>
+</form>
+</div>
+</section>
+</main>
+<footer class="w-full mt-auto bg-primary-container border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto text-on-primary-container">
+<div class="md:col-span-1 flex flex-col gap-4">
+<a class="text-headline-md font-headline-md font-bold text-on-primary-fixed block mb-2" href="index.html">LuxeStay</a>
+<p class="text-body-md font-body-md opacity-80">Experience Comfort and Luxury.</p>
+</div>
+<div class="md:col-span-2 flex justify-between md:justify-around">
+<div class="flex flex-col gap-4">
+<h4 class="text-label-md font-label-md font-bold text-on-primary-fixed uppercase tracking-wider mb-2">Company</h4>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/about/index.html">About Us</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/dashboard/index.html">Dashboard</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/contact/index.html">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-label-md font-label-md font-bold text-on-primary-fixed uppercase tracking-wider mb-2">Legal</h4>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">FAQ</a>
+</div>
+</div>
+<div class="md:col-span-1 flex flex-col gap-6 justify-between">
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-lowest/10 flex items-center justify-center hover:bg-surface-container-lowest/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container-lowest/10 flex items-center justify-center hover:bg-surface-container-lowest/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+</div>
+<p class="text-label-md font-label-md opacity-60">© 2024 LuxeStay Hospitality. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script src="./js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const authNav = document.getElementById('authNav');
+    if (AuthAPI.isAuthenticated()) {
+        const user = AuthAPI.getUser();
+        authNav.innerHTML = `
+            <div class="hidden md:flex items-center gap-3">
+                <a href="pages/dashboard/index.html" class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors">${user ? user.full_name : 'Dashboard'}</a>
+                <button onclick="handleLogout()" class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:border-error hover:text-error transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">logout</span> Sign Out
+                </button>
+            </div>
+        `;
+    }
+});
+</script>
+<script src="./js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking - LuxeStay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="../../js/tailwind-config.js"></script>
+<link href="../../css/shared.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<header class="w-full px-gutter py-6 max-w-container-max mx-auto flex items-center justify-between z-50">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary flex items-center gap-2 hover:opacity-80 transition-opacity" href="../room-details/index.html">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+LuxeStay
+</a>
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+Secure Booking
+</div>
+</header>
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="mb-16">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg mb-4">Complete your booking</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Just a few more details to secure your stay.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-12">
+<section class="bg-surface-container-lowest rounded-2xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.04)]">
+<h2 class="text-headline-md font-headline-md mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+Personal Details
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="firstName">First Name</label>
+<input class="input-underline w-full focus:ring-0" id="firstName" placeholder="Jane" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="lastName">Last Name</label>
+<input class="input-underline w-full focus:ring-0" id="lastName" placeholder="Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="email">Email Address</label>
+<input class="input-underline w-full focus:ring-0" id="email" placeholder="jane.doe@example.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="phone">Phone Number</label>
+<input class="input-underline w-full focus:ring-0" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-2xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.04)]">
+<h2 class="text-headline-md font-headline-md mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="calendar_month">calendar_month</span>
+Stay Information
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="checkin">Check-in</label>
+<input class="input-underline w-full focus:ring-0 text-on-background" id="checkin" type="date"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="checkout">Check-out</label>
+<input class="input-underline w-full focus:ring-0 text-on-background" id="checkout" type="date"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="guests">Guests</label>
+<select class="input-underline w-full focus:ring-0 bg-transparent text-on-background" id="guests">
+<option>1 Adult</option>
+<option selected="">2 Adults</option>
+<option>2 Adults, 1 Child</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant" for="requests">Special Requests (Optional)</label>
+<textarea class="input-underline w-full focus:ring-0 resize-none" id="requests" placeholder="Let us know if you have any dietary requirements or special needs..." rows="3"></textarea>
+</div>
+</section>
+</div>
+<div class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-32 relative">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex flex-col">
+<div class="relative h-48 w-full group overflow-hidden">
+<img alt="Ocean View Suite" class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYGM5ro5kds88aya85bkBL5JFmA8UPTnStTg3I61AL76gYOKimp3CtQXRRb4FqEFMm3yJxPo0qq3kAeBX2wIdoBLMuk90hpSA33rLtnCWBKrpR0T74TLQiBHL3E47uhzFF9ac35fLzupS4KzFXfWpOb_bjnoWOt4iXtFIypLudEeCNot_eP3SP-LVqQ3FnxEXgqdY0b1_h3mmsyGf7ta7HPcGdbnuUhVvjHQ6nn4LDTr8dLFWix6ZHsmyCkvyiSAmcJzZYL_Pngok"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-4 left-6 text-on-primary">
+<h3 class="text-headline-md font-headline-md">Ocean View Suite</h3>
+<p class="text-body-md font-body-md opacity-90 flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.9 (120 reviews)</p>
+</div>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-6">
+<div class="flex flex-col gap-4 text-body-md font-body-md">
+<div class="flex justify-between items-center text-on-surface-variant"><span>₹9,999 x 3 nights</span><span>₹29,997</span></div>
+<div class="flex justify-between items-center text-on-surface-variant"><span>Taxes &amp; Fees</span><span>₹3,999</span></div>
+<div class="flex justify-between items-center text-on-surface-variant"><span>Resort Fee</span><span>₹999</span></div>
+</div>
+<hr class="border-outline-variant/30"/>
+<div class="flex justify-between items-center"><span class="text-body-lg font-body-lg font-semibold">Total</span><span class="text-headline-md font-headline-md font-bold text-primary">₹34,995</span></div>
+<button class="mt-4 w-full bg-primary text-on-primary py-4 rounded-full text-label-md font-label-md hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex justify-center items-center gap-2" onclick="window.location.href='../payment/index.html'">
+Proceed to Payment
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-[12px] text-on-surface-variant/70 mt-2">You won't be charged yet</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>

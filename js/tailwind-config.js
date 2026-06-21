@@ -1,0 +1,91 @@
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "on-surface-variant": "#45464d",
+                "surface-container-highest": "#d5e3fd",
+                "surface-container-lowest": "#ffffff",
+                "primary": "#000000",
+                "on-secondary-container": "#745c00",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed": "#ffe088",
+                "error-container": "#ffdad6",
+                "on-error": "#ffffff",
+                "surface-tint": "#565e74",
+                "surface": "#f8f9ff",
+                "surface-dim": "#ccdbf4",
+                "surface-container-high": "#dde9ff",
+                "background": "#f8f9ff",
+                "surface-bright": "#f8f9ff",
+                "on-background": "#0d1c2f",
+                "tertiary-fixed": "#e3e3de",
+                "on-primary-container": "#7c839b",
+                "surface-variant": "#d5e3fd",
+                "tertiary": "#000000",
+                "on-tertiary-fixed-variant": "#454744",
+                "secondary-fixed-dim": "#e9c349",
+                "secondary-container": "#fed65b",
+                "primary-container": "#131b2e",
+                "on-tertiary-fixed": "#1a1c19",
+                "on-tertiary-container": "#838480",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#233144",
+                "inverse-on-surface": "#ebf1ff",
+                "on-surface": "#0d1c2f",
+                "surface-container": "#e6eeff",
+                "primary-fixed": "#dae2fd",
+                "on-primary-fixed": "#131b2e",
+                "inverse-primary": "#bec6e0",
+                "on-secondary-fixed-variant": "#574500",
+                "primary-fixed-dim": "#bec6e0",
+                "outline-variant": "#c6c6cd",
+                "outline": "#76777d",
+                "on-primary-fixed-variant": "#3f465c",
+                "on-primary": "#ffffff",
+                "secondary": "#735c00",
+                "surface-container-low": "#eff4ff",
+                "tertiary-container": "#1a1c19",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#c6c7c2",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "2xl": "1rem",
+                "3xl": "1.5rem"
+            },
+            "spacing": {
+                "gutter": "32px",
+                "container-max": "1280px",
+                "margin-mobile": "20px",
+                "unit": "8px",
+                "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Playfair Display"],
+                "display-lg": ["Playfair Display"],
+                "headline-md": ["Playfair Display"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Playfair Display"],
+                "display-lg-mobile": ["Playfair Display"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "headline-md": ["28px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }]
+            }
+        }
+    }
+}
