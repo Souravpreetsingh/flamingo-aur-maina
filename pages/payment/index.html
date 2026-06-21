@@ -37,11 +37,11 @@
 <div class="flex justify-between items-start pb-6 border-b border-outline-variant/20">
 <div>
 <h3 class="font-headline-md text-headline-md text-primary mb-1">Stay Details</h3>
-<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calendar_month</span> Oct 15 - Oct 20, 2024 · 5 Nights</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calendar_month</span> <span id="stay-dates">Select your dates</span></p>
 </div>
 <div class="text-right">
-<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Order ID</span>
-<span class="font-body-md text-body-md text-primary font-medium">#LX-98273</span>
+                            <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Order ID</span>
+                            <span class="font-body-md text-body-md text-primary font-medium">#<span id="order-id">--------</span></span>
 </div>
 </div>
 <div class="space-y-4 font-body-md text-body-md">
@@ -81,7 +81,7 @@ Pay Securely
 <div class="fixed inset-0 z-50 hidden items-center justify-center bg-primary-container/20 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="modal-overlay">
 <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-margin-mobile overflow-hidden flex-col hidden transform scale-95 transition-all duration-300 opacity-0" id="razorpay-modal">
 <div class="bg-primary px-6 py-4 flex justify-between items-center text-on-primary">
-<div><div class="font-headline-md text-[20px] font-medium tracking-tight">LuxeStay</div><div class="font-body-md text-[14px] opacity-80 mt-1">Order #LX-98273</div></div>
+                <div><div class="font-headline-md text-[20px] font-medium tracking-tight">LuxeStay</div><div class="font-body-md text-[14px] opacity-80 mt-1">Order #<span id="modal-order-id">--------</span></div></div>
 <div class="text-right"><div class="font-body-md text-[14px] opacity-80">Amount</div><div class="font-headline-md text-[20px] font-medium">₹54,994</div></div>
 </div>
 <div class="p-6 space-y-6">
@@ -90,8 +90,8 @@ Pay Securely
 <button class="text-on-surface-variant hover:text-primary transition-colors" onclick="closeModals()"><span class="material-symbols-outlined text-[20px]">close</span></button>
 </div>
 <div class="space-y-4">
-<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Email</label><input class="input-minimal font-body-md text-primary w-full" readonly="" type="email" value="guest@example.com"/></div>
-<div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Phone</label><input class="input-minimal font-body-md text-primary w-full" readonly="" type="tel" value="+1 (555) 000-0000"/></div>
+                <div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Email</label><input class="input-minimal font-body-md text-primary w-full" id="payment-email" readonly="" type="email" value=""/></div>
+                                <div class="flex flex-col"><label class="font-label-md text-[12px] text-on-surface-variant mb-1">Phone</label><input class="input-minimal font-body-md text-primary w-full" id="payment-phone" readonly="" type="tel" value=""/></div>
 </div>
 <div class="pt-4 border-t border-outline-variant/20">
 <h4 class="font-label-md text-label-md text-primary mb-4">Cards, UPI &amp; More</h4>

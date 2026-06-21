@@ -57,14 +57,14 @@
 <div class="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full text-label-md font-label-md text-primary shadow-sm">Upcoming</div>
 </div>
 <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
-<div class="flex justify-between items-start mb-4">
-<div><h3 class="text-headline-md font-headline-md text-primary mb-2">The Azure Villas</h3><p class="text-body-md font-body-md text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">location_on</span> Santorini, Greece</p></div>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-8">
-<div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-in</p><p class="text-body-md font-body-md text-primary font-bold">Oct 15, 2024</p></div>
-<div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-out</p><p class="text-body-md font-body-md text-primary font-bold">Oct 20, 2024</p></div>
-</div>
-<button class="w-full md:w-auto self-start px-6 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-md hover:scale-105 transition-transform duration-300">View Details</button>
+                <div class="flex justify-between items-start mb-4">
+                                <div><h3 class="text-headline-md font-headline-md text-primary mb-2" id="booking-name">Your next stay</h3><p class="text-body-md font-body-md text-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">location_on</span> <span id="booking-location">Start by browsing our rooms</span></p></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                                <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-in</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkin">--</p></div>
+                                <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-out</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkout">--</p></div>
+                        </div>
+                        <button class="w-full md:w-auto self-start px-6 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-md hover:scale-105 transition-transform duration-300" onclick="window.location.href='../rooms/index.html'">Book a Room</button>
 </div>
 </div>
 <div class="md:col-span-12 bg-surface-container-lowest rounded-2xl p-6 md:p-8 ambient-shadow mt-6">
@@ -82,20 +82,9 @@
 <th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Status</th>
 </tr>
 </thead>
-<tbody>
-<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
-<td class="py-4"><p class="text-body-md font-body-md text-primary font-bold">Grand Plaza Hotel</p><p class="text-label-md font-label-md text-on-surface-variant hidden md:block">New York, NY</p></td>
-<td class="py-4 hidden md:table-cell text-body-md font-body-md text-on-surface-variant">Aug 10 - Aug 14, 2024</td>
-<td class="py-4 text-body-md font-body-md text-primary">₹27,999</td>
-<td class="py-4"><span class="bg-surface-container-high text-on-surface px-3 py-1 rounded-full text-label-md font-label-md">Completed</span></td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors">
-<td class="py-4"><p class="text-body-md font-body-md text-primary font-bold">Alpine Retreat</p><p class="text-label-md font-label-md text-on-surface-variant hidden md:block">Zermatt, Switzerland</p></td>
-<td class="py-4 hidden md:table-cell text-body-md font-body-md text-on-surface-variant">Jan 5 - Jan 12, 2024</td>
-<td class="py-4 text-body-md font-body-md text-primary">₹75,999</td>
-<td class="py-4"><span class="bg-surface-container-high text-on-surface px-3 py-1 rounded-full text-label-md font-label-md">Completed</span></td>
-</tr>
-</tbody>
+                <tbody id="recent-stays">
+                        <tr><td class="py-4 text-center text-body-md font-body-md text-on-surface-variant" colspan="4">No stays yet. Start by booking a room.</td></tr>
+                </tbody>
 </table>
 </div>
 </div>
@@ -116,13 +105,12 @@
 <span class="material-symbols-outlined text-[18px]">add</span> Add
 </button>
 </div>
-<div class="border border-outline-variant/30 rounded-xl p-4 flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="w-12 h-8 bg-surface-container-high rounded flex items-center justify-center"><span class="material-symbols-outlined text-primary">credit_card</span></div>
-<div><p class="text-body-md font-body-md text-primary font-bold">•••• •••• •••• 4242</p><p class="text-label-md font-label-md text-on-surface-variant">Expires 12/25</p></div>
-</div>
-<span class="bg-surface-container-low text-on-surface px-2 py-1 rounded text-label-md font-label-md border border-outline-variant/20">Default</span>
-</div>
+        <div class="border border-outline-variant/30 rounded-xl p-4 flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                        <div class="w-12 h-8 bg-surface-container-high rounded flex items-center justify-center"><span class="material-symbols-outlined text-primary">credit_card</span></div>
+                                        <div><p class="text-body-md font-body-md text-on-surface-variant">No payment methods saved yet</p></div>
+                                </div>
+                        </div>
 </div>
 </div>
 </main>
