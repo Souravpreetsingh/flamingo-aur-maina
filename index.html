@@ -11,6 +11,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="./js/tailwind-config.js"></script>
 <link href="./css/shared.css" rel="stylesheet"/>
+<script src="js/theme.js"></script>
 </head>
 <body class="bg-surface text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container">
 <nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-all duration-300">
@@ -27,6 +28,9 @@
 <span class="material-symbols-outlined text-[24px]">dark_mode</span>
 </button>
 <div id="authNav">
+<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-all duration-300" title="Toggle theme">
+    <span class="material-symbols-outlined theme-toggle-icon text-[20px]">dark_mode</span>
+</button>
 <a class="hidden md:flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm" href="pages/login/index.html">Sign In</a>
 </div>
 <button class="md:hidden text-primary"><span class="material-symbols-outlined text-[28px]">menu</span></button>

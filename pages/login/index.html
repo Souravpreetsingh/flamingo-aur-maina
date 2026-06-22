@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -26,11 +26,14 @@
 .stagger-5 { animation: stagger-in 0.8s 0.6s forwards; }
 .stagger-6 { animation: stagger-in 0.8s 0.7s forwards; }
 .glass-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(13, 28, 47, 0.08); }
+.dark .glass-card { background: rgba(17, 19, 24, 0.85); border-color: rgba(255, 255, 255, 0.08); }
 .input-group:focus-within label, .input-group input:not(:placeholder-shown) + label { transform: translateY(-24px) scale(0.85); color: #735c00; }
+.dark .input-group:focus-within label, .dark .input-group input:not(:placeholder-shown) + label { color: var(--secondary); }
 .ripple-btn { position: relative; overflow: hidden; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .ripple-btn:active { transform: scale(0.97); }
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
 </style>
+<script src="../../js/theme.js"></script>
 </head>
 <body class="bg-background text-on-background min-h-screen overflow-x-hidden flex selection:bg-secondary-container">
 <main class="flex w-full min-h-screen flex-col md:flex-row">
@@ -45,13 +48,18 @@
 (function(){var c=document.getElementById('threejs-container');if(!c)return;var s=new THREE.Scene(),w=c.clientWidth||window.innerWidth,h=c.clientHeight||window.innerHeight,ca=new THREE.PerspectiveCamera(75,w/h,0.1,1000);ca.position.z=5;var r=new THREE.WebGLRenderer({alpha:true,antialias:true});r.setSize(w,h);r.setPixelRatio(window.devicePixelRatio);c.appendChild(r.domElement);var g=new THREE.BufferGeometry(),v=[];for(var i=0;i<1500;i++)v.push(Math.random()*20-10,Math.random()*20-10,Math.random()*20-10);g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));var m=new THREE.PointsMaterial({color:0xffffff,size:0.02,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending}),p=new THREE.Points(g,m);s.add(p);var mx=0,my=0;document.addEventListener('mousemove',function(e){mx=(e.clientX-window.innerWidth/2)/100;my=(e.clientY-window.innerHeight/2)/100});window.addEventListener('resize',function(){var w=c.clientWidth||window.innerWidth,hh=c.clientHeight||window.innerHeight;ca.aspect=w/hh;ca.updateProjectionMatrix();r.setSize(w,hh)});function an(){requestAnimationFrame(an);p.rotation.y+=0.001;p.rotation.x+=0.0005;ca.position.x+=(mx-ca.position.x)*0.05;ca.position.y+=(-my-ca.position.y)*0.05;ca.lookAt(s.position);r.render(s,ca)}an()})();
 </script>
 <div class="relative z-20 w-full max-w-xl">
-<div class="mb-gutter stagger-item stagger-1"><a href="../../index.html" class="text-white font-display-lg text-headline-md tracking-widest uppercase mb-4 block hover:opacity-80 transition-opacity">LuxeStay</a></div>
+<div class="flex items-center justify-between mb-gutter stagger-item stagger-1">
+<a href="../../index.html" class="text-white font-display-lg text-headline-md tracking-widest uppercase hover:opacity-80 transition-opacity">LuxeStay</a>
+<button onclick="__toggleTheme()" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/30 text-white/70 hover:text-white hover:border-white/50 transition-all duration-300" title="Toggle theme">
+    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
+</button>
+</div>
 <h1 class="text-white font-display-lg text-display-lg-mobile md:text-display-lg mb-4 animate-slide-up leading-tight">Welcome Back</h1>
 <p class="text-white/80 font-body-lg text-body-lg max-w-md stagger-item stagger-2">Book luxury stays and unforgettable experiences tailored specifically for your discerning taste.</p>
 </div>
 </section>
 <section class="w-full md:w-1/2 flex items-center justify-center bg-surface-bright px-margin-mobile py-gutter md:py-0">
-<div class="w-full max-w-md glass-card rounded-[2rem] p-unit md:p-gutter animate-auth-card backdrop-blur-3xl bg-white/40">
+<div class="w-full max-w-md glass-card rounded-[2rem] p-unit md:p-gutter animate-auth-card backdrop-blur-3xl">
 <div class="p-4 md:p-6">
 <div class="mb-gutter text-center md:text-left">
 <h2 class="font-headline-md text-headline-md text-on-surface mb-2 stagger-item stagger-1">Sign In</h2>

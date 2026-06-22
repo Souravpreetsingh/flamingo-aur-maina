@@ -1,3 +1,103 @@
+:root, .light {
+    --on-surface-variant: #45464d;
+    --surface-container-highest: #d5e3fd;
+    --surface-container-lowest: #ffffff;
+    --primary: #000000;
+    --on-secondary-container: #745c00;
+    --on-tertiary: #ffffff;
+    --secondary-fixed: #ffe088;
+    --error-container: #ffdad6;
+    --on-error: #ffffff;
+    --surface-tint: #565e74;
+    --surface: #f8f9ff;
+    --surface-dim: #ccdbf4;
+    --surface-container-high: #dde9ff;
+    --background: #f8f9ff;
+    --surface-bright: #f8f9ff;
+    --on-background: #0d1c2f;
+    --tertiary-fixed: #e3e3de;
+    --on-primary-container: #7c839b;
+    --surface-variant: #d5e3fd;
+    --tertiary: #000000;
+    --on-tertiary-fixed-variant: #454744;
+    --secondary-fixed-dim: #e9c349;
+    --secondary-container: #fed65b;
+    --primary-container: #131b2e;
+    --on-tertiary-fixed: #1a1c19;
+    --on-tertiary-container: #838480;
+    --on-secondary: #ffffff;
+    --inverse-surface: #233144;
+    --inverse-on-surface: #ebf1ff;
+    --on-surface: #0d1c2f;
+    --surface-container: #e6eeff;
+    --primary-fixed: #dae2fd;
+    --on-primary-fixed: #131b2e;
+    --inverse-primary: #bec6e0;
+    --on-secondary-fixed-variant: #574500;
+    --primary-fixed-dim: #bec6e0;
+    --outline-variant: #c6c6cd;
+    --outline: #76777d;
+    --on-primary-fixed-variant: #3f465c;
+    --on-primary: #ffffff;
+    --secondary: #735c00;
+    --surface-container-low: #eff4ff;
+    --tertiary-container: #1a1c19;
+    --error: #ba1a1a;
+    --tertiary-fixed-dim: #c6c7c2;
+    --on-error-container: #93000a;
+    --on-secondary-fixed: #241a00;
+}
+
+.dark {
+    --on-surface-variant: #c4c6d0;
+    --surface-container-highest: #35373f;
+    --surface-container-lowest: #0c0e14;
+    --primary: #d0bffe;
+    --on-secondary-container: #ffe088;
+    --on-tertiary: #1a1c19;
+    --secondary-fixed: #f5ddb0;
+    --error-container: #93000a;
+    --on-error: #690005;
+    --surface-tint: #bec6e0;
+    --surface: #111318;
+    --surface-dim: #1a1c23;
+    --surface-container-high: #2a2c34;
+    --background: #111318;
+    --surface-bright: #383a42;
+    --on-background: #e1e2ec;
+    --tertiary-fixed: #c6c7c2;
+    --on-primary-container: #e8deff;
+    --surface-variant: #2a2c34;
+    --tertiary: #e1e2ec;
+    --on-tertiary-fixed-variant: #454744;
+    --secondary-fixed-dim: #d4a830;
+    --secondary-container: #574500;
+    --primary-container: #4b3f6f;
+    --on-tertiary-fixed: #1a1c19;
+    --on-tertiary-container: #838480;
+    --on-secondary: #3a2e00;
+    --inverse-surface: #e1e2ec;
+    --inverse-on-surface: #2a2c34;
+    --on-surface: #e1e2ec;
+    --surface-container: #1f2129;
+    --primary-fixed: #e8deff;
+    --on-primary-fixed: #2b1f4e;
+    --inverse-primary: #5b4f7d;
+    --on-secondary-fixed-variant: #f5ddb0;
+    --primary-fixed-dim: #cfbffe;
+    --outline-variant: #45464f;
+    --outline: #8e9099;
+    --on-primary-fixed-variant: #655a85;
+    --on-primary: #1a1c23;
+    --secondary: #e9c349;
+    --surface-container-low: #15171e;
+    --tertiary-container: #2a2c34;
+    --error: #ffb4ab;
+    --tertiary-fixed-dim: #8e9099;
+    --on-error-container: #ffdad6;
+    --on-secondary-fixed: #f5ddb0;
+}
+
 .glass-panel {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
@@ -5,11 +105,21 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.dark .glass-panel {
+    background: rgba(17, 19, 24, 0.8);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
 .glass-card {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-card {
+    background: rgba(17, 19, 24, 0.85);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .ambient-shadow {
@@ -85,7 +195,7 @@
 input[type="date"], input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select, textarea {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #c6c6cd;
+    border-bottom: 1px solid var(--outline-variant);
     border-radius: 0;
     padding: 8px 0;
     outline: none;
@@ -94,14 +204,14 @@ input[type="date"], input[type="text"], input[type="number"], input[type="email"
 }
 
 input:focus, select:focus, textarea:focus {
-    border-bottom-color: #735c00;
+    border-bottom-color: var(--secondary);
     outline: none;
 }
 
 .input-minimal {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #c6c6cd;
+    border-bottom: 1px solid var(--outline-variant);
     border-radius: 0;
     padding: 8px 0;
     transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -109,7 +219,7 @@ input:focus, select:focus, textarea:focus {
 
 .input-minimal:focus {
     outline: none;
-    border-bottom-color: #735c00;
+    border-bottom-color: var(--secondary);
     box-shadow: none;
 }
 
@@ -134,7 +244,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .sparkline {
-    stroke: #131b2e;
+    stroke: var(--primary-container);
     stroke-width: 2;
     fill: none;
     stroke-linecap: round;
@@ -157,7 +267,7 @@ input:focus, select:focus, textarea:focus {
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: #735c00;
+    background-color: var(--secondary);
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -168,5 +278,5 @@ input:focus, select:focus, textarea:focus {
 input:focus ~ label, input:not(:placeholder-shown) ~ label,
 textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label {
     transform: translateY(-1.5rem) scale(0.85);
-    color: #000000;
+    color: var(--primary);
 }

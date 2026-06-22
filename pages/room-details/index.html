@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <script src="../../js/tailwind-config.js"></script>
 <link href="../../css/shared.css" rel="stylesheet"/>
+<script src="../../js/theme.js"></script>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 <nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
@@ -23,6 +24,9 @@
 <div class="flex items-center gap-4">
 <button class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low">
 <span class="material-symbols-outlined" data-icon="dark_mode" data-weight="regular">dark_mode</span>
+</button>
+<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-all duration-300" title="Toggle theme">
+    <span class="material-symbols-outlined theme-toggle-icon text-[20px]">dark_mode</span>
 </button>
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full text-label-md font-label-md hover:scale-102 hover:shadow-lg transition-smooth hidden md:block" onclick="window.location.href='../login/index.html'">Sign In</button>
 </div>
