@@ -28,7 +28,9 @@
 <a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined">help</span><span class="text-label-md font-label-md">Help</span></a>
 </div>
 <button class="w-full py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md font-bold shadow-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" onclick="window.location.href='../rooms/index.html'">Book Now</button>
-<button onclick="__toggleTheme()" class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:bg-surface-container-high transition-all duration-300 flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[18px] theme-toggle-icon">dark_mode</span> <span class="theme-toggle-text">Dark Mode</span></button>
+<button onclick="__toggleTheme()" class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 flex items-center justify-center gap-2" title="Toggle theme">
+    <span class="material-symbols-outlined text-[18px] theme-toggle-icon">dark_mode</span>
+</button>
 <button class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:bg-error-container hover:text-error hover:border-error transition-all duration-300 flex items-center justify-center gap-2" onclick="handleLogout()"><span class="material-symbols-outlined text-[18px]">logout</span> Sign Out</button>
 </nav>
 <nav class="md:hidden bg-surface/15 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm border-b border-outline-variant/10 flex justify-between items-center h-20 px-margin-mobile">

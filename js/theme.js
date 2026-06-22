@@ -10,12 +10,8 @@
         html.classList.remove("light", "dark");
         html.classList.add(theme);
         localStorage.setItem(KEY, theme);
-        const isDark = theme === "dark";
         document.querySelectorAll(".theme-toggle-icon").forEach(el => {
-            el.textContent = isDark ? "light_mode" : "dark_mode";
-        });
-        document.querySelectorAll(".theme-toggle-text").forEach(el => {
-            el.textContent = isDark ? "Light Mode" : "Dark Mode";
+            el.textContent = theme === "dark" ? "light_mode" : "dark_mode";
         });
     }
 
