@@ -19,11 +19,11 @@
 <script src="js/room-data.js"></script>
 </head>
 <body class="bg-surface text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container">
-<nav class="fixed top-0 w-full z-50 fam-navbar fam-nav-enter">
-<div class="flex justify-between items-center h-20 md:h-24 px-gutter max-w-container-max mx-auto relative">
+<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-[background-color,border-color,box-shadow] duration-300">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
 
-<!-- Brand -->
-<div class="fam-brand">
+<!-- Animated FAM Brand -->
+<div class="flex items-center gap-3">
   <div class="fam-logo-wrap fam-logo-glow fam-logo-shimmer">
     <a class="fam-logo-text" href="index.html">FAM</a>
     <div class="fam-bird fam-bird-flamingo" id="birdF">
@@ -42,48 +42,38 @@
       </svg>
     </div>
   </div>
-  <div class="fam-tagline">
-    <span class="fam-tagline-top">Flamingo aur Maina</span>
-    <span class="fam-tagline-bottom">Café &amp; Stays</span>
+  <div class="hidden md:flex flex-col leading-tight border-l border-white/10 pl-3">
+    <span class="text-[10px] tracking-[0.28em] text-on-surface-variant uppercase font-semibold">Flamingo aur Maina</span>
+    <span class="text-[8px] tracking-[0.22em] text-on-surface-variant/60 uppercase font-medium">Café &amp; Stays</span>
   </div>
 </div>
 
 <!-- Nav Particles -->
 <div class="fam-nav-particles" id="navParticles"></div>
 
-<!-- Desktop Nav Links -->
-<ul class="hidden md:flex items-center gap-1 fam-nav-links">
-  <li><a class="fam-nav-link active" href="index.html">Home</a></li>
-  <li><a class="fam-nav-link" href="pages/rooms/index.html">Rooms</a></li>
-  <li><a class="fam-nav-link" href="pages/about/index.html">About</a></li>
-  <li><a class="fam-nav-link" href="pages/contact/index.html">Contact</a></li>
+<ul class="hidden md:flex space-x-8 items-center nav-plates">
+<li><a class="text-label-md font-label-md text-primary font-bold border-b-2 border-secondary pb-1 block" href="index.html">Home</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/rooms/index.html">Rooms</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/about/index.html">About</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/contact/index.html">Contact</a></li>
 </ul>
+<div class="flex items-center space-x-4">
 
-<!-- Right -->
-<div class="flex items-center gap-3">
-  <a class="hidden md:inline-flex fam-btn-book" href="pages/rooms/index.html">
-    Book Now
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
-  <div id="authNav" class="flex items-center gap-2">
-  <a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="pages/profile/index.html" title="Profile">
+<div id="authNav" class="flex items-center gap-2">
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="pages/profile/index.html" title="Profile">
     <span class="material-symbols-outlined text-[20px]">account_circle</span>
-  </a>
-  <a class="hidden md:flex items-center justify-center px-5 py-2 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm" href="pages/login/index.html">Sign In</a>
-  </div>
-  <button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined text-[28px]">menu</span></button>
+</a>
+<a class="hidden md:flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm" href="pages/login/index.html">Sign In</a>
 </div>
-
+<button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined text-[28px]">menu</span></button>
+</div>
 </div>
 </nav>
 <!-- Mobile Drawer -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
-<div class="fam-drawer-header">
-<div class="fam-drawer-brand">
-<span class="fam-drawer-logo">FAM</span>
-<span class="fam-drawer-sub">Flamingo aur Maina · Café &amp; Stays</span>
-</div>
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
 <button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
 </div>
 <hr class="border-outline-variant/20"/>
