@@ -3,24 +3,30 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Booking - LuxeStay</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Booking - Flamingo aur Maina | FAM</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../../js/tailwind-config.js"></script>
 <link href="../../css/shared.css" rel="stylesheet"/>
 <script src="../../js/theme.js"></script>
+<script src="../../js/room-data.js"></script>
+<script src="../../js/shared.js"></script>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
-<header class="w-full px-gutter py-6 max-w-container-max mx-auto flex items-center justify-between z-50">
+<header class="w-full px-margin-mobile md:px-gutter py-4 md:py-6 max-w-container-max mx-auto flex items-center justify-between z-50">
 <a class="text-headline-md font-headline-md font-bold tracking-tight text-primary flex items-center gap-2 hover:opacity-80 transition-opacity" href="../room-details/index.html">
 <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
-LuxeStay
+FAM
 </a>
 <div class="flex items-center gap-3">
-<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
+
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="../profile/index.html" title="Profile">
+    <span class="material-symbols-outlined text-[20px]">account_circle</span>
+</a>
 <div class="hidden md:flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
 <span class="material-symbols-outlined" data-icon="lock">lock</span>
 Secure Booking
@@ -32,7 +38,7 @@ Secure Booking
 <h1 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg mb-4">Complete your booking</h1>
 <p class="text-body-lg font-body-lg text-on-surface-variant">Just a few more details to secure your stay.</p>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-gutter items-start">
 <div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-12">
 <section class="bg-surface-container-lowest rounded-2xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.04)]">
 <h2 class="text-headline-md font-headline-md mb-8 flex items-center gap-3">
@@ -87,25 +93,26 @@ Stay Information
 </div>
 </section>
 </div>
-<div class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-32 relative">
+<div class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-32 relative" id="booking-summary">
 <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex flex-col">
 <div class="relative h-48 w-full group overflow-hidden">
-<img alt="Ocean View Suite" class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYGM5ro5kds88aya85bkBL5JFmA8UPTnStTg3I61AL76gYOKimp3CtQXRRb4FqEFMm3yJxPo0qq3kAeBX2wIdoBLMuk90hpSA33rLtnCWBKrpR0T74TLQiBHL3E47uhzFF9ac35fLzupS4KzFXfWpOb_bjnoWOt4iXtFIypLudEeCNot_eP3SP-LVqQ3FnxEXgqdY0b1_h3mmsyGf7ta7HPcGdbnuUhVvjHQ6nn4LDTr8dLFWix6ZHsmyCkvyiSAmcJzZYL_Pngok"/>
+<img id="booking-room-img" loading="lazy" alt="" class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105" src=""/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
 <div class="absolute bottom-4 left-6 text-on-primary">
-<h3 class="text-headline-md font-headline-md">Ocean View Suite</h3>
-<p class="text-body-md font-body-md opacity-90 flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.9 (120 reviews)</p>
+<h3 class="text-headline-md font-headline-md" id="booking-room-name"></h3>
+<p class="text-body-md font-body-md opacity-90 flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> <span id="booking-room-rating"></span></p>
 </div>
 </div>
 <div class="p-6 md:p-8 flex flex-col gap-6">
 <div class="flex flex-col gap-4 text-body-md font-body-md">
-<div class="flex justify-between items-center text-on-surface-variant"><span>₹9,999 x 3 nights</span><span>₹29,997</span></div>
-<div class="flex justify-between items-center text-on-surface-variant"><span>Taxes &amp; Fees</span><span>₹3,999</span></div>
-<div class="flex justify-between items-center text-on-surface-variant"><span>Resort Fee</span><span>₹999</span></div>
+<div class="flex justify-between items-center text-on-surface-variant"><span id="booking-price-line"></span></div>
+<div class="flex justify-between items-center text-on-surface-variant"><span>Taxes &amp; Fees</span><span id="booking-taxes"></span></div>
+<div class="flex justify-between items-center text-on-surface-variant"><span>Resort Fee</span><span id="booking-resort-fee"></span></div>
 </div>
 <hr class="border-outline-variant/30"/>
-<div class="flex justify-between items-center"><span class="text-body-lg font-body-lg font-semibold">Total</span><span class="text-headline-md font-headline-md font-bold text-primary">₹34,995</span></div>
-<button class="mt-4 w-full bg-primary text-on-primary py-4 rounded-full text-label-md font-label-md hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex justify-center items-center gap-2" onclick="window.location.href='../payment/index.html'">
+<div class="flex justify-between items-center"><span class="text-body-lg font-body-lg font-semibold">Total</span><span class="text-headline-md font-headline-md font-bold text-primary" id="booking-total"></span></div>
+<div class="text-right text-[12px] text-on-surface-variant/70">Including GST</div>
+<button class="mt-4 w-full bg-primary text-on-primary py-4 rounded-full text-label-md font-label-md hover:scale-[1.02] hover:shadow-lg transition-[background-color,color,opacity,transform,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex justify-center items-center gap-2" id="booking-pay-btn">
 Proceed to Payment
 <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
 </button>
@@ -115,5 +122,54 @@ Proceed to Payment
 </div>
 </div>
 </main>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
+<script>
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    var roomId = params.get('id') || 1;
+    var room = getRoomById(roomId);
+    if (!room) { room = getRoomById(1); roomId = 1; }
+
+    function formatINR(n) {
+        var s = Math.round(n).toString();
+        var last3 = s.slice(-3);
+        var rest = s.slice(0, -3);
+        return (rest ? rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' : '') + last3;
+    }
+
+    function isWinter() { return document.documentElement.classList.contains('winter'); }
+
+    function getBookingImg(id) {
+        if (isWinter() && ROOM_BOOKING_WINTER[id]) return ROOM_BOOKING_WINTER[id];
+        return ROOM_BOOKING_IMAGES[id] || '';
+    }
+
+    var nights = 3;
+    var subtotal = room.price * nights;
+    var taxes = Math.round(room.price * 0.4);
+    var resortFee = Math.round(room.price * 0.1);
+    var total = subtotal + taxes + resortFee;
+
+    document.getElementById('booking-room-img').src = getBookingImg(room.id);
+    document.getElementById('booking-room-img').alt = room.name;
+    document.getElementById('booking-room-name').textContent = room.name;
+    document.getElementById('booking-room-rating').textContent = room.rating + ' (' + room.reviews + ' reviews)';
+    document.getElementById('booking-price-line').innerHTML = '₹' + formatINR(room.price) + ' x ' + nights + ' nights <span>₹' + formatINR(subtotal) + '</span>';
+    document.getElementById('booking-taxes').textContent = '₹' + formatINR(taxes);
+    document.getElementById('booking-resort-fee').textContent = '₹' + formatINR(resortFee);
+    document.getElementById('booking-total').textContent = '₹' + formatINR(total);
+    document.getElementById('booking-pay-btn').onclick = function() {
+        window.location.href = '../payment/index.html?id=' + room.id + '&nights=' + nights + '&total=' + total;
+    };
+
+    var observer = new MutationObserver(function() {
+        document.getElementById('booking-room-img').src = getBookingImg(room.id);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+})();
+</script>
 </body>
 </html>

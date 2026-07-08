@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contact Us - LuxeStay Hospitality</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Book Now - Flamingo aur Maina | FAM Jibhi</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
@@ -11,107 +14,134 @@
 <link href="../../css/shared.css" rel="stylesheet"/>
 <script src="../../js/theme.js"></script>
 </head>
-<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary/30">
-<header class="bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm fixed top-0 w-full z-50 transition-all ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
+<body class="bg-surface-container text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-secondary/30">
+<header class="bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm fixed top-0 w-full z-50 transition-[background-color,border-color,box-shadow] ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
 <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
-<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">LuxeStay</div>
-<nav class="hidden md:flex space-x-8">
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../../index.html">Home</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../rooms/index.html">Rooms</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300 font-label-md text-label-md" href="../about/index.html">About</a>
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FAM</div>
+<nav class="hidden md:flex space-x-8 nav-plates">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="../../index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="../rooms/index.html">Rooms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="../about/index.html">About</a>
 <a class="text-primary font-bold border-b-2 border-secondary pb-1 font-label-md text-label-md" href="#">Contact</a>
 </nav>
 <div class="flex items-center gap-3">
-<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
-<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" onclick="window.location.href='../login/index.html'">Sign In</button>
-<button class="md:hidden text-primary"><span class="material-symbols-outlined">menu</span></button>
+
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="../profile/index.html" title="Profile">
+    <span class="material-symbols-outlined text-[20px]">account_circle</span>
+</a>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-lg transition-[background-color,color,opacity,transform,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" onclick="window.location.href='../login/index.html'">Sign In</button>
+<button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined">menu</span></button>
 </div>
 </div>
 </header>
-<main class="flex-grow pt-32 pb-margin-desktop px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-<div class="text-center mb-24">
-<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">Get in Touch</h1>
-<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">We are here to elevate your experience. Reach out to us for reservations, inquiries, or special requests. Our dedicated team is at your service.</p>
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
-<div class="lg:col-span-7 glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden group">
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../../index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../rooms/index.html"><span class="material-symbols-outlined text-[20px]">bed</span> Rooms</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../about/index.html"><span class="material-symbols-outlined text-[20px]">info</span> About</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-bold text-label-md font-label-md" href="#"><span class="material-symbols-outlined text-[20px]">mail</span> Contact</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-sm active:scale-[0.97] transition-transform" href="../login/index.html"><span class="material-symbols-outlined text-[18px]">login</span> Sign In</a>
+<a class="flex items-center justify-center gap-2 w-full py-3.5 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform" href="../profile/index.html"><span class="material-symbols-outlined text-[18px]">account_circle</span> Profile</a>
+</div>
+</div>
+<main class="flex-grow pt-20 pb-margin-desktop px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="text-center mb-12">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">Book Now!</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Reserve your stay at Flamingo aur Maina. Reach out to us for reservations, inquiries, or special requests. Our team is here to welcome you.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
+<div class="lg:col-span-7 glass-panel rounded-2xl p-6 md:p-8 relative overflow-hidden group">
 <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
-<h2 class="text-headline-md font-headline-md text-primary mb-8 relative z-10">Send a Message</h2>
-<form class="space-y-8 relative z-10">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="relative input-line group/input">
-<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="firstName" placeholder=" " required="" type="text"/>
-<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="firstName">First Name</label>
+<h2 class="text-headline-md font-headline-md text-primary mb-6 relative z-10">Send a Message</h2>
+<form class="space-y-4 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface-variant" for="firstName">First Name</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary px-0 py-2 text-primary text-body-md outline-none transition-colors" id="firstName" required="" type="text"/>
 </div>
-<div class="relative input-line group/input">
-<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="lastName" placeholder=" " required="" type="text"/>
-<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="lastName">Last Name</label>
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface-variant" for="lastName">Last Name</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary px-0 py-2 text-primary text-body-md outline-none transition-colors" id="lastName" required="" type="text"/>
 </div>
 </div>
-<div class="relative input-line group/input">
-<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer" id="email" placeholder=" " required="" type="email"/>
-<label class="absolute left-0 top-2 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="email">Email Address</label>
+<div class="flex flex-col gap-1">
+<label class="text-label-md font-label-md text-on-surface-variant" for="email">Email Address</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary px-0 py-1.5 text-primary text-body-md outline-none transition-colors" id="email" required="" type="email"/>
 </div>
-<div class="relative input-line group/input">
-<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary text-body-md font-body-md appearance-none cursor-pointer" id="subject">
+<div class="relative flex flex-col gap-1">
+<label class="text-label-md font-label-md text-on-surface-variant" for="subject">Subject</label>
+<select class="w-full bg-transparent border-b border-outline-variant focus:border-primary px-0 py-1.5 text-primary text-body-md appearance-none cursor-pointer outline-none transition-colors" id="subject">
 <option disabled="" hidden="" selected="" value="">Select a Subject</option>
 <option value="reservation">Reservation Inquiry</option>
 <option value="events">Events &amp; Meetings</option>
 <option value="feedback">Guest Feedback</option>
 <option value="other">Other</option>
 </select>
-<div class="absolute right-0 top-2 pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined">expand_more</span></div>
+<span class="absolute right-0 bottom-1.5 pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined">expand_more</span></span>
 </div>
-<div class="relative input-line group/input pt-2">
-<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-transparent px-0 py-2 text-primary placeholder-transparent transition-colors peer resize-none" id="message" placeholder=" " required="" rows="4"></textarea>
-<label class="absolute left-0 top-4 text-on-surface-variant font-label-md text-label-md transition-all duration-300 pointer-events-none origin-left" for="message">Your Message</label>
+<div class="flex flex-col gap-1">
+<label class="text-label-md font-label-md text-on-surface-variant" for="message">Your Message</label>
+<textarea class="w-full bg-transparent border-b border-outline-variant focus:border-primary px-0 py-1.5 text-primary text-body-md outline-none transition-colors resize-none" id="message" required="" rows="3"></textarea>
 </div>
-<button class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-full font-label-md text-label-md hover:bg-inverse-surface hover:scale-[1.02] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn" type="submit">
+<button class="w-full md:w-auto bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:brightness-110 hover:scale-[1.02] transition-[background-color,color,opacity,transform,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-md hover:shadow-lg flex items-center justify-center gap-2" type="submit">
 <span>Send Message</span>
-<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+<span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
 </button>
 </form>
 </div>
-<div class="lg:col-span-5 flex flex-col gap-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-                                <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
-                                        <div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
-                                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
-                                        </div>
-                                        <div>
-                                                <h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Visit Us</h3>
-                                                <p class="font-body-md text-body-md text-on-surface-variant">Coming soon<br/>Our location details will be announced</p>
-                                        </div>
-                                </div>
-                                <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
-                                        <div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
-                                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
-                                        </div>
-                                        <div>
-                                                <h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Call Us</h3>
-                                                <p class="font-body-md text-body-md text-on-surface-variant">Phone number coming soon<br/><span class="text-sm opacity-70">We'll be here to help</span></p>
-                                        </div>
-                                </div>
-                                <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4 sm:col-span-2 lg:col-span-1">
-                                        <div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
-                                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
-                                        </div>
-                                        <div>
-                                                <h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Email Us</h3>
-                                                <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="mailto:hello@luxestay.com">hello@luxestay.com</a>
-                                        </div>
-                                </div>
-                        </div>
-<div class="flex-grow min-h-[300px] bg-surface-container rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] group">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHbOffDqx9Ulh92YMDElPiUuxnzi26Mi7XluB3eJ4CvYK3OiWgPYb7ZjcLLUMvgrNbTKCc77OFaYMnUNOmyXJ526Af3x8dEKPtHSqxWq1j6FYbRwufl0PMEyT6orX_uATh6TBSA18gOcNmn8T3LU7n7Dx8HAxH-y5pYQyLN_dmVTl0MxG9VkmyvvbG2KWgVSVIRG8R7JMltDGsGvJRo_u9dbW5EeeDO7nVuAFEEhe6XwqDV4osZ-jzIJVkfF9OPD7MXXd3rE98wFA"/>
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Visit Us</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Opposite Forest Rest House Jibhi, Rashala, Jibhi, Himachal Pradesh 175123</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Call Us</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Property Manager: +91 98765 75673<br/>Founder: +91 98773 81864</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Email Us</h3>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="mailto:flamingoaurmaina@gmail.com">flamingoaurmaina@gmail.com</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300 flex items-start gap-4">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-widest text-xs">Get Directions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">31° 34' 43.6598" N<br/>77° 22' 0.8252" E</p>
+</div>
+</div>
+<div class="flex-grow min-h-[200px] bg-surface-container rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] group">
+<img data-theme-img="contact-map" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHbOffDqx9Ulh92YMDElPiUuxnzi26Mi7XluB3eJ4CvYK3OiWgPYb7ZjcLLUMvgrNbTKCc77OFaYMnUNOmyXJ526Af3x8dEKPtHSqxWq1j6FYbRwufl0PMEyT6orX_uATh6TBSA18gOcNmn8T3LU7n7Dx8HAxH-y5pYQyLN_dmVTl0MxG9VkmyvvbG2KWgVSVIRG8R7JMltDGsGvJRo_u9dbW5EeeDO7nVuAFEEhe6XwqDV4osZ-jzIJVkfF9OPD7MXXd3rE98wFA"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
 <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-<button class="bg-white/90 backdrop-blur-sm text-primary px-4 py-2 rounded-full font-label-md text-label-md shadow-sm hover:bg-white transition-colors flex items-center gap-2 text-sm">
+<a href="https://www.google.com/maps?q=31.578794,77.366896" target="_blank" class="bg-white/90 backdrop-blur-sm text-primary px-4 py-2 rounded-full font-label-md text-label-md shadow-sm hover:bg-white transition-colors flex items-center gap-2 text-sm">
 <span class="material-symbols-outlined text-[18px]">directions</span>
-Get Directions
-</button>
+                        31° 34' 43.6598" N, 77° 22' 0.8252" E
+</a>
 </div>
 </div>
 </div>
@@ -122,17 +152,17 @@ Get Directions
 <p class="text-body-md font-body-md text-on-surface-variant">Explore our support hub for quick answers.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="#">
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-colors duration-300" href="#">
 <div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">help</span></div>
 <h4 class="font-label-md text-label-md text-primary mb-2">FAQ</h4>
 <p class="text-sm text-on-surface-variant">Find answers to common questions about your stay.</p>
 </a>
-<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="#">
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-colors duration-300" href="#">
 <div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">policy</span></div>
 <h4 class="font-label-md text-label-md text-primary mb-2">Policies</h4>
 <p class="text-sm text-on-surface-variant">Review our cancellation and hotel policies.</p>
 </a>
-<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-all duration-300" href="../login/index.html">
+<a class="group border border-outline-variant/30 rounded-2xl p-6 text-center hover:bg-surface-container-lowest hover:border-primary/20 hover:shadow-md transition-[background-color,border-color,box-shadow] duration-300" href="../login/index.html">
 <div class="w-12 h-12 mx-auto bg-surface rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">luggage</span></div>
 <h4 class="font-label-md text-label-md text-primary mb-2">Manage Booking</h4>
 <p class="text-sm text-on-surface-variant">View or modify your upcoming reservations.</p>
@@ -140,46 +170,50 @@ Get Directions
 </div>
 </div>
 </main>
-<footer class="bg-primary-container border-t border-outline-variant/10 w-full mt-auto">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto text-on-primary-container">
+<footer class="bg-surface-container-low border-t border-outline-variant/10 w-full mt-auto">
+<div class="footer-grid gap-8 md:gap-gutter px-margin-mobile md:px-gutter py-12 md:py-16 max-w-container-max mx-auto">
 <div class="md:col-span-1">
-<div class="text-headline-md font-headline-md font-bold text-on-primary-fixed mb-6">LuxeStay</div>
-<p class="text-body-md font-body-md mb-6 max-w-xs opacity-80">Experience comfort and luxury redefined. Your serene escape awaits.</p>
+<div class="text-headline-md font-headline-md font-bold text-primary mb-6">FAM</div>
+<p class="text-body-md font-body-md mb-6 max-w-xs text-on-surface-variant/80">A place built to make people feel at home. Welcome to FAM.</p>
 <div class="flex space-x-4">
-<a class="w-10 h-10 rounded-full border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary-container hover:text-primary-container transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
 </div>
 </div>
 <div>
-<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Explore</h4>
-<ul class="space-y-3 font-body-md text-body-md text-on-primary-container/70">
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="../rooms/index.html">Rooms &amp; Suites</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Dining</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Spa &amp; Wellness</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Offers</a></li>
+<h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Explore</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant/70">
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="../rooms/index.html">Rooms</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">Café &amp; Bonfire</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="../../index.html#rooms">Mountain Views</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">Offers</a></li>
 </ul>
 </div>
 <div>
-<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Legal</h4>
-<ul class="space-y-3 font-body-md text-body-md text-on-primary-container/70">
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">FAQ</a></li>
-<li><a class="hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Careers</a></li>
+<h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Legal</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant/70">
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">FAQ</a></li>
+<li><a class="hover:text-primary hover:underline transition-colors duration-300" href="#">Careers</a></li>
 </ul>
 </div>
 <div>
-<h4 class="font-label-md text-label-md text-on-primary-fixed mb-4 uppercase tracking-widest">Newsletter</h4>
-<p class="text-body-md font-body-md mb-4 opacity-80 text-sm">Subscribe for exclusive offers and updates.</p>
+<h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Newsletter</h4>
+<p class="text-body-md font-body-md mb-4 text-on-surface-variant/80 text-sm">Subscribe for exclusive offers and updates.</p>
 <form class="flex gap-2">
-<input class="bg-surface/10 border border-on-primary-container/30 rounded-full px-4 py-2 text-sm text-on-primary-container placeholder-on-primary-container/50 focus:outline-none focus:border-secondary w-full" placeholder="Email address" type="email"/>
-<button class="bg-secondary text-on-secondary px-4 py-2 rounded-full text-sm font-label-md hover:opacity-90 transition-opacity" type="submit"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+<input class="bg-surface-container-high/50 border border-outline-variant/30 rounded-full px-4 py-2 text-sm text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary w-full" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-label-md hover:brightness-110 transition-colors" type="submit"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
 </form>
 </div>
 </div>
-<div class="border-t border-on-primary-container/10 px-gutter py-6 text-center">
-<p class="text-sm font-body-md text-on-primary-container/50">© LuxeStay Hospitality. All rights reserved.</p>
+<div class="border-t border-outline-variant/10 px-gutter py-6 text-center">
+<p class="text-sm font-body-md text-on-surface-variant/50">© Flamingo aur Maina. All rights reserved.</p>
 </div>
 </footer>
 <script src="../../js/shared.js"></script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
 </body>
 </html>

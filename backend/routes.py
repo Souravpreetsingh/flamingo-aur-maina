@@ -372,12 +372,12 @@ async def seed_rooms(db: AsyncSession = Depends(get_db)):
         return []
 
     rooms_data = [
-        {"room_name": "Oceanfront Suite", "description": "A breathtaking suite overlooking the ocean with a private balcony, king-sized bed, and luxurious marble bathroom.", "price": 450, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427"},
-        {"room_name": "Penthouse Loft", "description": "Modern penthouse with panoramic city views, full kitchen, private Jacuzzi, and floor-to-ceiling windows.", "price": 850, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9"},
-        {"room_name": "Garden Villa", "description": "Secluded villa with a private garden, pet-friendly patio, and indoor-outdoor living at its finest.", "price": 550, "capacity": 3, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
-        {"room_name": "Royal Suite", "description": "The pinnacle of luxury with a separate living room, dining area, butler service, and a grand terrace.", "price": 1200, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd"},
-        {"room_name": "Cozy Studio", "description": "Compact and stylish studio perfect for solo travelers, featuring a workspace, kitchenette, and city views.", "price": 200, "capacity": 1, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9"},
-        {"room_name": "Family Suite", "description": "Spacious two-bedroom suite with kids' play area, full kitchen, and connecting living room for the perfect family getaway.", "price": 700, "capacity": 6, "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a"},
+        {"room_name": "Flamingo 1", "description": "Spacious duplex room for 4 persons with mountain views, private balcony, and modern amenities.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"},
+        {"room_name": "Flamingo 2", "description": "King attic room for 4 persons with warm wooden interiors and panoramic valley views.", "price": 5000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32"},
+        {"room_name": "Flamingo 3", "description": "Duplex room for 4 persons set in a serene apple orchard with stunning mountain views.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"},
+        {"room_name": "Maina 1", "description": "Cozy private room for 2 persons with warm wooden interiors and mountain charm.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"},
+        {"room_name": "Maina 2", "description": "Budget-friendly private room for 2 persons with essential comforts and mountain access.", "price": 2000, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9"},
+        {"room_name": "Maina 3", "description": "Charming private room for 2 persons with orchard views and warm hospitality.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1598928506311-c55ez637a11a"},
     ]
 
     rooms = []

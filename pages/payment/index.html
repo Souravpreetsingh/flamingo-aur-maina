@@ -3,23 +3,28 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Secure Checkout - LuxeStay</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Checkout - Flamingo aur Maina | FAM</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../../js/tailwind-config.js"></script>
 <link href="../../css/shared.css" rel="stylesheet"/>
 <script src="../../js/theme.js"></script>
+<script src="../../js/room-data.js"></script>
+<script src="../../js/shared.js"></script>
 </head>
 <body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
-<header class="w-full py-6 px-gutter flex justify-between items-center z-40 relative">
-<div class="text-primary font-headline-md font-bold tracking-tight">LuxeStay</div>
+<header class="w-full py-4 md:py-6 px-margin-mobile md:px-gutter flex justify-between items-center z-40 relative">
+<div class="text-primary font-headline-md font-bold tracking-tight">FAM</div>
 <div class="flex items-center gap-2 text-on-surface-variant">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
 <span class="font-label-md text-label-md">Secure Checkout</span>
 </div>
 </header>
-<main class="flex-grow px-gutter py-8 md:py-16 w-full max-w-container-max mx-auto">
+<main class="flex-grow px-margin-mobile md:px-gutter py-8 md:py-16 w-full max-w-container-max mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 <div class="lg:col-span-7 space-y-8">
 <div class="mb-4">
@@ -28,10 +33,10 @@
 </div>
 <div class="bg-surface-container-lowest rounded-2xl ambient-shadow overflow-hidden">
 <div class="relative h-64 w-full">
-<div class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLuZfErei8KSqDXEvCbNUP0uEWSMlbp49zWtKJHtAywi_yFXXyKq3Dtyv5Zznnx8jCXOz5qbD8Tdyz3LpbLG6Q71QWbxfWqdAWOtoKD9sOlF8mAos2y7cKuvqrK5PMDFddahQPKaT4jK8JKvRZk1dhrPw0SAZE5aOfDK9Q4xNPGatkqgL3Ee4RTCpo_ah83sJ8Av8VDILFXvRh-Bv03IzaHkbw5AjCj2WZ3BRA-7bxStDJ5Y7sPQ7hsdYVGTpvyFIMWHfQgY8ppv0')"></div>
+<div id="payment-room-img" class="absolute inset-0 bg-cover bg-center w-full h-full" style="background-image: url('')"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
 <div class="absolute bottom-6 left-6 text-white">
-<span class="inline-block px-3 py-1 bg-surface-container-lowest/20 backdrop-blur-md rounded-full font-label-md text-label-md mb-2 text-white border border-white/30">Ocean View Suite</span>
+<span class="inline-block px-3 py-1 bg-surface-container-lowest/20 backdrop-blur-md rounded-full font-label-md text-label-md mb-2 text-white border border-white/30" id="payment-room-name">Ocean View Suite</span>
 </div>
 </div>
 <div class="p-8 space-y-6">
@@ -46,13 +51,14 @@
 </div>
 </div>
 <div class="space-y-4 font-body-md text-body-md">
-<div class="flex justify-between text-on-surface-variant"><span>Room Rate (5 nights x ₹9,999)</span><span>₹49,995</span></div>
-<div class="flex justify-between text-on-surface-variant"><span>Taxes &amp; Fees</span><span>₹4,999</span></div>
+<div class="flex justify-between text-on-surface-variant"><span id="payment-rate-line">Room Rate</span><span id="payment-subtotal"></span></div>
+<div class="flex justify-between text-on-surface-variant"><span>Taxes &amp; Fees</span><span id="payment-taxes"></span></div>
 </div>
 <div class="pt-6 border-t border-outline-variant/20 flex justify-between items-end">
 <span class="font-headline-md text-headline-md text-primary">Total Amount</span>
-<span class="font-headline-lg text-headline-lg text-primary">₹54,994</span>
+<span class="font-headline-lg text-headline-lg text-primary" id="payment-total"></span>
 </div>
+<div class="flex justify-end text-[12px] text-on-surface-variant/70 mt-1">Including GST</div>
 </div>
 </div>
 </div>
@@ -80,10 +86,10 @@ Pay Securely
 </div>
 </main>
 <div class="fixed inset-0 z-50 hidden items-center justify-center bg-primary-container/20 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="modal-overlay">
-<div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-margin-mobile overflow-hidden flex-col hidden transform scale-95 transition-all duration-300 opacity-0" id="razorpay-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-margin-mobile overflow-hidden flex-col hidden transform scale-95 transition-[opacity,transform] duration-300 opacity-0" id="razorpay-modal">
 <div class="bg-primary px-6 py-4 flex justify-between items-center text-on-primary">
-                <div><div class="font-headline-md text-[20px] font-medium tracking-tight">LuxeStay</div><div class="font-body-md text-[14px] opacity-80 mt-1">Order #<span id="modal-order-id">--------</span></div></div>
-<div class="text-right"><div class="font-body-md text-[14px] opacity-80">Amount</div><div class="font-headline-md text-[20px] font-medium">₹54,994</div></div>
+                <div><div class="font-headline-md text-[20px] font-medium tracking-tight">FAM</div><div class="font-body-md text-[14px] opacity-80 mt-1">Order #<span id="modal-order-id">--------</span></div></div>
+<div class="text-right"><div class="font-body-md text-[14px] opacity-80">Amount</div><div class="font-headline-md text-[20px] font-medium" id="modal-amount">₹0</div></div>
 </div>
 <div class="p-6 space-y-6">
 <div class="flex justify-between items-center mb-2">
@@ -106,18 +112,18 @@ Pay Securely
 </div>
 <div class="pt-4 flex items-center justify-between">
 <div class="flex items-center gap-1 text-on-surface-variant opacity-60"><span class="material-symbols-outlined text-[14px]">lock</span><span class="font-body-md text-[12px]">Secured by Razorpay</span></div>
-<button class="bg-[#3399cc] hover:bg-[#2b82ad] text-white rounded px-6 py-3 font-label-md text-[14px] uppercase tracking-wide transition-colors duration-200" onclick="processPayment()">Pay ₹54,994</button>
+<button class="bg-[#3399cc] hover:bg-[#2b82ad] text-white rounded px-6 py-3 font-label-md text-[14px] uppercase tracking-wide transition-colors duration-200" onclick="processPayment()" id="pay-button">Pay ₹0</button>
 </div>
 </div>
 </div>
-<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-all duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-pending">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-[opacity,transform] duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-pending">
 <svg class="spinner w-16 h-16 mb-6 stroke-secondary" viewbox="0 0 50 50">
 <circle class="spinner-path" cx="25" cy="25" fill="none" r="20" stroke-width="3"></circle>
 </svg>
 <h3 class="font-headline-md text-headline-md text-primary mb-2">Processing Payment</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Please do not close this window or press back.</p>
 </div>
-<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-all duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-success">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl p-10 flex-col items-center text-center hidden transform scale-95 transition-[opacity,transform] duration-300 opacity-0 max-w-sm mx-margin-mobile" id="state-success">
 <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-[#10b981]">
 <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
 </div>
@@ -186,6 +192,55 @@ function processPayment() {
         }, 2500);
     }, 300);
 }
+
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    var roomId = params.get('id') || 1;
+    var nights = parseInt(params.get('nights')) || 5;
+    var total = parseInt(params.get('total')) || 0;
+    var room = getRoomById(roomId);
+    if (!room) { room = getRoomById(1); }
+
+    function formatINR(n) {
+        var s = Math.round(n).toString();
+        var last3 = s.slice(-3);
+        var rest = s.slice(0, -3);
+        return (rest ? rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' : '') + last3;
+    }
+
+    function isWinter() { return document.documentElement.classList.contains('winter'); }
+
+    function getPaymentImg(id) {
+        if (isWinter() && ROOM_BOOKING_WINTER[id]) return ROOM_BOOKING_WINTER[id];
+        return ROOM_BOOKING_IMAGES[id] || '';
+    }
+
+    var subtotal = total;
+    if (subtotal === 0) {
+        subtotal = room.price * nights;
+        var taxes = Math.round(room.price * 0.4);
+        var resortFee = Math.round(room.price * 0.1);
+        subtotal = subtotal + taxes + resortFee;
+    }
+    var taxesAmt = Math.round(room.price * 0.4);
+    var orderId = 'LX' + Date.now().toString().slice(-8);
+
+    document.getElementById('payment-room-img').style.backgroundImage = 'url(' + getPaymentImg(room.id) + ')';
+    document.getElementById('payment-room-name').textContent = room.name;
+    document.getElementById('order-id').textContent = orderId;
+    document.getElementById('modal-order-id').textContent = orderId;
+    document.getElementById('payment-rate-line').innerHTML = 'Room Rate (' + nights + ' nights x ₹' + formatINR(room.price) + ')';
+    document.getElementById('payment-subtotal').textContent = '₹' + formatINR(room.price * nights);
+    document.getElementById('payment-taxes').textContent = '₹' + formatINR(taxesAmt);
+    document.getElementById('payment-total').textContent = '₹' + formatINR(subtotal);
+    document.getElementById('modal-amount').textContent = '₹' + formatINR(subtotal);
+    document.getElementById('pay-button').textContent = 'Pay ₹' + formatINR(subtotal);
+
+    var observer = new MutationObserver(function() {
+        document.getElementById('payment-room-img').style.backgroundImage = 'url(' + getPaymentImg(room.id) + ')';
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+})();
 </script>
 </body>
 </html>

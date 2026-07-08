@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About - LuxeStay Hospitality</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>About - Flamingo aur Maina | FAM Jibhi</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -13,38 +16,57 @@
 <link href="../../css/shared.css" rel="stylesheet"/>
 <script src="../../js/theme.js"></script>
 </head>
-<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
-<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
+<body class="bg-surface-container text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-[background-color,border-color,box-shadow] ease-[cubic-bezier(0.4,0,0.2,1)] duration-300">
 <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto hidden md:flex">
-<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">LuxeStay</div>
-<div class="flex gap-8 items-center">
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 text-label-md font-label-md" href="../../index.html">Home</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 text-label-md font-label-md" href="../rooms/index.html">Rooms</a>
-<a class="text-primary font-bold border-b-2 border-secondary pb-1 hover:scale-105 transition-transform duration-300 text-label-md font-label-md" href="#">About</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 text-label-md font-label-md" href="../contact/index.html">Contact</a>
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FAM</div>
+<div class="flex gap-8 items-center nav-plates">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../../index.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../rooms/index.html">Rooms</a>
+<a class="text-primary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../contact/index.html">Contact</a>
 </div>
 <div class="flex items-center gap-3">
-<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
+
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="../profile/index.html" title="Profile">
+    <span class="material-symbols-outlined text-[20px]">account_circle</span>
+</a>
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 shadow-md" onclick="window.location.href='../login/index.html'">Sign In</button>
 </div>
 </div>
 <div class="flex justify-between items-center h-20 px-margin-mobile md:hidden">
-<div class="text-headline-lg-mobile font-headline-lg-mobile font-bold tracking-tight text-primary">LuxeStay</div>
-<button class="text-primary"><span class="material-symbols-outlined" data-icon="menu">menu</span></button>
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-bold tracking-tight text-primary">FAM</div>
+    <button class="text-primary" data-drawer-open><span class="material-symbols-outlined" data-icon="menu">menu</span></button>
 </div>
 </nav>
-<main class="pt-32 pb-24">
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-32">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center min-h-[614px]">
-<div class="lg:col-span-5 z-10 animate-fade-in-up">
-<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">Experience<br/>Comfort and Luxury</h1>
-<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-md">Redefining modern hospitality through meticulous design, serene environments, and intuitive service.</p>
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
 </div>
-<div class="lg:col-span-7 relative animate-fade-in-up stagger-1">
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../../index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../rooms/index.html"><span class="material-symbols-outlined text-[20px]">bed</span> Rooms</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-bold text-label-md font-label-md" href="#"><span class="material-symbols-outlined text-[20px]">info</span> About</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../contact/index.html"><span class="material-symbols-outlined text-[20px]">mail</span> Contact</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-sm active:scale-[0.97] transition-transform" href="../login/index.html"><span class="material-symbols-outlined text-[18px]">login</span> Sign In</a>
+<a class="flex items-center justify-center gap-2 w-full py-3.5 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform" href="../profile/index.html"><span class="material-symbols-outlined text-[18px]">account_circle</span> Profile</a>
+</div>
+</div>
+<main class="pt-28 md:pt-32 pb-16 md:pb-24">
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-16 md:mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-center min-h-[auto] md:min-h-[480px]">
+<div class="lg:col-span-5 lg:col-start-2 z-10 animate-fade-in-up">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">Welcome home</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-md">Some places are built to impress. We built FAM to make people feel at home.</p>
+</div>
+<div class="lg:col-span-5 relative animate-fade-in-up stagger-1">
 <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-<img alt="LuxeStay Lobby" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[1.5s] ease-[cubic-bezier(0.4,0,0.2,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW7muv6_dfBltAHKpOGTeAKBXyIKtrNufyLL5sRtWhu7f9_M5U4F-vUzOMq77p-DFzk1vL-WZaVjXaU8pxpoSFD-Pk7xi1FV0Q_kswlWGVOIxUr0aN0gZ1t45K7g3nDgInLaji69PYBapr3QQbvwH-peSBOVrSkPK7oKfEosIwsFGmwPegZ2_vS6XIOOqY80_sFIw49wtTig01HpRWjZf3Ur9uQ33LHp0ZrFoHfHW6i3SxAr_OKK167s7z14SxO-aJDhUGWIzZw4M"/>
+<img data-theme-img="about-hero" loading="lazy" alt="FAM Jibhi" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[1.5s] ease-[cubic-bezier(0.4,0,0.2,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW7muv6_dfBltAHKpOGTeAKBXyIKtrNufyLL5sRtWhu7f9_M5U4F-vUzOMq77p-DFzk1vL-WZaVjXaU8pxpoSFD-Pk7xi1FV0Q_kswlWGVOIxUr0aN0gZ1t45K7g3nDgInLaji69PYBapr3QQbvwH-peSBOVrSkPK7oKfEosIwsFGmwPegZ2_vS6XIOOqY80_sFIw49wtTig01HpRWjZf3Ur9uQ33LHp0ZrFoHfHW6i3SxAr_OKK167s7z14SxO-aJDhUGWIzZw4M"/>
 </div>
 <div class="absolute -bottom-8 -left-8 glass-panel p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hidden md:block">
 <p class="text-label-md font-label-md text-primary tracking-widest uppercase mb-1">Established</p>
@@ -53,67 +75,82 @@
 </div>
 </div>
 </section>
-<section class="bg-surface-container-lowest py-32 border-y border-outline-variant/5">
+<section class="bg-surface-container-low py-32 border-y border-outline-variant/5">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
-<div class="order-2 md:order-1 relative">
-<img alt="Luxury Bedding" class="rounded-2xl shadow-lg w-full object-cover aspect-[3/4]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe4xxskxYu4w5n2Bjc-wtaLglkit-f3OKP0h-N05XUqo4EjvXpFIxPew10V9bkTli5DpZ4QtBHoPnRmeeO9-d2AL6dxUhxX-Do0b0h4mYxX8Mn6d8Ug5AqXZV7-7aKoOif-9VrDNnqoB5gLnXBbUD0gzeeqSp2eS2V7HB7oR1e2NcY2h9Igb6VTouDp7GfhsRr8rvKNVH6rFGPMCF59TnncviMqWOO8jx5fJzL0rQeU7yPLtBKROIk5K6EQvPDJf9eLcU6slW6asY"/>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-center">
+<div class="order-2 lg:order-1 lg:col-span-5 relative">
+<img data-theme-img="about-vision" loading="lazy" alt="Luxury Bedding" class="rounded-2xl shadow-lg w-full object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe4xxskxYu4w5n2Bjc-wtaLglkit-f3OKP0h-N05XUqo4EjvXpFIxPew10V9bkTli5DpZ4QtBHoPnRmeeO9-d2AL6dxUhxX-Do0b0h4mYxX8Mn6d8Ug5AqXZV7-7aKoOif-9VrDNnqoB5gLnXBbUD0gzeeqSp2eS2V7HB7oR1e2NcY2h9Igb6VTouDp7GfhsRr8rvKNVH6rFGPMCF59TnncviMqWOO8jx5fJzL0rQeU7yPLtBKROIk5K6EQvPDJf9eLcU6slW6asY"/>
 <div class="absolute inset-0 bg-primary/5 rounded-2xl mix-blend-multiply"></div>
 </div>
-<div class="order-1 md:order-2">
-<span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-label-md font-label-md mb-6">Our Vision</span>
-<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-6">A sanctuary in the heart of the city.</h2>
-<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">At LuxeStay, we believe that true luxury is quiet. It's found in the negative space, the unspoken anticipation of your needs, and the flawless execution of simple comforts.</p>
-<p class="text-body-md font-body-md text-outline">Our mission is to create environments that calm the mind and restore the spirit, offering an oasis of minimalist elegance for the discerning traveler.</p>
+<div class="order-1 lg:order-2 lg:col-span-5 lg:col-start-8">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-label-md font-label-md mb-6">Our Story</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-6">A place to belong.</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">After spending nearly a decade in India's metro cities, our founders, Karanvir Singh Sapra and Rahul Yadav, returned to the mountains with a simple idea—to create the kind of place they would always want to come back to. A place where mornings begin with mountain views instead of alarms, where conversations need countless cups of tea, and where every guest is welcomed like an old friend.</p>
+<p class="text-body-md font-body-md text-outline">Flamingo aur Maina (FAM) is a boutique café and stays nestled in the heart of Jibhi, surrounded by an apple orchard, 1.5 acres of open land, and uninterrupted 360° mountain views. Every corner of the property has been thoughtfully designed to slow you down—from our cozy wooden cabins and comfortable rooms to our café serving comforting food made with care.</p>
 </div>
 </div>
 </div>
 </section>
-<section class="py-32">
+<section class="py-20 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="max-w-3xl mx-auto text-center reveal">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-label-md font-label-md mb-6">Our Vision</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-8">A place to belong.</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">At FAM, we believe true hospitality isn't about grand lobbies or room service menus. It's about creating a space where people feel they truly belong. A place where the mountains feel closer, conversations flow more freely, and every moment is an invitation to slow down.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">We are rooted in nature, powered by meaningful connections, and driven by a simple belief—that the best experiences are the ones we share. Whether it's a quiet morning in the apple orchard, an evening around the bonfire with new friends, or a cup of chai at our café, every detail at FAM is designed to turn a stay into a memory.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">We are not building a hotel. We are building a community—one guest, one story, one welcome home at a time.</p>
+</div>
+</div>
+</section>
+<section class="py-20">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-outline-variant/20">
 <div class="text-center px-4">
-<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="150">0</div>
-<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Premium Rooms</div>
+<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="6">0</div>
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Cozy Rooms</div>
 </div>
 <div class="text-center px-4">
-<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="12">0</div>
-<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Global Cities</div>
+<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="15">0</div>
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Acres Orchard</div>
 </div>
 <div class="text-center px-4">
-<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="50">0</div>
-<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Dedicated Staff</div>
+<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="360">0</div>
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Mountain Views</div>
 </div>
 <div class="text-center px-4">
-<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="10">0</div>
-<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Thousands of Guests</div>
+<div class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2 stat-number" data-target="1000">0</div>
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Happy Guests</div>
 </div>
 </div>
 </div>
 </section>
 </main>
-<footer class="bg-primary-container dark:bg-surface-container-lowest border-t border-outline-variant/10 w-full mt-auto">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto">
+<footer class="bg-surface-container-low border-t border-outline-variant/10 w-full mt-auto">
+<div class="footer-grid gap-8 md:gap-gutter px-margin-mobile md:px-gutter py-12 md:py-16 max-w-container-max mx-auto">
 <div class="col-span-1 md:col-span-2">
-<div class="text-headline-md font-headline-md font-bold text-on-primary-fixed mb-4">LuxeStay</div>
-<p class="text-body-md font-body-md text-on-primary-container/70 max-w-sm mb-6">© LuxeStay Hospitality. All rights reserved.</p>
+<div class="text-headline-md font-headline-md font-bold text-primary mb-4">FAM</div>
+<p class="text-body-md font-body-md text-on-surface-variant/70 max-w-sm mb-6">Flamingo aur Maina — a place to belong.</p>
 </div>
 <div class="col-span-1">
-<h3 class="text-label-md font-label-md text-on-primary-fixed mb-4 uppercase tracking-wider">Legal</h3>
+<h3 class="text-label-md font-label-md text-primary mb-4 uppercase tracking-wider">Legal</h3>
 <ul class="space-y-3">
-<li><a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a></li>
-<li><a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a></li>
+<li><a class="text-body-md font-body-md text-on-surface-variant/70 hover:text-primary hover:underline transition-colors duration-300" href="#">Privacy Policy</a></li>
+<li><a class="text-body-md font-body-md text-on-surface-variant/70 hover:text-primary hover:underline transition-colors duration-300" href="#">Terms of Service</a></li>
 </ul>
 </div>
 <div class="col-span-1">
-<h3 class="text-label-md font-label-md text-on-primary-fixed mb-4 uppercase tracking-wider">Company</h3>
+<h3 class="text-label-md font-label-md text-primary mb-4 uppercase tracking-wider">Company</h3>
 <ul class="space-y-3">
-<li><a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="../contact/index.html">Contact</a></li>
-<li><a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Careers</a></li>
+<li><a class="text-body-md font-body-md text-on-surface-variant/70 hover:text-primary hover:underline transition-colors duration-300" href="../contact/index.html">Contact</a></li>
+<li><a class="text-body-md font-body-md text-on-surface-variant/70 hover:text-primary hover:underline transition-colors duration-300" href="#">Careers</a></li>
 </ul>
 </div>
 </div>
 </footer>
 <script src="../../js/shared.js"></script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
 </body>
 </html>

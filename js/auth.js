@@ -130,6 +130,6 @@ function handleLogout() {
 // Auth guard for login/register pages
 if (window.location.pathname.includes("/login/") || window.location.pathname.includes("/auth/")) {
     if (AuthAPI.isAuthenticated()) {
-        window.location.href = "../dashboard/index.html";
+        window.location.href = "../profile/index.html";
     }
 }

@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LuxeStay - Rooms</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Rooms - Flamingo aur Maina | FAM Jibhi</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="../../js/tailwind-config.js"></script>
@@ -11,53 +14,54 @@
 <script src="../../js/theme.js"></script>
 </head>
 <body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container flex flex-col min-h-screen">
-<nav class="bg-surface/15 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/10 shadow-sm transition-all ease-[cubic-bezier(0.4,0,0.2,1)] duration-300" id="top-nav">
+<nav class="bg-surface/15 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/10 shadow-sm transition-[background-color,border-color,box-shadow] ease-[cubic-bezier(0.4,0,0.2,1)] duration-300" id="top-nav">
 <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="../../index.html">LuxeStay</a>
-<div class="hidden md:flex gap-8 items-center">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="../../index.html">FAM</a>
+<div class="hidden md:flex gap-8 items-center nav-plates">
 <a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../../index.html">Home</a>
 <a class="text-primary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md" href="#">Rooms</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../about/index.html">About</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="../contact/index.html">Contact</a>
 </div>
 <div class="flex items-center gap-3">
-<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
+
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="../profile/index.html" title="Profile">
+    <span class="material-symbols-outlined text-[20px]">account_circle</span>
+</a>
 <button class="bg-primary text-on-primary rounded-full px-6 py-2 text-label-md font-label-md hover:scale-105 transition-transform duration-300 shadow-md shadow-primary/10" onclick="window.location.href='../login/index.html'">Sign In</button>
+<button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined text-[28px]">menu</span></button>
 </div>
 </div>
 </nav>
-<main class="flex-grow pt-28 pb-32">
-<header class="max-w-container-max mx-auto px-gutter mb-12">
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../../index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-bold text-label-md font-label-md" href="#"><span class="material-symbols-outlined text-[20px]">bed</span> Rooms</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../about/index.html"><span class="material-symbols-outlined text-[20px]">info</span> About</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../contact/index.html"><span class="material-symbols-outlined text-[20px]">mail</span> Contact</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-sm active:scale-[0.97] transition-transform" href="../login/index.html"><span class="material-symbols-outlined text-[18px]">login</span> Sign In</a>
+<a class="flex items-center justify-center gap-2 w-full py-3.5 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform" href="../profile/index.html"><span class="material-symbols-outlined text-[18px]">account_circle</span> Profile</a>
+</div>
+</div>
+<main class="flex-grow pt-24 md:pt-28 pb-16 md:pb-32">
+<header class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-8 md:mb-12">
 <div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_24px_rgba(13,28,47,0.03)] border border-outline-variant/20 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
 <div class="flex flex-col">
-<h1 class="text-headline-md font-headline-md text-primary">Available Suites</h1>
+<h1 class="text-headline-md font-headline-md text-primary">Available Rooms</h1>
 <p class="text-body-md font-body-md text-on-surface-variant mt-1" id="room-count">Loading rooms...</p>
 </div>
 </div>
 </header>
-<div class="max-w-container-max mx-auto px-gutter flex flex-col lg:flex-row gap-gutter">
-<aside class="w-full lg:w-1/4 flex-shrink-0 space-y-8">
-<div class="border-b border-outline-variant/20 pb-8">
-<h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Price Range</h3>
-<div class="space-y-4">
-<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
-<span id="price-min-label">₹0</span>
-<span id="price-max-label">₹25,000+</span>
-</div>
-<div class="space-y-3">
-<div class="flex items-center gap-4">
-<label class="text-label-md font-label-md text-on-surface-variant w-16">Min</label>
-<input type="range" id="price-min" class="w-full accent-primary" min="0" max="30000" step="500"/>
-</div>
-<div class="flex items-center gap-4">
-<label class="text-label-md font-label-md text-on-surface-variant w-16">Max</label>
-<input type="range" id="price-max" class="w-full accent-primary" min="0" max="30000" step="500" value="30000"/>
-</div>
-</div>
-</div>
-</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col lg:flex-row gap-6 md:gap-gutter">
+<aside class="w-full lg:w-1/4 flex-shrink-0 space-y-6 md:space-y-8">
 <div class="border-b border-outline-variant/20 pb-8">
 <h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Room Type</h3>
 <div class="space-y-4" id="room-type-filters">
@@ -65,12 +69,43 @@
 </div>
 <div>
 <h3 class="text-label-md font-label-md text-primary mb-6 uppercase tracking-widest">Amenities</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-4 py-2 rounded-full bg-secondary-container/20 text-primary border border-secondary-container/30 text-label-md font-label-md cursor-pointer hover:bg-secondary-container/40 transition-colors amenity-tag" data-amenity="wifi">WiFi Included</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="ac">Air Conditioning</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="pool">Private Pool</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="balcony">Balcony</span>
-<span class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant/20 text-label-md font-label-md cursor-pointer hover:bg-surface-container-highest transition-colors amenity-tag" data-amenity="spa">Spa Access</span>
+<div class="space-y-4" id="amenity-filters">
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="wifi">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">High Speed WiFi</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="heater">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Heater</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="bonfire">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Bonfire</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="laundry">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Laundry</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="cab">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Cab Service</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="electric-blankets">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Electric Heating Blankets</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="ironing">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Ironing (On Demand)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="luggage">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Luggage Assistance (On Demand)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group" data-amenity="trek">
+<div class="w-5 h-5 rounded border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors amenity-box"></div>
+<span class="text-body-md font-body-md text-on-surface">Trek Guide (On Demand)</span>
+</label>
 </div>
 </div>
 </aside>
@@ -100,23 +135,28 @@
 </div>
 </div>
 </main>
-<footer class="w-full mt-auto bg-primary-container dark:bg-surface-container-lowest border-t border-outline-variant/10">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto">
+<footer class="w-full mt-auto bg-primary-container border-t border-outline-variant/10">
+<div class="footer-grid gap-8 md:gap-gutter px-margin-mobile md:px-gutter py-12 md:py-16 max-w-container-max mx-auto">
 <div class="col-span-1 md:col-span-2">
-<a class="text-headline-md font-headline-md font-bold text-on-primary-fixed block mb-4" href="../../index.html">LuxeStay</a>
-<p class="text-body-md font-body-md text-on-primary-container dark:text-primary max-w-md">Experience comfort and luxury through a synthesis of minimalism and elevated design. Your exclusive retreat awaits.</p>
+<a class="text-headline-md font-headline-md font-bold text-on-primary-fixed block mb-4" href="../../index.html">FAM</a>
+<p class="text-body-md font-body-md text-on-primary-container max-w-md">Flamingo aur Maina — a place to belong.</p>
 </div>
 <div class="flex flex-col gap-3">
-<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a>
-<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">Terms of Service</a>
 </div>
 <div class="flex flex-col gap-3">
-<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">FAQ</a>
-<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Careers</a>
+<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">FAQ</a>
+<a class="text-label-md font-label-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">Careers</a>
 </div>
-<div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline-variant/10 text-body-md font-body-md text-on-primary-container/60">© LuxeStay Hospitality. All rights reserved.</div>
+<div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline-variant/10 text-body-md font-body-md text-on-primary-container/60">© Flamingo aur Maina. All rights reserved.</div>
 </div>
 </footer>
+<script src="../../js/shared.js"></script>
 <script src="../../js/rooms.js"></script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
 </body>
 </html>

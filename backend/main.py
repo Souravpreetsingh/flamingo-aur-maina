@@ -43,12 +43,12 @@ app.add_middleware(
 # ─── SAMPLE ROOMS DATA ───────────────────────────────────────────────
 
 SAMPLE_ROOMS = [
-    {"room_name": "Oceanfront Suite", "description": "Suite with private balcony and ocean view, king bed, marble bathroom.", "price": 9999, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1590490360182-c33d57733427", "room_type": "Suite"},
-    {"room_name": "Penthouse Loft", "description": "Modern penthouse with panoramic city views, full kitchen, jacuzzi.", "price": 18999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9", "room_type": "Penthouse"},
-    {"room_name": "Garden Villa", "description": "Private garden villa, pet-friendly, indoor-outdoor living.", "price": 11999, "capacity": 3, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", "room_type": "Villa"},
-    {"room_name": "Royal Suite", "description": "Pinnacle of luxury with separate living, dining, butler service, grand terrace.", "price": 25999, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd", "room_type": "Suite"},
-    {"room_name": "Cozy Studio", "description": "Compact studio for solo travelers with workspace and kitchenette.", "price": 4499, "capacity": 1, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", "room_type": "Studio"},
-    {"room_name": "Family Suite", "description": "Two-bedroom suite with kids play area, full kitchen, living room.", "price": 15499, "capacity": 6, "image_url": "https://images.unsplash.com/photo-1566665797739-1674de7a421a", "room_type": "Suite"},
+    {"room_name": "Flamingo 1", "description": "Spacious duplex room for 4 persons with mountain views, private balcony, and modern amenities.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", "room_type": "Duplex"},
+    {"room_name": "Flamingo 2", "description": "King attic room for 4 persons with warm wooden interiors and panoramic valley views.", "price": 5000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32", "room_type": "King Attic"},
+    {"room_name": "Flamingo 3", "description": "Duplex room for 4 persons set in a serene apple orchard with stunning mountain views.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7", "room_type": "Duplex"},
+    {"room_name": "Maina 1", "description": "Cozy private room for 2 persons with warm wooden interiors and mountain charm.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2", "room_type": "Private Room"},
+    {"room_name": "Maina 2", "description": "Budget-friendly private room for 2 persons with essential comforts and mountain access.", "price": 2000, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", "room_type": "Private Room"},
+    {"room_name": "Maina 3", "description": "Charming private room for 2 persons with orchard views and warm hospitality.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1598928506311-c55ez637a11a", "room_type": "Private Room"},
 ]
 
 

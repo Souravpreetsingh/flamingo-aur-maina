@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LuxeStay - Dashboard</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Dashboard - Flamingo aur Maina | FAM</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -12,109 +15,99 @@
 <script src="../../js/toast.js"></script>
 <link href="../../css/shared.css" rel="stylesheet"/>
 <script src="../../js/theme.js"></script>
+<script src="../../js/shared.js"></script>
 </head>
 <body class="bg-background text-on-background min-h-screen font-body-md text-body-md flex md:flex-row flex-col">
 <nav class="hidden md:flex bg-surface-container-low shadow-md h-screen w-64 fixed left-0 top-0 flex-col p-6 gap-4 z-40 ease-[cubic-bezier(0.4,0,0.2,1)]">
-<div class="mb-8"><h1 class="text-headline-md font-headline-md font-bold text-primary">LuxeStay</h1></div>
+<div class="mb-8"><h1 class="text-headline-md font-headline-md font-bold text-primary">FAM</h1></div>
     <div class="flex items-center gap-4 mb-8">
-    <img class="w-12 h-12 rounded-full object-cover shadow-sm" id="dashboardAvatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt-CkxfnAXnrrUiEpYYqmcpz0aax-YJrPhJx5OAkZTj6xKM5CyKksaahd8SzI3ch9xV6lG53kON0c9nhbq5nMugNQmytl2J3u28kV56w2s8ZOtMXFJpyjGKcs34Q36E3378ny5IJBGKgUsEMuExmI99EQzSIObrhioBOm2A5oohvIBN0cd6naIBY3WRj4rBRRr8yjkQ7yw8IPdI1bj6TcrPvy_hA-7AaspIsVH7OnWlCNIpgOUPKd7kB4QBA-3qlQOMobBEe3qkx8U"/>
-    <div><p class="text-label-md font-label-md text-primary font-bold">Welcome back</p><p class="text-label-md font-label-md text-on-surface-variant text-[12px]" id="dashboardMemberLabel">Premium Member</p></div>
+    <img class="w-12 h-12 rounded-full object-cover shadow-sm" id="dashboardAvatar" src="" alt="Avatar"/>
+    <div><p class="text-label-md font-label-md text-primary font-bold">Welcome back</p><p class="text-label-md font-label-md text-on-surface-variant text-[12px]" id="dashboardMemberLabel">Member</p></div>
     </div>
 <div class="flex flex-col gap-2 flex-grow">
 <a class="flex items-center gap-3 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined fill-icon">dashboard</span><span class="text-label-md font-label-md">Dashboard</span></a>
-<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined">calendar_month</span><span class="text-label-md font-label-md">Bookings</span></a>
-<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined">mail</span><span class="text-label-md font-label-md">Messages</span></a>
-<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined">settings</span><span class="text-label-md font-label-md">Settings</span></a>
-<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="#"><span class="material-symbols-outlined">help</span><span class="text-label-md font-label-md">Help</span></a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="../profile/index.html"><span class="material-symbols-outlined">calendar_month</span><span class="text-label-md font-label-md">My Bookings</span></a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-200 hover:translate-x-1" href="../profile/index.html"><span class="material-symbols-outlined">account_circle</span><span class="text-label-md font-label-md">Profile</span></a>
 </div>
 <button class="w-full py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md font-bold shadow-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" onclick="window.location.href='../rooms/index.html'">Book Now</button>
-<button onclick="__toggleTheme()" class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 flex items-center justify-center gap-2" title="Toggle theme">
-    <span class="material-symbols-outlined text-[18px] theme-toggle-icon">dark_mode</span>
-</button>
-<button class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:bg-error-container hover:text-error hover:border-error transition-all duration-300 flex items-center justify-center gap-2" onclick="handleLogout()"><span class="material-symbols-outlined text-[18px]">logout</span> Sign Out</button>
+
+<button class="mt-3 w-full py-3 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:bg-error-container hover:text-error hover:border-error transition-[background-color,color,border-color] duration-300 flex items-center justify-center gap-2" onclick="handleLogout()"><span class="material-symbols-outlined text-[18px]">logout</span> Sign Out</button>
 </nav>
 <nav class="md:hidden bg-surface/15 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm border-b border-outline-variant/10 flex justify-between items-center h-20 px-margin-mobile">
-<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">LuxeStay</h1>
-<button class="p-2 text-primary"><span class="material-symbols-outlined">menu</span></button>
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FAM</h1>
+<button class="p-2 text-primary" data-drawer-open><span class="material-symbols-outlined">menu</span></button>
 </nav>
-<main class="md:ml-64 flex-1 p-margin-mobile md:p-margin-desktop pt-28 md:pt-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-bold text-label-md font-label-md" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../profile/index.html"><span class="material-symbols-outlined text-[20px]">calendar_month</span> My Bookings</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../profile/index.html"><span class="material-symbols-outlined text-[20px]">account_circle</span> Profile</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../../index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-sm active:scale-[0.97] transition-transform" href="../rooms/index.html"><span class="material-symbols-outlined text-[18px]">bed</span> Book Now</a>
+<button onclick="handleLogout(); closeDrawer();" class="flex items-center justify-center gap-2 w-full py-3.5 border border-error text-error rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform"><span class="material-symbols-outlined text-[18px]">logout</span> Sign Out</button>
+</div>
+</div>
+<main class="md:ml-64 flex-1 px-margin-mobile md:px-margin-desktop pt-24 md:pt-margin-desktop pb-12 md:pb-16 max-w-container-max mx-auto w-full">
 <header class="mb-12">
 <h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-2">Overview</h2>
-<p class="text-body-md font-body-md text-on-surface-variant">Manage your luxury stays and preferences.</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage your stays and preferences at FAM.</p>
 </header>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-4 bg-surface-container-lowest rounded-2xl p-6 ambient-shadow hover:shadow-lg transition-shadow duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col items-center text-center">
 <div class="relative w-32 h-32 mb-4">
-<img class="w-full h-full rounded-full object-cover shadow-md border-4 border-surface-container-lowest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOAA_wwOC7LT43nthrB7poumLfCC2nLMLpDVf8C6mUv46HuuIlhCIwq1b4Doqovh85wqpjG5LfBObowI1pcJyYb362PverjGAm_iTHfY5x0mQEvv2OkETiu_2F_23-HU7a7GZdNAMFKHZWT0m_HrLs_d7lgOgs6RhqakdmCEBdolISHcOu-yNUn03dTY0OyLro9MPF_WQZcnOWEEuHn6lIVRQUZpOH24splONKWral8jKTPUx-hiZP6i8yEoVtuoYaKilnGAqb1YI"/>
-<button class="absolute bottom-0 right-0 bg-secondary text-on-secondary w-8 h-8 rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+<img class="w-full h-full rounded-full object-cover shadow-md border-4 border-surface-container-lowest" id="dashboardAvatarLarge" src="" alt="Avatar"/>
 </div>
     <h3 class="text-headline-md font-headline-md text-primary mb-1" id="dashboardUserName">Guest</h3>
     <p class="text-label-md font-label-md text-secondary uppercase tracking-widest mb-6" id="dashboardUserEmail">Sign in to view profile</p>
 <div class="w-full grid grid-cols-2 gap-4 border-t border-outline-variant/20 pt-6">
-<div><p class="text-label-md font-label-md text-on-surface-variant mb-1">Nights Stayed</p><p class="text-headline-md font-headline-md text-primary font-bold">24</p></div>
-<div><p class="text-label-md font-label-md text-on-surface-variant mb-1">Reward Points</p><p class="text-headline-md font-headline-md text-primary font-bold">12,500</p></div>
+<div><p class="text-label-md font-label-md text-on-surface-variant mb-1">Nights Stayed</p><p class="text-headline-md font-headline-md text-primary font-bold" id="nightsStayed">0</p></div>
+<div><p class="text-label-md font-label-md text-on-surface-variant mb-1">Total Bookings</p><p class="text-headline-md font-headline-md text-primary font-bold" id="totalBookings">0</p></div>
 </div>
 </div>
-<div class="md:col-span-8 bg-surface-container-lowest rounded-2xl overflow-hidden ambient-shadow flex flex-col md:flex-row group">
-<div class="md:w-2/5 relative h-48 md:h-auto overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnOMpO8cVTjCidjHsltoWwsgohwYrw5A8m6MnQpnYgll9i4sMbHMcXeV0gobLMYC8cUFUuOrscwhBmXwz46hLibYHU_Tw7cWxR3VlEPm2HG5kLOsZxisch66iFlagLYTj1Vzwxuz39ygzUAp44ieFasy4AhYdjl6KoKf1hytGwcAXRQRmyrGst2oMIxyNQNFxO21lSS9hyZ_fr5j3rqLwn-wRkePo9WZF6ocfXPbjlurRKpKriertAkniPdXLj8M9brJiVrmCS7i8"/>
+<div class="md:col-span-8 bg-surface-container-lowest rounded-2xl overflow-hidden ambient-shadow flex flex-col md:flex-row group" id="upcomingBookingCard">
+<div class="md:w-2/5 relative h-48 md:h-auto overflow-hidden bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-[64px] text-on-surface-variant">hotel</span>
 <div class="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full text-label-md font-label-md text-primary shadow-sm">Upcoming</div>
 </div>
 <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
-                <div class="flex justify-between items-start mb-4">
-                                <div><h3 class="text-headline-md font-headline-md text-primary mb-2" id="booking-name">Your next stay</h3><p class="text-body-md font-body-md text-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">location_on</span> <span id="booking-location">Start by browsing our rooms</span></p></div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-in</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkin">--</p></div>
-                                <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-out</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkout">--</p></div>
-                        </div>
-                        <button class="w-full md:w-auto self-start px-6 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-md hover:scale-105 transition-transform duration-300" onclick="window.location.href='../rooms/index.html'">Book a Room</button>
+    <div class="flex justify-between items-start mb-4">
+        <h3 class="text-headline-md font-headline-md text-primary mb-2" id="booking-name">No upcoming stays</h3>
+        <p class="text-body-md font-body-md text-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">location_on</span> <span id="booking-location">Browse our rooms to book your next stay</span></p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-in</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkin">--</p></div>
+        <div class="bg-surface-container-low p-3 rounded-lg"><p class="text-label-md font-label-md text-on-surface-variant mb-1">Check-out</p><p class="text-body-md font-body-md text-primary font-bold" id="booking-checkout">--</p></div>
+    </div>
+    <button class="w-full md:w-auto self-start px-6 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-md hover:scale-105 transition-transform duration-300" onclick="window.location.href='../rooms/index.html'">Book a Room</button>
 </div>
 </div>
 <div class="md:col-span-12 bg-surface-container-lowest rounded-2xl p-6 md:p-8 ambient-shadow mt-6">
 <div class="flex justify-between items-center mb-6">
 <h3 class="text-headline-md font-headline-md text-primary">Recent Stays</h3>
-<button class="text-label-md font-label-md text-secondary hover:underline">View All</button>
 </div>
 <div class="overflow-x-auto">
 <table class="w-full text-left border-collapse">
 <thead>
-<tr class="border-b border-outline-variant/20">
-<th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Property</th>
-<th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal hidden md:table-cell">Dates</th>
-<th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Amount</th>
-<th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Status</th>
-</tr>
+    <tr class="border-b border-outline-variant/20">
+        <th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Property</th>
+        <th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal hidden md:table-cell">Dates</th>
+        <th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Amount</th>
+        <th class="pb-4 text-label-md font-label-md text-on-surface-variant font-normal">Status</th>
+    </tr>
 </thead>
-                <tbody id="recent-stays">
-                        <tr><td class="py-4 text-center text-body-md font-body-md text-on-surface-variant" colspan="4">No stays yet. Start by booking a room.</td></tr>
-                </tbody>
+    <tbody id="recent-stays">
+        <tr><td class="py-4 text-center text-body-md font-body-md text-on-surface-variant" colspan="4">Loading stays...</td></tr>
+    </tbody>
 </table>
 </div>
-</div>
-<div class="md:col-span-6 bg-surface-container-lowest rounded-2xl p-6 ambient-shadow mt-6">
-<h3 class="text-headline-md font-headline-md text-primary mb-6">Saved Properties</h3>
-<div class="space-y-4">
-<div class="flex gap-4 items-center group cursor-pointer p-2 rounded-xl hover:bg-surface-container-low transition-colors">
-<img class="w-20 h-20 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqzH8JpG_COaZHgv5v6bztoPOTOejiBpsxLTL-lgnCENAPbY6lVFROeFjDxwGYaX7zhkyxjf0G3x_R5GgN6dQhTkqM_eOMS5muwxttgSm0LRiol61y-4JNla8t4L-G2oOShGtfoCKcd9xiS51jmSCMOVbPAaopH-x7sm71KjAw3TqXLI9VKEzHEkt2iLkuE5sUCm6WTecZ6jBpxq5YxcwFg6vSZYcpeJqTG4dv_Ig1lbg3cmRRelDjf5DrA0yNxnxYUnmLhYkPTj4"/>
-<div class="flex-1"><p class="text-body-md font-body-md text-primary font-bold group-hover:text-secondary transition-colors">Nordic Glass Igloos</p><p class="text-label-md font-label-md text-on-surface-variant">Lapland, Finland</p></div>
-<button class="text-error p-2 rounded-full hover:bg-error-container transition-colors"><span class="material-symbols-outlined fill-icon">favorite</span></button>
-</div>
-</div>
-</div>
-<div class="md:col-span-6 bg-surface-container-lowest rounded-2xl p-6 ambient-shadow mt-6">
-<div class="flex justify-between items-center mb-6">
-<h3 class="text-headline-md font-headline-md text-primary">Payment Methods</h3>
-<button class="text-label-md font-label-md text-primary font-bold flex items-center gap-1 hover:text-secondary transition-colors">
-<span class="material-symbols-outlined text-[18px]">add</span> Add
-</button>
-</div>
-        <div class="border border-outline-variant/30 rounded-xl p-4 flex items-center justify-between">
-                                <div class="flex items-center gap-4">
-                                        <div class="w-12 h-8 bg-surface-container-high rounded flex items-center justify-center"><span class="material-symbols-outlined text-primary">credit_card</span></div>
-                                        <div><p class="text-body-md font-body-md text-on-surface-variant">No payment methods saved yet</p></div>
-                                </div>
-                        </div>
 </div>
 </div>
 </main>
@@ -127,6 +120,63 @@ if (user) {
     document.getElementById('dashboardUserEmail').textContent = user.email || '';
     document.getElementById('dashboardMemberLabel').textContent = user.email || 'Member';
 }
+
+(async function loadDashboard() {
+    try {
+        const profile = await AuthAPI.request("/profile");
+        if (profile && profile.avatar_url) {
+            document.getElementById('dashboardAvatar').src = profile.avatar_url;
+            document.getElementById('dashboardAvatarLarge').src = profile.avatar_url;
+        }
+    } catch (e) {}
+
+    try {
+        const res = await AuthAPI.request("/bookings");
+        const bookings = Array.isArray(res) ? res : (res && Array.isArray(res.bookings) ? res.bookings : []);
+
+        if (bookings.length > 0) {
+            const totalNights = bookings.reduce((sum, b) => sum + (b.nights || 0), 0);
+            document.getElementById('nightsStayed').textContent = totalNights;
+            document.getElementById('totalBookings').textContent = bookings.length;
+
+            const upcoming = bookings.filter(b => b.status !== 'cancelled' && new Date(b.check_in || b.checkin_date) >= new Date());
+            if (upcoming.length > 0) {
+                const next = upcoming[0];
+                document.getElementById('booking-name').textContent = next.room_name || next.room_type || 'Upcoming Stay';
+                document.getElementById('booking-location').textContent = next.location || 'FAM Jibhi';
+                document.getElementById('booking-checkin').textContent = next.check_in || next.checkin_date || '--';
+                document.getElementById('booking-checkout').textContent = next.check_out || next.checkout_date || '--';
+            }
+
+            const past = bookings.filter(b => b.status !== 'cancelled' && new Date(b.check_in || b.checkin_date) < new Date()).slice(0, 5);
+            const tbody = document.getElementById('recent-stays');
+            if (past.length > 0) {
+                tbody.innerHTML = past.map(b => {
+                    const checkin = b.check_in || b.checkin_date || '--';
+                    const checkout = b.check_out || b.checkout_date || '--';
+                    const room = b.room_name || b.room_type || 'Room';
+                    const total = b.total_price || b.total_amount || 0;
+                    const status = b.status || 'completed';
+                    const statusColor = status === 'cancelled' ? 'text-error' : 'text-green-600';
+                    return `<tr class="border-b border-outline-variant/10">
+                        <td class="py-4 text-body-md font-body-md text-primary">${room}</td>
+                        <td class="py-4 text-body-md font-body-md text-on-surface-variant hidden md:table-cell">${checkin} - ${checkout}</td>
+                        <td class="py-4 text-body-md font-body-md text-on-surface-variant">$${total}</td>
+                        <td class="py-4"><span class="text-label-sm font-label-sm ${statusColor} capitalize">${status}</span></td>
+                    </tr>`;
+                }).join('');
+            } else {
+                tbody.innerHTML = '<tr><td class="py-4 text-center text-body-md font-body-md text-on-surface-variant" colspan="4">No past stays yet.</td></tr>';
+            }
+        }
+    } catch (e) {
+        document.getElementById('recent-stays').innerHTML = '<tr><td class="py-4 text-center text-body-md font-body-md text-on-surface-variant" colspan="4">Could not load stays.</td></tr>';
+    }
+})();
 </script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
 </body>
 </html>

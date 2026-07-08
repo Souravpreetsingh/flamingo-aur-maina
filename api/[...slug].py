@@ -84,7 +84,24 @@ def find_user_by_id(uid):
     return None
 
 
+FAM_ROOMS = [
+    {"id": 1, "room_name": "Flamingo 1", "description": "Spacious duplex room for 4 persons with mountain views, private balcony, and modern amenities.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", "room_type": "Duplex"},
+    {"id": 2, "room_name": "Flamingo 2", "description": "King attic room for 4 persons with warm wooden interiors and panoramic valley views.", "price": 5000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32", "room_type": "King Attic"},
+    {"id": 3, "room_name": "Flamingo 3", "description": "Duplex room for 4 persons set in a serene apple orchard with stunning mountain views.", "price": 6000, "capacity": 4, "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7", "room_type": "Duplex"},
+    {"id": 4, "room_name": "Maina 1", "description": "Cozy private room for 2 persons with warm wooden interiors and mountain charm.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2", "room_type": "Private Room"},
+    {"id": 5, "room_name": "Maina 2", "description": "Budget-friendly private room for 2 persons with essential comforts and mountain access.", "price": 2000, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9", "room_type": "Private Room"},
+    {"id": 6, "room_name": "Maina 3", "description": "Charming private room for 2 persons with orchard views and warm hospitality.", "price": 2500, "capacity": 2, "image_url": "https://images.unsplash.com/photo-1598928506311-c55ez637a11a", "room_type": "Private Room"},
+]
+
+def seed_fam_rooms():
+    existing = supabase_request("GET", "rooms", params={"select": "id", "limit": "1"})
+    if existing and isinstance(existing, list) and len(existing) > 0:
+        return
+    for room in FAM_ROOMS:
+        supabase_request("POST", "rooms", body=json.dumps(room).encode())
+
 def get_rooms_from_db():
+    seed_fam_rooms()
     result = supabase_request("GET", "rooms", params={"select": "*", "order": "id.asc"})
     if result and isinstance(result, list):
         return result
@@ -174,7 +191,60 @@ def app(environ, start_response):
     elif path == "/api/profile":
         if not user:
             return respond({"detail": "Not authenticated"}, start_response, 401)
-        return respond({"id": user["id"], "full_name": user["full_name"], "email": user["email"], "phone": user.get("phone", "")}, start_response)
+        u = find_user_by_id(user["id"])
+        if not u:
+            return respond({"detail": "User not found"}, start_response, 404)
+        return respond({
+            "id": u["id"], "full_name": u["full_name"], "email": u["email"],
+            "phone": u.get("phone", ""), "address": u.get("address", ""),
+            "city": u.get("city", ""), "country": u.get("country", ""),
+            "avatar_url": u.get("avatar_url", ""), "created_at": u.get("created_at", "")
+        }, start_response)
+
+    elif path == "/api/profile/update":
+        if not user:
+            return respond({"detail": "Not authenticated"}, start_response, 401)
+        update_fields = {}
+        for field in ("full_name", "phone", "address", "city", "country"):
+            if field in data:
+                update_fields[field] = data[field]
+        avatar_url = data.get("avatar_url")
+        if avatar_url is not None:
+            update_fields["avatar_url"] = avatar_url
+        if not update_fields:
+            return respond({"detail": "No fields to update"}, start_response, 400)
+        result = supabase_request("PATCH", "users", params={"id": f"eq.{user['id']}"}, body=json.dumps(update_fields).encode())
+        if result and isinstance(result, dict) and result.get("_error"):
+            return respond({"detail": "Update failed"}, start_response, 500)
+        return respond({"message": "Profile updated"}, start_response)
+
+    elif path == "/api/profile/upload-image":
+        if not user:
+            return respond({"detail": "Not authenticated"}, start_response, 401)
+        avatar_data = data.get("image")
+        if not avatar_data:
+            return respond({"detail": "No image data provided"}, start_response, 400)
+        result = supabase_request("PATCH", "users", params={"id": f"eq.{user['id']}"}, body=json.dumps({"avatar_url": avatar_data}).encode())
+        if result and isinstance(result, dict) and result.get("_error"):
+            return respond({"detail": "Upload failed"}, start_response, 500)
+        return respond({"avatar_url": avatar_data, "message": "Image uploaded"}, start_response)
+
+    elif path == "/api/change-password":
+        if not user:
+            return respond({"detail": "Not authenticated"}, start_response, 401)
+        current = data.get("current_password", "")
+        new_pwd = data.get("new_password", "")
+        if not current or not new_pwd:
+            return respond({"detail": "Current and new password required"}, start_response, 400)
+        if len(new_pwd) < 4:
+            return respond({"detail": "New password too short"}, start_response, 400)
+        u = find_user_by_id(user["id"])
+        if not u or hashlib.sha256((current + u["salt"]).encode()).hexdigest() != u["pwd_hash"]:
+            return respond({"detail": "Current password is incorrect"}, start_response, 401)
+        new_salt = os.urandom(16).hex()
+        new_hash = hashlib.sha256((new_pwd + new_salt).encode()).hexdigest()
+        supabase_request("PATCH", "users", params={"id": f"eq.{user['id']}"}, body=json.dumps({"pwd_hash": new_hash, "salt": new_salt}).encode())
+        return respond({"message": "Password changed"}, start_response)
 
     elif path == "/api/rooms":
         rooms = get_rooms_from_db()

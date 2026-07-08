@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LuxeStay | Find Your Perfect Stay</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBB3GWD6uJCCBJcEVQsZc1JFNes4koJtTNiOqPmFCZ0UANmfjqQHp0DZq33bej7FxAaiqBaKg-5MVRUkek4-Lw8-JJgbW1Kx5dpkOUPLg6UIJSOiUMDVc5JIzus5emU1JC0cTw_TwMH5eDTTIuA50E2Zpaa7UhErDHKRUe6SHtdx-OJhYeYt4GW46APrG_AoC0oA-eqTizIKnF4lcxeo-hi_d1KUuuoPcl1nR051t1frD9r8w_T2tE-6msy8e4c_FUNE8dqHuJ9gr0"/>
+<title>Flamingo aur Maina | FAM Jibhi - Welcome Home</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -12,183 +16,192 @@
 <script src="./js/tailwind-config.js"></script>
 <link href="./css/shared.css" rel="stylesheet"/>
 <script src="js/theme.js"></script>
+<script src="js/room-data.js"></script>
 </head>
 <body class="bg-surface text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container">
-<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-all duration-300">
+<nav class="fixed top-0 w-full z-50 bg-surface/15 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm transition-[background-color,border-color,box-shadow] duration-300">
 <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="index.html">LuxeStay</a>
-<ul class="hidden md:flex space-x-8 items-center">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="index.html">FAM</a>
+<ul class="hidden md:flex space-x-8 items-center nav-plates">
 <li><a class="text-label-md font-label-md text-primary font-bold border-b-2 border-secondary pb-1 block" href="index.html">Home</a></li>
 <li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/rooms/index.html">Rooms</a></li>
 <li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/about/index.html">About</a></li>
 <li><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors block" href="pages/contact/index.html">Contact</a></li>
 </ul>
 <div class="flex items-center space-x-4">
-<button onclick="__toggleTheme()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
-<div id="authNav">
+
+<div id="authNav" class="flex items-center gap-2">
+<a class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-300" href="pages/profile/index.html" title="Profile">
+    <span class="material-symbols-outlined text-[20px]">account_circle</span>
+</a>
 <a class="hidden md:flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm" href="pages/login/index.html">Sign In</a>
 </div>
-<button class="md:hidden text-primary"><span class="material-symbols-outlined text-[28px]">menu</span></button>
+<button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined text-[28px]">menu</span></button>
 </div>
 </div>
 </nav>
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-bold text-label-md font-label-md" href="index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="pages/rooms/index.html"><span class="material-symbols-outlined text-[20px]">bed</span> Rooms</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="pages/about/index.html"><span class="material-symbols-outlined text-[20px]">info</span> About</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="pages/contact/index.html"><span class="material-symbols-outlined text-[20px]">mail</span> Contact</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-on-primary rounded-full text-label-md font-label-md shadow-sm active:scale-[0.97] transition-transform" href="pages/login/index.html"><span class="material-symbols-outlined text-[18px]">login</span> Sign In</a>
+<a class="flex items-center justify-center gap-2 w-full py-3.5 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform" href="pages/profile/index.html"><span class="material-symbols-outlined text-[18px]">account_circle</span> Profile</a>
+</div>
+</div>
 <main>
-<section class="relative min-h-[921px] flex flex-col items-center justify-center pt-20 pb-16 px-gutter md:px-margin-desktop overflow-hidden">
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-12 px-margin-mobile md:px-margin-desktop overflow-hidden">
 <div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center bg-no-repeat scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBB3GWD6uJCCBJcEVQsZc1JFNes4koJtTNiOqPmFCZ0UANmfjqQHp0DZq33bej7FxAaiqBaKg-5MVRUkek4-Lw8-JJgbW1Kx5dpkOUPLg6UIJSOiUMDVc5JIzus5emU1JC0cTw_TwMH5eDTTIuA50E2Zpaa7UhErDHKRUe6SHtdx-OJhYeYt4GW46APrG_AoC0oA-eqTizIKnF4lcxeo-hi_d1KUuuoPcl1nR051t1frD9r8w_T2tE-6msy8e4c_FUNE8dqHuJ9gr0')"></div>
+<div data-theme-img="hero" class="w-full h-full bg-cover bg-center bg-no-repeat scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBB3GWD6uJCCBJcEVQsZc1JFNes4koJtTNiOqPmFCZ0UANmfjqQHp0DZq33bej7FxAaiqBaKg-5MVRUkek4-Lw8-JJgbW1Kx5dpkOUPLg6UIJSOiUMDVc5JIzus5emU1JC0cTw_TwMH5eDTTIuA50E2Zpaa7UhErDHKRUe6SHtdx-OJhYeYt4GW46APrG_AoC0oA-eqTizIKnF4lcxeo-hi_d1KUuuoPcl1nR051t1frD9r8w_T2tE-6msy8e4c_FUNE8dqHuJ9gr0')"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/10 to-surface"></div>
 </div>
-<div class="relative z-10 w-full max-w-container-max mx-auto text-center mt-12 md:mt-24 reveal">
-<span class="inline-block px-4 py-1.5 rounded-full bg-surface-container-lowest/20 backdrop-blur-md text-on-tertiary text-label-md font-label-md tracking-widest uppercase mb-6 border border-white/20">Experience Luxury</span>
-<h1 class="text-display-lg-mobile font-display-lg-mobile md:text-display-lg md:font-display-lg text-on-tertiary mb-6 drop-shadow-lg">Find Your Perfect Stay</h1>
-<p class="text-body-lg font-body-lg text-on-tertiary/90 max-w-2xl mx-auto mb-16 drop-shadow-md">Luxury rooms, premium services, and unforgettable experiences curated for the modern traveler seeking effortless elegance.</p>
+<div class="relative z-10 w-full max-w-container-max mx-auto text-center mt-8 md:mt-12 reveal">
+<span class="inline-block px-4 py-1.5 rounded-full bg-surface-container-lowest/20 backdrop-blur-md text-on-tertiary text-label-md font-label-md tracking-widest uppercase mb-4 border border-white/20">Flamingo aur Maina</span>
+<h1 class="text-[42px] md:text-[72px] font-display-lg text-on-tertiary mb-4 drop-shadow-lg leading-tight">Welcome Home</h1>
+<p class="text-body-lg font-body-lg md:text-[20px] text-on-tertiary/90 max-w-2xl mx-auto mb-8 drop-shadow-md">A boutique café and stays nestled in the heart of Jibhi, surrounded by an apple orchard, 1.5 acres of open land, and uninterrupted 360° mountain views.</p>
 </div>
-<div class="relative z-20 w-full max-w-5xl mx-auto mt-auto reveal delay-200">
-<div class="glass-panel rounded-2xl p-6 md:p-8 ambient-shadow border border-white/40">
-<form class="flex flex-col md:flex-row gap-6 md:gap-8 items-end">
-<div class="w-full md:w-1/4 flex flex-col group">
-<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Check In</label>
-<div class="flex items-center w-full">
-<span class="material-symbols-outlined text-outline mr-2 text-[20px]">calendar_today</span>
-<input class="w-full text-body-md font-body-md text-on-surface bg-transparent" placeholder="Select Date" type="date"/>
-</div>
-</div>
-<div class="w-full md:w-1/4 flex flex-col group">
-<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Check Out</label>
-<div class="flex items-center w-full">
-<span class="material-symbols-outlined text-outline mr-2 text-[20px]">calendar_today</span>
-<input class="w-full text-body-md font-body-md text-on-surface bg-transparent" placeholder="Select Date" type="date"/>
-</div>
-</div>
-<div class="w-full md:w-1/4 flex flex-col group">
-<label class="text-label-md font-label-md text-on-surface-variant mb-1 group-focus-within:text-secondary transition-colors">Guests</label>
+<div class="relative z-20 w-full max-w-5xl mx-auto mt-4 reveal delay-200">
+<div class="glass-panel rounded-2xl p-4 md:p-5 ambient-shadow border border-white/40">
+<form class="flex flex-col md:flex-row gap-3 md:gap-3 items-end">
+<div class="w-full md:flex-1 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-0.5 group-focus-within:text-secondary transition-colors">Location</label>
 <div class="flex items-center w-full relative">
-<span class="material-symbols-outlined text-outline mr-2 text-[20px]">person</span>
-<select class="w-full text-body-md font-body-md text-on-surface bg-transparent appearance-none">
+<span class="material-symbols-outlined text-outline mr-2 text-[18px]">location_on</span>
+<select class="w-full text-body-md font-body-md text-on-surface bg-transparent appearance-none py-1">
+<option>Jibhi, Himachal Pradesh</option>
+<option>All Locations</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 pointer-events-none text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="w-full md:flex-1 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-0.5 group-focus-within:text-secondary transition-colors">Check In</label>
+<div class="flex items-center w-full">
+<span class="material-symbols-outlined text-outline mr-2 text-[18px]">calendar_today</span>
+<input class="w-full text-body-md font-body-md text-on-surface bg-transparent py-1" placeholder="Select Date" type="date"/>
+</div>
+</div>
+<div class="w-full md:flex-1 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-0.5 group-focus-within:text-secondary transition-colors">Check Out</label>
+<div class="flex items-center w-full">
+<span class="material-symbols-outlined text-outline mr-2 text-[18px]">calendar_today</span>
+<input class="w-full text-body-md font-body-md text-on-surface bg-transparent py-1" placeholder="Select Date" type="date"/>
+</div>
+</div>
+<div class="w-full md:flex-1 flex flex-col group">
+<label class="text-label-md font-label-md text-on-surface-variant mb-0.5 group-focus-within:text-secondary transition-colors">Guests</label>
+<div class="flex items-center w-full relative">
+<span class="material-symbols-outlined text-outline mr-2 text-[18px]">person</span>
+<select class="w-full text-body-md font-body-md text-on-surface bg-transparent appearance-none py-1">
 <option>2 Adults, 1 Room</option>
 <option>1 Adult, 1 Room</option>
 <option>2 Adults, 2 Children</option>
 </select>
-<span class="material-symbols-outlined absolute right-0 pointer-events-none text-outline">expand_more</span>
+<span class="material-symbols-outlined absolute right-0 pointer-events-none text-outline text-[18px]">expand_more</span>
 </div>
 </div>
-<div class="w-full md:w-auto mt-4 md:mt-0 flex-shrink-0">
-<button class="w-full md:w-auto bg-primary text-on-primary px-8 py-3.5 rounded-full text-label-md font-label-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center justify-center" type="button" onclick="window.location.href='pages/rooms/index.html'">
+<div class="w-full md:w-auto flex-shrink-0">
+<button class="w-full md:w-auto bg-primary text-on-primary px-6 py-2.5 rounded-full text-label-md font-label-md hover:scale-105 hover:shadow-lg transition-[background-color,color,opacity,transform,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center justify-center" type="button" onclick="window.location.href='pages/rooms/index.html'">
 Search Rooms
-<span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+<span class="material-symbols-outlined ml-2 text-[16px]">arrow_forward</span>
 </button>
 </div>
 </form>
 </div>
 </div>
 </section>
-<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto bg-surface relative">
-<div class="text-center mb-16 reveal">
-<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-4">The LuxeStay Standard</h2>
-<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Experience hospitality redefined through our commitment to unparalleled comfort and service.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-<div class="flex flex-col items-center text-center reveal delay-100">
-<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-[32px]">workspace_premium</span>
-</div>
-<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Premium Quality</h3>
-<p class="text-body-md font-body-md text-on-surface-variant">Meticulously designed spaces featuring top-tier materials and bespoke furnishings.</p>
-</div>
-<div class="flex flex-col items-center text-center reveal delay-200">
-<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-[32px]">room_service</span>
-</div>
-<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">24/7 Service</h3>
-<p class="text-body-md font-body-md text-on-surface-variant">Anticipatory service round the clock, ensuring your every need is met effortlessly.</p>
-</div>
-<div class="flex flex-col items-center text-center reveal delay-300">
-<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-[32px]">pool</span>
-</div>
-<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Exclusive Amenities</h3>
-<p class="text-body-md font-body-md text-on-surface-variant">Access to world-class spas, infinity pools, and private cabanas.</p>
-</div>
-<div class="flex flex-col items-center text-center reveal delay-100">
-<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-[32px]">location_on</span>
-</div>
-<h3 class="text-headline-md font-headline-md text-primary mb-3 text-[22px]">Prime Locations</h3>
-<p class="text-body-md font-body-md text-on-surface-variant">Situated in the heart of cultural districts or secluded natural paradises.</p>
-</div>
+<section class="py-16 md:py-[120px] px-margin-mobile md:px-gutter max-w-container-max mx-auto bg-surface relative">
+<div class="max-w-4xl mx-auto reveal">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-8 text-center">Welcome Home</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">Some places are built to impress. We built FAM to make people feel at home.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">After spending nearly a decade in India's metro cities, our founders, Karanvir Singh Sapra and Rahul Yadav, returned to the mountains with a simple idea—to create the kind of place they would always want to come back to. A place where mornings begin with mountain views instead of alarms, where conversations need countless cups of tea, and where every guest is welcomed like an old friend.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">Flamingo Aur Maina (FAM) is a boutique café and stays nestled in the heart of Jibhi, surrounded by an apple orchard, 1.5 acres of open land, and uninterrupted 360° mountain views. Every corner of the property has been thoughtfully designed to slow you down—from our cozy wooden cabins and comfortable rooms to our café serving comforting food made with care.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">But FAM isn't just about where you sleep. It's about how you feel while you're here.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">Whether you're escaping the city, working remotely, travelling with friends, celebrating something special, or simply looking for a quiet weekend, we hope you leave with more than just photographs. We hope you leave with stories, friendships, and a reason to come back.</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed mb-6">Because at FAM, we're not just hosting guests.</p>
+<p class="text-headline-md font-headline-md text-primary text-center text-[24px] mt-12">We're building a place people can belong to.</p>
+<p class="text-headline-md font-headline-md text-secondary text-center mt-2">Welcome home.</p>
 </div>
 </section>
-<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto" id="rooms">
+<section class="py-16 md:py-[120px] px-margin-mobile md:px-gutter max-w-container-max mx-auto" id="rooms">
 <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
 <div class="max-w-xl">
-<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-4">Curated Accommodations</h2>
-<p class="text-body-lg font-body-lg text-on-surface-variant">Discover our range of meticulously designed suites, each offering a unique perspective on luxury living.</p>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-4">Our Rooms</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">From cozy private rooms to spacious duplexes, find your perfect nest at FAM.</p>
 </div>
 <a class="mt-6 md:mt-0 text-label-md font-label-md text-primary uppercase tracking-widest border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors inline-flex items-center" href="pages/rooms/index.html">
 View All Rooms
 <span class="material-symbols-outlined ml-1 text-[18px]">arrow_forward</span>
 </a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-100">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-100 flex flex-col">
 <div class="relative h-[300px] img-hover-zoom">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV6FmdcHNlFv8zRxsweaQ1eAqlaC8K8ezRy3_npU2kM9jRZsfs3RpQZvQWP1g2eRGfyeDZKDwtX0_zhbNPxDGxhOIzWm1Np6943kpYkMa2on_4AjYYe_TnszHKWnjYg7gciO76b7sPdjJMtC4kIlX5d3YSCs_AO845p3pm0NsUzlIVjUHkaIjg2Ap23BB9aZaU3q1nBAL2RN57jne-tFPcVu1KiJWLyPDjg6s7Y8QuaN_ae1AZz0m2YmR87EDoKf-9_jlRPUzRegI"/>
+<img loading="lazy" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"/>
 <div class="absolute top-4 left-4 flex gap-2">
 <span class="bg-secondary-fixed/90 backdrop-blur text-on-secondary-fixed text-label-md font-label-md px-3 py-1 rounded-full text-[12px]">Popular</span>
 </div>
 </div>
-<div class="p-8">
+<div class="p-8 flex flex-col flex-grow">
 <div class="flex justify-between items-start mb-4">
-<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Oceanfront Suite</h3>
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Flamingo 1</h3>
 <div class="text-right">
-<span class="block text-body-md font-body-md text-on-surface-variant line-through text-[14px]">₹14,999</span>
-<span class="text-headline-md font-headline-md text-primary text-[20px]">₹9,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹6,000<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
 </div>
 </div>
 <div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">king_bed</span> King Bed</span>
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">balcony</span> Balcony</span>
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">wifi</span> Free Wifi</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">group</span> 4 Persons</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">stairs</span> Duplex</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">wifi</span> WiFi</span>
 </div>
-<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300 mt-auto" onclick="window.location.href='pages/room-details/index.html?id=1'">Reserve Room</button>
 </div>
 </div>
-<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-200">
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-200 flex flex-col">
 <div class="relative h-[300px] img-hover-zoom">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdnmZUIjjJqIDG9jWuAnB9A3dSDANptNEkIXzpq5UDbaSLl-GhCrOZ8zVa8OnFpx6-A6oc86MdC0LNvRHPNf0W-4oAS1MZUTECot_dCO1DsOA3KivKyHzbLeHVj_fqn5apCoWvwtf6F0fTh15z3t4SvScp5nQ2bkfXXxPR-QmdTFetajjr9IXQttvFU-35kpES6xMZzE_0oCdGRc68yk94mpZrGWhBJV9v_NnOPsQlm9OOGcGWLgu8jQIkt2fNyHJAPpu3W3Ee1gQ"/>
+<img loading="lazy" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"/>
 </div>
-<div class="p-8">
+<div class="p-8 flex flex-col flex-grow">
 <div class="flex justify-between items-start mb-4">
-<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Penthouse Loft</h3>
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Flamingo 2</h3>
 <div class="text-right">
-<span class="text-headline-md font-headline-md text-primary text-[20px]">₹18,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹5,000<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
 </div>
 </div>
 <div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">kitchen</span> Kitchenette</span>
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">hot_tub</span> Jacuzzi</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">group</span> 4 Persons</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">roofing</span> King Attic</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">wifi</span> WiFi</span>
 </div>
-<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300 mt-auto" onclick="window.location.href='pages/room-details/index.html?id=2'">Reserve Room</button>
 </div>
 </div>
-<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-300">
+<div class="bg-surface-container-lowest rounded-2xl ambient-shadow ambient-shadow-hover transition-shadow duration-500 overflow-hidden group reveal delay-300 flex flex-col">
 <div class="relative h-[300px] img-hover-zoom">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu3XZZm2gNTJ9QfDkeL11C4YOVvS8bXaz-8TBnJmE0E3sS5n5l83Mpe6jqaEQPffZcdbF2kPHlPOsMakj7Qb05DS6SPue2kde9Xsw-3IBL9h5Eo2xPhbbXUyHD2_vrPr8OtOrBWMs_TiI3LLESJBus-x-zxYBDzb1zJptbQT_EUwyWgl4RL364bXPKZrrL4L3PesFrlThIMMKpBMWVHOroZZAsx8zse2UDog9ON2I4jT5z88JWut23MA2guyNtKmr-456HGrhzI8c"/>
+<img loading="lazy" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"/>
 </div>
-<div class="p-8">
+<div class="p-8 flex flex-col flex-grow">
 <div class="flex justify-between items-start mb-4">
-<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Garden Villa</h3>
+<h3 class="text-headline-md font-headline-md text-primary text-[24px]">Flamingo 3</h3>
 <div class="text-right">
-<span class="text-headline-md font-headline-md text-primary text-[20px]">₹11,999<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
+<span class="text-headline-md font-headline-md text-primary text-[20px]">₹6,000<span class="text-body-md font-body-md text-on-surface-variant">/night</span></span>
 </div>
 </div>
 <div class="flex flex-wrap gap-2 mb-6">
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">yard</span> Private Garden</span>
-<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">pets</span> Pet Friendly</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">group</span> 4 Persons</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">stairs</span> Duplex</span>
+<span class="bg-surface text-on-surface text-label-md font-label-md px-3 py-1 rounded-full text-[12px] flex items-center gap-1 border border-outline-variant/30"><span class="material-symbols-outlined text-[14px]">wifi</span> WiFi</span>
 </div>
-<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300" onclick="window.location.href='pages/room-details/index.html'">Reserve Room</button>
+<button class="w-full border border-primary text-primary px-6 py-3 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300 mt-auto" onclick="window.location.href='pages/room-details/index.html?id=3'">Reserve Room</button>
 </div>
 </div>
 </div>
@@ -196,76 +209,76 @@ View All Rooms
 <section class="py-24 md:py-[120px] bg-surface-container-low overflow-hidden">
 <div class="max-w-container-max mx-auto px-gutter flex flex-col lg:flex-row items-center gap-16">
 <div class="w-full lg:w-5/12 reveal">
-<span class="text-label-md font-label-md text-secondary uppercase tracking-widest mb-4 block">Wellness &amp; Dining</span>
-<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary mb-6">Indulge the Senses</h2>
-<p class="text-body-lg font-body-lg text-on-surface-variant mb-8">Our resort offers a sanctuary for rejuvenation and culinary delight. From ancient spa therapies to avant-garde gastronomy, every experience is designed to elevate your stay.</p>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-primary uppercase tracking-widest mb-4">Café &amp; Experiences</h2>
+<span class="text-xl md:text-2xl font-headline-md text-secondary block">Good Food, Great Vibes</span>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8">At FAM, our café serves comforting food made with care. Whether you are working remotely, travelling with friends, or simply looking for a quiet weekend, every moment here is designed to slow you down.</p>
 <div class="space-y-6">
 <div class="flex items-start">
 <div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center shrink-0 mr-4">
-<span class="material-symbols-outlined text-primary">spa</span>
+<span class="material-symbols-outlined text-primary">local_cafe</span>
 </div>
 <div>
-<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Tranquility Spa</h4>
-<p class="text-body-md font-body-md text-on-surface-variant">Holistic treatments utilizing indigenous ingredients.</p>
+<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Mountain Café</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Countless cups of tea and comforting food with 360° mountain views.</p>
 </div>
 </div>
 <div class="flex items-start">
 <div class="w-12 h-12 rounded-full bg-surface flex items-center justify-center shrink-0 mr-4">
-<span class="material-symbols-outlined text-primary">restaurant</span>
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
 </div>
 <div>
-<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Michelin-Star Dining</h4>
-<p class="text-body-md font-body-md text-on-surface-variant">Culinary masterpieces crafted by globally renowned chefs.</p>
+<h4 class="text-body-lg font-body-lg text-primary font-semibold mb-1">Bonfire Evenings</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Warm nights under the stars with stories, friendships, and good company.</p>
 </div>
 </div>
 </div>
 <button class="mt-10 border border-primary text-primary px-8 py-3.5 rounded-full text-label-md font-label-md hover:bg-primary hover:text-on-primary transition-colors duration-300 inline-flex items-center" onclick="window.location.href='pages/contact/index.html'">
-Explore Services
+Book Now
 <span class="material-symbols-outlined ml-2 text-[18px]">east</span>
 </button>
 </div>
 <div class="w-full lg:w-7/12 relative h-[500px] md:h-[600px] reveal delay-200">
 <div class="absolute top-0 right-0 w-3/4 h-4/5 rounded-2xl overflow-hidden ambient-shadow z-10">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAopm-V_wbeH9OJ5kIZq9besYmg_twcact7EHtFonoEDJENhRqWFDXGig6BvdJdP17EBw-ryu8r_SWmlMtSqHPef80r0HUJX6jp3uMp7XncryfEG13MqeKllDtzSQDF4RYABIZO6_tw_mvd3mAvOtaxM_oiv6uhdpjcJzgNd__GQvebLz0vYr3KRifYfySyu7A1oKkXwpLcMkJ_jzFeUbd6U-F3rRW0VPEsJeWvIJsnt8BVVnwmug_YBGrOA3N0UuJp9k5RyKfAEO4"/>
+<img data-theme-img="wellness-main" loading="lazy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAopm-V_wbeH9OJ5kIZq9besYmg_twcact7EHtFonoEDJENhRqWFDXGig6BvdJdP17EBw-ryu8r_SWmlMtSqHPef80r0HUJX6jp3uMp7XncryfEG13MqeKllDtzSQDF4RYABIZO6_tw_mvd3mAvOtaxM_oiv6uhdpjcJzgNd__GQvebLz0vYr3KRifYfySyu7A1oKkXwpLcMkJ_jzFeUbd6U-F3rRW0VPEsJeWvIJsnt8BVVnwmug_YBGrOA3N0UuJp9k5RyKfAEO4"/>
 </div>
 <div class="absolute bottom-0 left-0 w-1/2 h-3/5 rounded-2xl overflow-hidden ambient-shadow z-20 border-4 border-surface-container-low">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMtWWKTZbKEOfTg_IzVr1GNbnksNo_wbNH4bjEicOtkEX_qtJKhYiXduER7aoBvwD__rtLZQOPuMOx-x9xi4l5kGG8dkRbTLNE7Acs6yuElxAPpQF3UMC4aHm0sq7edxAHUIossf3fhA7bV-j7iRSmHcDq7N1FsjGR_Y--RpRfn0iL5u9gWoIxapQVEzOINXMfa6PuGw7tws2ZqIMjjFlkSBQmDWFhLCA6WsSq9W5YUpzA_87iqYlGpK0TUIFhAARG1D50fZ3Pwk"/>
+<img data-theme-img="wellness-overlay" loading="lazy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMtWWKTZbKEOfTg_IzVr1GNbnksNo_wbNH4bjEicOtkEX_qtJKhYiXduER7aoBvwD__rtLZQOPuMOx-x9xi4l5kGG8dkRbTLNE7Acs6yuElxAPpQF3UMC4aHm0sq7edxAHUIossf3fhA7bV-j7iRSmHcDq7N1FsjGR_Y--RpRfn0iL5u9gWoIxapQVEzOINXMfa6PuGw7tws2ZqIMjjFlkSBQmDWFhLCA6WsSq9W5YUpzA_87iqYlGpK0TUIFhAARG1D50fZ3Pwk"/>
 </div>
 </div>
 </div>
 </section>
-<section class="py-24 md:py-[120px] px-gutter max-w-container-max mx-auto">
-<div class="bg-primary-container rounded-3xl p-10 md:p-16 relative overflow-hidden flex flex-col items-center text-center reveal">
+<section class="py-16 md:py-[120px] px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+<div class="bg-primary-container rounded-3xl p-6 md:p-16 relative overflow-hidden flex flex-col items-center text-center reveal">
 <div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
 <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
 <span class="material-symbols-outlined text-[48px] text-secondary mb-6">drafts</span>
-<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-on-primary-container mb-4">Join The Luxe Club</h2>
-<p class="text-body-lg font-body-lg text-on-primary-container/80 max-w-xl mx-auto mb-10">Subscribe to receive exclusive offers, early access to new properties, and curated travel inspiration directly to your inbox.</p>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-on-primary-container mb-4">Stay in Touch</h2>
+<p class="text-body-lg font-body-lg text-on-primary-container/80 max-w-xl mx-auto mb-10">Subscribe to receive updates about FAM, special offers, and mountain travel inspiration.</p>
 <form class="w-full max-w-md flex flex-col sm:flex-row gap-4">
 <input class="flex-1 bg-surface-container-lowest/10 border-b border-on-primary-container/30 text-on-primary-container placeholder:text-on-primary-container/50 px-4 py-3 text-body-md font-body-md focus:border-secondary transition-colors" placeholder="Enter your email address" required="" type="email"/>
-<button class="bg-secondary text-on-secondary-container px-8 py-3 rounded-full text-label-md font-label-md hover:bg-secondary-fixed transition-colors duration-300 font-bold" type="submit">Subscribe</button>
+<button class="subscribe-btn px-8 py-3 rounded-full text-label-md font-label-md font-bold" type="submit">Subscribe</button>
 </form>
 </div>
 </section>
 </main>
 <footer class="w-full mt-auto bg-primary-container border-t border-outline-variant/10">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-16 max-w-container-max mx-auto text-on-primary-container">
+<div class="footer-grid gap-8 md:gap-gutter px-margin-mobile md:px-gutter py-12 md:py-16 max-w-container-max mx-auto text-on-primary-container">
 <div class="md:col-span-1 flex flex-col gap-4">
-<a class="text-headline-md font-headline-md font-bold text-on-primary-fixed block mb-2" href="index.html">LuxeStay</a>
-<p class="text-body-md font-body-md opacity-80">Experience Comfort and Luxury.</p>
+<a class="text-headline-md font-headline-md font-bold text-on-primary-fixed block mb-2" href="index.html">FAM</a>
+<p class="text-body-md font-body-md opacity-80">Flamingo aur Maina — a place to belong.</p>
 </div>
 <div class="md:col-span-2 flex justify-between md:justify-around">
 <div class="flex flex-col gap-4">
 <h4 class="text-label-md font-label-md font-bold text-on-primary-fixed uppercase tracking-wider mb-2">Company</h4>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/about/index.html">About Us</a>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/dashboard/index.html">Dashboard</a>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="pages/contact/index.html">Contact</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="pages/about/index.html">About Us</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="pages/dashboard/index.html">Dashboard</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="pages/contact/index.html">Contact</a>
 </div>
 <div class="flex flex-col gap-4">
 <h4 class="text-label-md font-label-md font-bold text-on-primary-fixed uppercase tracking-wider mb-2">Legal</h4>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Privacy Policy</a>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">Terms of Service</a>
-<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-all ease-in-out duration-300" href="#">FAQ</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">Terms of Service</a>
+<a class="text-body-md font-body-md text-on-primary-container/70 hover:text-on-primary-container hover:underline transition-colors duration-300" href="#">FAQ</a>
 </div>
 </div>
 <div class="md:col-span-1 flex flex-col gap-6 justify-between">
@@ -273,7 +286,7 @@ Explore Services
 <a class="w-10 h-10 rounded-full bg-surface-container-lowest/10 flex items-center justify-center hover:bg-surface-container-lowest/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
 <a class="w-10 h-10 rounded-full bg-surface-container-lowest/10 flex items-center justify-center hover:bg-surface-container-lowest/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
 </div>
-<p class="text-label-md font-label-md opacity-60">© LuxeStay Hospitality. All rights reserved.</p>
+<p class="text-label-md font-label-md opacity-60">© Flamingo aur Maina. All rights reserved.</p>
 </div>
 </div>
 </footer>
@@ -295,5 +308,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script src="./js/shared.js"></script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">🌿 Green</span>
+</button>
 </body>
 </html>

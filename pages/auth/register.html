@@ -3,13 +3,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LuxeStay | Create Account</title>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>Create Account - Flamingo aur Maina | FAM</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="../../js/tailwind-config.js"></script>
 <script src="../../js/auth.js"></script>
 <script src="../../js/toast.js"></script>
+<link href="../../css/shared.css" rel="stylesheet"/>
 <style>
 @keyframes cinematic-zoom { from { transform: scale(1); } to { transform: scale(1.15); } }
 @keyframes slide-up { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
@@ -27,32 +31,31 @@
 .stagger-6 { animation: stagger-in 0.8s 0.65s forwards; }
 .stagger-7 { animation: stagger-in 0.8s 0.75s forwards; }
 .glass-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 8px 32px 0 rgba(13, 28, 47, 0.08); }
-.dark .glass-card { background: rgba(17, 19, 24, 0.85); border-color: rgba(255, 255, 255, 0.08); }
+.winter .glass-card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(24px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); }
 .input-group:focus-within label, .input-group input:not(:placeholder-shown) + label, .input-group select:not(:placeholder-shown) + label { transform: translateY(-24px) scale(0.85); color: #735c00; }
-.dark .input-group:focus-within label, .dark .input-group input:not(:placeholder-shown) + label, .dark .input-group select:not(:placeholder-shown) + label { color: var(--secondary); }
+.winter .input-group:focus-within label, .winter .input-group input:not(:placeholder-shown) + label, .winter .input-group select:not(:placeholder-shown) + label { color: var(--secondary); }
 .ripple-btn { position: relative; overflow: hidden; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .ripple-btn:active { transform: scale(0.97); }
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
 .password-strength { height: 3px; transition: all 0.3s; }
 </style>
 <script src="../../js/theme.js"></script>
+<script src="../../js/shared.js"></script>
 </head>
 <body class="bg-background text-on-background min-h-screen overflow-x-hidden flex selection:bg-secondary-container">
 <main class="flex w-full min-h-screen flex-col md:flex-row">
 <section class="relative w-full md:w-1/2 h-[350px] md:h-screen overflow-hidden flex items-end md:items-center px-margin-mobile md:px-margin-desktop py-margin-desktop order-2 md:order-1">
 <div class="absolute inset-0 z-0 overflow-hidden">
-<div class="w-full h-full animate-zoom bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC2VNPgYa1BUfUUPU5rlrmc4C1mZP_XnlBxB6EUXZGBdkW60YESnX8H0Owkhfj37SKCnq5Bs2MgOEkJi-6NHC5f0xQrnjnz0evgQdyJuBTu-zCnLAT833mz_9HKxzqpVhM8oCrh97OaaCrglxx0GCCqvFzWM1-XuuCb0eXq03CH-6VBS6tAgY--_1OR55S_4lIIdE9bk1pFrySNFJDf7h1hFLUjw397Ww_ypCyKS78BDT-EIXe5Ffh-u3A0nHPcQcp6D1gnS_88Aic')"></div>
+<div data-theme-img="auth-bg" class="w-full h-full animate-zoom bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC2VNPgYa1BUfUUPU5rlrmc4C1mZP_XnlBxB6EUXZGBdkW60YESnX8H0Owkhfj37SKCnq5Bs2MgOEkJi-6NHC5f0xQrnjnz0evgQdyJuBTu-zCnLAT833mz_9HKxzqpVhM8oCrh97OaaCrglxx0GCCqvFzWM1-XuuCb0eXq03CH-6VBS6tAgY--_1OR55S_4lIIdE9bk1pFrySNFJDf7h1hFLUjw397Ww_ypCyKS78BDT-EIXe5Ffh-u3A0nHPcQcp6D1gnS_88Aic')"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-on-background/40 to-transparent"></div>
 </div>
 <div class="relative z-20 w-full max-w-xl">
 <div class="flex items-center justify-between mb-gutter stagger-item stagger-1">
-<a href="../../index.html" class="text-white font-display-lg text-headline-md tracking-widest uppercase hover:opacity-80 transition-opacity">LuxeStay</a>
-<button onclick="__toggleTheme()" class="flex items-center justify-center w-9 h-9 rounded-full border border-white/30 text-white/70 hover:text-white hover:border-white/50 transition-all duration-300" title="Toggle theme">
-    <span class="material-symbols-outlined theme-toggle-icon text-[18px]">dark_mode</span>
-</button>
+<a href="../../index.html" class="text-white font-display-lg text-headline-md tracking-widest uppercase hover:opacity-80 transition-opacity">FAM</a>
+
 </div>
 <h1 class="text-white font-display-lg text-display-lg-mobile md:text-display-lg mb-4 animate-slide-up leading-tight">Join Us</h1>
-<p class="text-white/80 font-body-lg text-body-lg max-w-md stagger-item stagger-2">Create your account and unlock a world of exclusive luxury travel experiences.</p>
+<p class="text-white/80 font-body-lg text-body-lg max-w-md stagger-item stagger-2">Create your account and book your stay at Flamingo aur Maina.</p>
 </div>
 </section>
 <section class="w-full md:w-1/2 flex items-center justify-center bg-surface-bright px-margin-mobile py-gutter md:py-0 order-1 md:order-2">
@@ -66,40 +69,40 @@
 <div class="relative input-group stagger-item stagger-3">
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">person</span></div>
 <input class="block w-full pl-10 pr-3 py-4 border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary transition-colors duration-300 font-body-md text-on-surface peer" id="fullName" placeholder=" " required type="text"/>
-<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-all duration-300 origin-left" for="fullName">Full Name</label>
-<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 peer-focus:w-full"></div>
+<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-[color,transform] duration-300 origin-left" for="fullName">Full Name</label>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-[width] duration-500 peer-focus:w-full"></div>
 </div>
 <div class="relative input-group stagger-item stagger-4">
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">mail</span></div>
 <input class="block w-full pl-10 pr-3 py-4 border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary transition-colors duration-300 font-body-md text-on-surface peer" id="email" placeholder=" " required type="email"/>
-<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-all duration-300 origin-left" for="email">Email Address</label>
-<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 peer-focus:w-full"></div>
+<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-[color,transform] duration-300 origin-left" for="email">Email Address</label>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-[width] duration-500 peer-focus:w-full"></div>
 </div>
 <div class="relative input-group stagger-item stagger-4">
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">call</span></div>
 <input class="block w-full pl-10 pr-3 py-4 border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary transition-colors duration-300 font-body-md text-on-surface peer" id="phone" placeholder=" " type="tel"/>
-<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-all duration-300 origin-left" for="phone">Phone (optional)</label>
-<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 peer-focus:w-full"></div>
+<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-[color,transform] duration-300 origin-left" for="phone">Phone (optional)</label>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-[width] duration-500 peer-focus:w-full"></div>
 </div>
 <div class="relative input-group stagger-item stagger-5">
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">lock</span></div>
 <input class="block w-full pl-10 pr-3 py-4 border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary transition-colors duration-300 font-body-md text-on-surface peer" id="password" placeholder=" " required type="password"/>
-<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-all duration-300 origin-left" for="password">Password</label>
-<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 peer-focus:w-full"></div>
+<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-[color,transform] duration-300 origin-left" for="password">Password</label>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-[width] duration-500 peer-focus:w-full"></div>
 </div>
-<div class="password-strength rounded-full bg-outline-variant stagger-item stagger-5" id="passwordStrength"><div class="h-full rounded-full transition-all duration-300 w-0" id="passwordStrengthBar"></div></div>
+<div class="password-strength rounded-full bg-outline-variant stagger-item stagger-5" id="passwordStrength"><div class="h-full rounded-full transition-[width,background-color] duration-300 w-0" id="passwordStrengthBar"></div></div>
 <div class="relative input-group stagger-item stagger-6">
 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">lock</span></div>
 <input class="block w-full pl-10 pr-3 py-4 border-0 border-b border-outline-variant bg-transparent focus:ring-0 focus:border-secondary transition-colors duration-300 font-body-md text-on-surface peer" id="confirmPassword" placeholder=" " required type="password"/>
-<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-all duration-300 origin-left" for="confirmPassword">Confirm Password</label>
-<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 peer-focus:w-full"></div>
+<label class="absolute left-10 top-4 text-on-surface-variant font-body-md pointer-events-none transition-[color,transform] duration-300 origin-left" for="confirmPassword">Confirm Password</label>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-secondary transition-[width] duration-500 peer-focus:w-full"></div>
 </div>
 <div class="pt-2 stagger-item stagger-7">
-<button class="ripple-btn w-full py-4 bg-primary text-on-primary rounded-full font-label-md flex items-center justify-center gap-2 hover:bg-on-primary-fixed transition-all duration-300 shadow-lg hover:shadow-xl" id="registerBtn" type="submit">Create Account <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+<button class="ripple-btn w-full py-4 bg-primary text-on-primary rounded-full font-label-md flex items-center justify-center gap-2 hover:bg-on-primary-fixed transition-[background-color,color,box-shadow] duration-300 shadow-lg hover:shadow-xl" id="registerBtn" type="submit">Create Account <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
 </div>
 </form>
 <div class="mt-6 text-center stagger-item stagger-7">
-<p class="font-body-md text-on-surface-variant">Already have an account? <a class="text-secondary font-semibold hover:underline transition-all ml-1" href="../login/index.html">Sign In</a></p>
+<p class="font-body-md text-on-surface-variant">Already have an account? <a class="text-secondary font-semibold hover:underline transition-colors ml-1" href="../login/index.html">Sign In</a></p>
 </div>
 </div>
 </div>
@@ -117,7 +120,7 @@ document.getElementById('password').addEventListener('input', function() {
     if (/[^A-Za-z0-9]/.test(val)) score++;
     const pct = (score / 5) * 100;
     bar.style.width = pct + '%';
-    bar.className = 'h-full rounded-full transition-all duration-300 ' + (score > 0 ? colors[Math.min(score - 1, 4)] : '');
+    bar.className = 'h-full rounded-full transition-[width,background-color] duration-300 ' + (score > 0 ? colors[Math.min(score - 1, 4)] : '');
 });
 
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
@@ -142,8 +145,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
     try {
         await AuthAPI.register(fullName, email, phone, password);
-        showToast('Account created! Redirecting to dashboard...', 'success');
-        setTimeout(() => { window.location.href = '../dashboard/index.html'; }, 800);
+        showToast('Account created! Redirecting...', 'success');
+        setTimeout(() => { window.location.href = '../profile/index.html'; }, 800);
     } catch (err) {
         const msg = err.detail || err.message || 'Registration failed';
         showToast(msg, 'error');
@@ -151,5 +154,9 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     }
 });
 </script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
 </body>
 </html>

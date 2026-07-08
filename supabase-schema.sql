@@ -55,10 +55,10 @@ CREATE POLICY "Rooms are public" ON public.rooms FOR SELECT USING (true);
 
 -- Seed rooms data
 INSERT INTO public.rooms (id, room_name, description, price, capacity, image_url, room_type) VALUES
-(1, 'Oceanfront Suite', 'Suite with private balcony and ocean view, king bed, marble bathroom.', 9999, 2, 'https://images.unsplash.com/photo-1590490360182-c33d57733427', 'Suite'),
-(2, 'Penthouse Loft', 'Modern penthouse with panoramic city views, full kitchen, jacuzzi.', 18999, 4, 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9', 'Penthouse'),
-(3, 'Garden Villa', 'Private garden villa, pet-friendly, indoor-outdoor living.', 11999, 3, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c', 'Villa'),
-(4, 'Royal Suite', 'Pinnacle of luxury with separate living, dining, butler service, grand terrace.', 25999, 4, 'https://images.unsplash.com/photo-1582719508461-905c673771fd', 'Suite'),
-(5, 'Cozy Studio', 'Compact studio for solo travelers with workspace and kitchenette.', 4499, 1, 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9', 'Studio'),
-(6, 'Family Suite', 'Two-bedroom suite with kids play area, full kitchen, living room.', 15499, 6, 'https://images.unsplash.com/photo-1566665797739-1674de7a421a', 'Suite')
+(1, 'Flamingo 1', 'Spacious duplex room for 4 persons with mountain views, private balcony, and modern amenities.', 6000, 4, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c', 'Duplex'),
+(2, 'Flamingo 2', 'King attic room for 4 persons with warm wooden interiors and panoramic valley views.', 5000, 4, 'https://images.unsplash.com/photo-1611892440504-42a792e24d32', 'King Attic'),
+(3, 'Flamingo 3', 'Duplex room for 4 persons set in a serene apple orchard with stunning mountain views.', 6000, 4, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7', 'Duplex'),
+(4, 'Maina 1', 'Cozy private room for 2 persons with warm wooden interiors and mountain charm.', 2500, 2, 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2', 'Private Room'),
+(5, 'Maina 2', 'Budget-friendly private room for 2 persons with essential comforts and mountain access.', 2000, 2, 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9', 'Private Room'),
+(6, 'Maina 3', 'Charming private room for 2 persons with orchard views and warm hospitality.', 2500, 2, 'https://images.unsplash.com/photo-1598928506311-c55ez637a11a', 'Private Room')
 ON CONFLICT (id) DO NOTHING;

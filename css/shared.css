@@ -48,54 +48,54 @@
     --on-secondary-fixed: #241a00;
 }
 
-.dark {
-    --on-surface-variant: #c4c6d0;
-    --surface-container-highest: #35373f;
-    --surface-container-lowest: #0c0e14;
-    --primary: #d0bffe;
-    --on-secondary-container: #ffe088;
-    --on-tertiary: #1a1c19;
-    --secondary-fixed: #f5ddb0;
-    --error-container: #93000a;
-    --on-error: #690005;
-    --surface-tint: #bec6e0;
-    --surface: #111318;
-    --surface-dim: #1a1c23;
-    --surface-container-high: #2a2c34;
-    --background: #111318;
-    --surface-bright: #383a42;
-    --on-background: #e1e2ec;
-    --tertiary-fixed: #c6c7c2;
-    --on-primary-container: #e8deff;
-    --surface-variant: #2a2c34;
-    --tertiary: #e1e2ec;
-    --on-tertiary-fixed-variant: #454744;
-    --secondary-fixed-dim: #d4a830;
-    --secondary-container: #574500;
-    --primary-container: #4b3f6f;
-    --on-tertiary-fixed: #1a1c19;
-    --on-tertiary-container: #838480;
-    --on-secondary: #3a2e00;
-    --inverse-surface: #e1e2ec;
-    --inverse-on-surface: #2a2c34;
-    --on-surface: #e1e2ec;
-    --surface-container: #1f2129;
-    --primary-fixed: #e8deff;
-    --on-primary-fixed: #2b1f4e;
-    --inverse-primary: #5b4f7d;
-    --on-secondary-fixed-variant: #f5ddb0;
-    --primary-fixed-dim: #cfbffe;
-    --outline-variant: #45464f;
-    --outline: #8e9099;
-    --on-primary-fixed-variant: #655a85;
-    --on-primary: #1a1c23;
-    --secondary: #e9c349;
-    --surface-container-low: #15171e;
-    --tertiary-container: #2a2c34;
-    --error: #ffb4ab;
-    --tertiary-fixed-dim: #8e9099;
-    --on-error-container: #ffdad6;
-    --on-secondary-fixed: #f5ddb0;
+.winter {
+    --on-surface-variant: #41484d;
+    --surface-container-highest: #d3e4fe;
+    --surface-container-lowest: #ffffff;
+    --primary: #2e6385;
+    --on-secondary-container: #626567;
+    --on-tertiary: #ffffff;
+    --secondary-fixed: #e0e3e5;
+    --error-container: #ffdad6;
+    --on-error: #ffffff;
+    --surface-tint: #2e6385;
+    --surface: #f8f9ff;
+    --surface-dim: #cbdbf5;
+    --surface-container-high: #dce9ff;
+    --background: #f8f9ff;
+    --surface-bright: #f8f9ff;
+    --on-background: #0b1c30;
+    --tertiary-fixed: #d8e3fb;
+    --on-primary-container: #285f80;
+    --surface-variant: #d3e4fe;
+    --tertiary: #545f73;
+    --on-tertiary-fixed-variant: #3c475a;
+    --secondary-fixed-dim: #c4c7c9;
+    --secondary-container: #e0e3e5;
+    --primary-container: #a5d8ff;
+    --on-tertiary-fixed: #111c2d;
+    --on-tertiary-container: #4f5a6e;
+    --on-secondary: #ffffff;
+    --inverse-surface: #213145;
+    --inverse-on-surface: #eaf1ff;
+    --on-surface: #0b1c30;
+    --surface-container: #e5eeff;
+    --primary-fixed: #c9e6ff;
+    --on-primary-fixed: #001e2f;
+    --inverse-primary: #9accf3;
+    --on-secondary-fixed-variant: #444749;
+    --primary-fixed-dim: #9accf3;
+    --outline-variant: #c1c7ce;
+    --outline: #71787e;
+    --on-primary-fixed-variant: #0c4b6c;
+    --on-primary: #ffffff;
+    --secondary: #5c5f61;
+    --surface-container-low: #eff4ff;
+    --tertiary-container: #c7d2ea;
+    --error: #ba1a1a;
+    --tertiary-fixed-dim: #bcc7de;
+    --on-error-container: #93000a;
+    --on-secondary-fixed: #191c1e;
 }
 
 .glass-panel {
@@ -105,9 +105,11 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.dark .glass-panel {
-    background: rgba(17, 19, 24, 0.8);
-    border-color: rgba(255, 255, 255, 0.08);
+.winter .glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .glass-card {
@@ -117,9 +119,11 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
-.dark .glass-card {
-    background: rgba(17, 19, 24, 0.85);
-    border-color: rgba(255, 255, 255, 0.08);
+.winter .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .ambient-shadow {
@@ -139,7 +143,7 @@
 }
 
 .transition-smooth {
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .material-symbols-outlined {
@@ -171,7 +175,7 @@
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .reveal.active {
     opacity: 1;
@@ -279,4 +283,835 @@ input:focus ~ label, input:not(:placeholder-shown) ~ label,
 textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label {
     transform: translateY(-1.5rem) scale(0.85);
     color: var(--primary);
+}
+
+.winter .ambient-shadow {
+    box-shadow: 0 4px 6px -1px rgba(46, 99, 133, 0.08), 0 20px 40px -5px rgba(46, 99, 133, 0.04);
+}
+
+.winter .ambient-shadow-hover:hover {
+    box-shadow: 0 10px 15px -3px rgba(46, 99, 133, 0.12), 0 30px 60px -10px rgba(46, 99, 133, 0.08);
+}
+
+.winter .soft-shadow {
+    box-shadow: 0 4px 6px -1px rgba(46, 99, 133, 0.05), 0 10px 15px -3px rgba(46, 99, 133, 0.02);
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    z-index: 9998;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.mobile-drawer.open { right: 0; }
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+body.drawer-open { overflow: hidden; }
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105:hover { transform: none !important; }
+    .hover\:scale-102:hover { transform: none !important; }
+    .group:hover .group-hover\:scale-105 { transform: none !important; }
+    [class*="hover:scale-"]:hover { transform: none !important; }
+    .hover-lift:hover { transform: none !important; box-shadow: none !important; }
+    .btn-glow::before { display: none !important; }
+    .nav-link-line::after { display: none !important; }
+    a, button, [role="button"], input, select, textarea { cursor: default; }
+}
+a, button, [role="button"] { touch-action: manipulation; }
+input, select, textarea { font-size: 16px !important; }
+
+/* Container overflow protection */
+img, video, iframe, svg { max-width: 100%; height: auto; }
+* { box-sizing: border-box; }
+html { overflow-x: hidden; }
+body { overflow-x: hidden; width: 100%; position: relative; }
+
+/* Smooth scroll improvements */
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .float-soft { animation: none !important; }
+    .hero-stagger > * { opacity: 1 !important; transform: none !important; animation: none !important; }
+    .particle-overlay { display: none !important; }
+}
+
+/* === Premium Animation System === */
+
+/* Nav entrance */
+.nav-enter {
+    animation: navSlideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes navSlideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Button active press */
+.btn-press:active {
+    transform: scale(0.97) !important;
+}
+
+/* --- Subscribe Button --- */
+
+.subscribe-btn {
+    background: linear-gradient(135deg, #2d8a4e, #1a6b38);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(42, 125, 70, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.subscribe-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(42, 125, 70, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.subscribe-btn:focus-visible {
+    outline: 2px solid #2d8a4e;
+    outline-offset: 2px;
+}
+
+.subscribe-btn:active {
+    transform: scale(0.97);
+}
+
+.winter .subscribe-btn {
+    background: linear-gradient(135deg, #4a8fd8, #2d6fa8);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(74, 143, 216, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.winter .subscribe-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(74, 143, 216, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.winter .subscribe-btn:focus-visible {
+    outline: 2px solid #4a8fd8;
+    outline-offset: 2px;
+}
+
+/* Image fade-in on load */
+.img-fade {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.img-fade.loaded {
+    opacity: 1;
+}
+
+/* Extra stagger delay steps */
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* === Advanced Premium Animations === */
+
+/* Hero content staggered reveal */
+.hero-stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroReveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.35s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.55s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.75s; }
+@keyframes heroReveal {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Soft floating for decorative elements */
+.float-soft {
+    animation: floatSoft 6s ease-in-out infinite;
+}
+@keyframes floatSoft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Card hover lift with scale and CSS variable tilt support */
+.hover-lift {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-lift:hover {
+    transform: translateY(-4px) scale(1.01) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+}
+.winter .hover-lift:hover {
+    box-shadow: 0 20px 40px -12px rgba(46, 99, 133, 0.15);
+}
+
+/* Button glow effect */
+.btn-glow {
+    position: relative;
+    isolation: isolate;
+}
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: inherit;
+    opacity: 0;
+    z-index: -1;
+    filter: blur(10px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-glow:hover::before {
+    opacity: 0.35;
+}
+.winter .btn-glow::before {
+    filter: blur(10px) saturate(150%);
+}
+
+/* Button ripple */
+.has-ripple {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+.ripple-el {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transform: scale(0);
+    animation: rippleAnim 0.6s ease-out forwards;
+    pointer-events: none;
+}
+@keyframes rippleAnim {
+    from { transform: scale(0); opacity: 0.45; }
+    to { transform: scale(1); opacity: 0; }
+}
+
+/* Nav link underline animation */
+.nav-link-line {
+    position: relative;
+}
+.nav-link-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+.nav-link-line:hover::after {
+    width: 100%;
+}
+
+/* Parallax layers */
+.parallax-bg {
+    transition: transform 0.1s linear;
+}
+.parallax-content {
+    transition: transform 0.1s linear;
+}
+
+/* Text block stagger on reveal */
+.text-stagger > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.text-stagger.active > *:nth-child(1) { transition-delay: 0s; }
+.text-stagger.active > *:nth-child(2) { transition-delay: 0.15s; }
+.text-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+.text-stagger.active > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero parallax wrapper */
+.hero-parallax {
+    will-change: transform;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    z-index: 99999;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.1s linear;
+    pointer-events: none;
+}
+.winter .scroll-progress {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Mobile drawer item stagger */
+.mobile-drawer .drawer-item {
+    opacity: 0;
+    transform: translateX(16px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(var(--drawer-i, 0) * 0.04s);
+}
+.mobile-drawer.open .drawer-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Footer link smooth underline */
+.footer-link {
+    position: relative;
+}
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.footer-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Link arrow slide on hover */
+.link-arrow .material-symbols-outlined {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link-arrow:hover .material-symbols-outlined {
+    transform: translateX(4px);
+}
+
+/* Premium shimmer loading skeleton */
+.shimmer {
+    background: linear-gradient(90deg, var(--surface-container-low) 20%, var(--surface-container) 50%, var(--surface-container-low) 80%);
+    background-size: 200% 100%;
+    animation: shimmerMove 1.8s ease-in-out infinite;
+    border: none !important;
+}
+@keyframes shimmerMove {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+.winter .shimmer {
+    background: linear-gradient(90deg, var(--surface-container-high) 20%, var(--surface-container) 50%, var(--surface-container-high) 80%);
+    background-size: 200% 100%;
+}
+
+/* Enhanced reveal direction variants */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* === Extra Premium Animations === */
+
+/* Card shine overlay on hover */
+.hover-lift {
+    position: relative;
+    overflow: hidden;
+}
+.hover-lift::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.1) 55%, transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+.hover-lift:hover::before {
+    transform: translateX(120%);
+}
+.winter .hover-lift::before {
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.12) 45%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.12) 55%, transparent 65%);
+}
+
+/* Price/number emphasis */
+.price-emphasis {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.price-emphasis:hover {
+    transform: scale(1.03);
+}
+
+/* Stat number pop animation on reveal */
+.stat-pop.active {
+    animation: statPop 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes statPop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Social icon lift on hover */
+.social-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+.social-lift:hover {
+    transform: translateY(-3px);
+}
+
+/* Amenity tag hover scale */
+.tag-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
+}
+.tag-hover:hover {
+    transform: scale(1.06);
+}
+
+/* Counter value emphasis */
+.counter-emphasis {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.counter-emphasis.active {
+    animation: counterPop 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes counterPop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.15); }
+    70% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+/* === Extracted Animation Patterns === */
+
+/* Fade transition for content swaps (skeleton→real grid etc.) */
+.fade-enter {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.fade-enter.active {
+    opacity: 1;
+}
+
+/* Sidebar nav slide on hover */
+.hover-slide-x {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-slide-x:hover {
+    transform: translateX(4px);
+}
+
+/* Deep shadow hover for cards */
+.hover-shadow-deep {
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-shadow-deep:hover {
+    box-shadow: 0 12px 48px -8px rgba(13, 28, 47, 0.08);
+}
+.winter .hover-shadow-deep:hover {
+    box-shadow: 0 12px 48px -8px rgba(46, 99, 133, 0.1);
+}
+
+/* Generic shadow transition */
+.transition-shadow {
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modal entrance/exit (scale + opacity) */
+.modal-enter {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-enter.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Tooltip reveal on parent hover */
+.tooltip-reveal {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+.group:hover .tooltip-reveal,
+.group-hover\:tooltip-reveal:hover .tooltip-reveal {
+    opacity: 1;
+}
+
+/* Subtle background hover for list items/rows */
+.hover-bg-subtle {
+    transition: background-color 0.2s ease;
+}
+.hover-bg-subtle:hover {
+    background-color: var(--surface-container-low);
+}
+
+/* Color transition shorthand */
+.transition-color {
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Background color transition */
+.transition-bg {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Composition transition for border-color + box-shadow */
+.transition-border {
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.transition-border-shadow {
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fix footer gap on mobile */
+footer { width: 100%; }
+.footer-grid { grid-template-columns: 1fr; }
+@media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* === Nav Link Plates === */
+.nav-plates > li > a,
+.nav-plates > a {
+    position: relative;
+    padding: 8px 22px !important;
+    border-radius: 100px !important;
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-decoration: none !important;
+    z-index: 1;
+}
+
+/* ── Shared pseudo-element base ── */
+.nav-plates > li > a::before,
+.nav-plates > li > a::after,
+.nav-plates > a::before,
+.nav-plates > a::after {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ─────────────────────────────────────────────
+   GREEN MODE – Nature-inspired plates
+   ───────────────────────────────────────────── */
+:root .nav-plates > li > a,
+:root .nav-plates > a {
+    background: rgba(46, 125, 50, 0.07) !important;
+    backdrop-filter: blur(6px);
+    box-shadow:
+        0 0 20px rgba(46, 125, 50, 0.05),
+        inset 0 0 0 1px rgba(46, 125, 50, 0.06) !important;
+    background-image:
+        radial-gradient(ellipse at 15% 85%, rgba(46, 125, 50, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 15%, rgba(46, 125, 50, 0.03) 0%, transparent 50%);
+}
+
+/* Green – Leaf emoji cluster */
+:root .nav-plates > li > a::before,
+:root .nav-plates > a::before {
+    content: '\1F33F';
+    font-size: 15px;
+    opacity: 0.65;
+    top: -4px;
+    left: -4px;
+    transform: rotate(-12deg);
+    animation: greenLeafSway 4s ease-in-out infinite;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow:
+        20px 12px 0 rgba(0, 0, 0, 0),
+        34px -2px 0 rgba(0, 0, 0, 0);
+    line-height: 1;
+}
+
+:root .nav-plates > li > a::before {
+    content: '\1F33F';
+}
+
+/* Green – Second leaf emoji (bottom-right) */
+:root .nav-plates > li > a::after,
+:root .nav-plates > a::after {
+    content: '\1F33F';
+    font-size: 11px;
+    opacity: 0.6;
+    bottom: -3px;
+    right: -3px;
+    transform: rotate(20deg) scaleX(-1);
+    animation: greenLeafSway 5s ease-in-out infinite reverse;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    line-height: 1;
+}
+
+:root .nav-plates > li > a::after {
+    content: '\1F33F';
+}
+
+:root .nav-plates > li > a:hover,
+:root .nav-plates > a:hover {
+    background: rgba(46, 125, 50, 0.14) !important;
+    box-shadow:
+        0 0 28px rgba(46, 125, 50, 0.1),
+        inset 0 0 0 1px rgba(46, 125, 50, 0.1) !important;
+    transform: scale(1.06) !important;
+}
+
+/* ─────────────────────────────────────────────
+   WINTER MODE – Frosted ice plates
+   ───────────────────────────────────────────── */
+.winter .nav-plates > li > a,
+.winter .nav-plates > a {
+    background: rgba(200, 230, 255, 0.07) !important;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow:
+        0 0 20px rgba(180, 220, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04) !important;
+    background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(200, 230, 255, 0.03) 0%, transparent 50%);
+}
+
+/* Winter – Snowflake emoji cluster (top area) */
+.winter .nav-plates > li > a::before,
+.winter .nav-plates > a::before {
+    content: '\2744\FE0F';
+    font-size: 13px;
+    opacity: 0.65;
+    top: -5px;
+    left: 2px;
+    transform: rotate(0deg);
+    animation: winterFloat 6s ease-in-out infinite;
+    width: auto;
+    height: auto;
+    background: none;
+    border: none;
+    border-radius: 0;
+    filter: none;
+    box-shadow: none;
+    line-height: 1;
+    text-shadow:
+        20px 8px 0 rgba(0, 0, 0, 0),
+        38px 2px 0 rgba(0, 0, 0, 0);
+}
+
+.winter .nav-plates > li > a::before {
+    content: '\2744\FE0F';
+}
+
+/* Winter – Snowflake emoji cluster (bottom area) */
+.winter .nav-plates > li > a::after,
+.winter .nav-plates > a::after {
+    content: '\2744\FE0F';
+    font-size: 11px;
+    opacity: 0.55;
+    bottom: -3px;
+    right: 4px;
+    transform: rotate(15deg);
+    animation: winterFloat 8s ease-in-out infinite reverse;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    line-height: 1;
+    text-shadow:
+        -16px -10px 0 rgba(0, 0, 0, 0),
+        -32px 2px 0 rgba(0, 0, 0, 0);
+}
+
+.winter .nav-plates > li > a::after {
+    content: '\2744\FE0F';
+}
+
+.winter .nav-plates > li > a:hover,
+.winter .nav-plates > a:hover {
+    background: rgba(200, 230, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    box-shadow:
+        0 0 28px rgba(180, 220, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.06) !important;
+    transform: scale(1.06) !important;
+}
+
+/* ── Animations ── */
+@keyframes greenLeafSway {
+    0%, 100% { transform: rotate(-12deg) translate(0, 0); }
+    25% { transform: rotate(-4deg) translate(0.5px, -0.5px); }
+    50% { transform: rotate(-16deg) translate(0, 0.5px); }
+    75% { transform: rotate(-6deg) translate(-0.5px, -0.3px); }
+}
+
+@keyframes winterFloat {
+    0%, 100% { transform: rotate(0deg) translate(0, 0); opacity: 0.6; }
+    25% { transform: rotate(6deg) translate(1px, -1px); opacity: 0.75; }
+    50% { transform: rotate(-4deg) translate(0.5px, 1px); opacity: 0.45; }
+    75% { transform: rotate(3deg) translate(-0.5px, -0.5px); opacity: 0.55; }
+}
+
+/* === Particle Overlay System === */
+
+.particle-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* --- Keyframe-specific animation names --- */
+
+.anim-leafFall1 { animation-name: leafFall1; }
+.anim-leafFall2 { animation-name: leafFall2; }
+.anim-leafFall3 { animation-name: leafFall3; }
+.anim-snowFall1 { animation-name: snowFall1; }
+.anim-snowFall2 { animation-name: snowFall2; }
+
+@media (min-width: 1024px) {
+    .particle-overlay { display: block !important; }
+}
+
+.particle {
+    position: absolute;
+    top: -5%;
+    will-change: transform;
+}
+
+/* Force desktop duration */
+@media (min-width: 1024px) {
+    .particle-leaf.ps-small { animation-duration: 35s !important; }
+    .particle-leaf.ps-medium { animation-duration: 28s !important; }
+    .particle-leaf.ps-large { animation-duration: 22s !important; }
+    .particle-snow.ps-small { animation-duration: 45s !important; }
+    .particle-snow.ps-medium { animation-duration: 35s !important; }
+    .particle-snow.ps-large { animation-duration: 28s !important; }
+}
+
+/* Force mobile duration */
+@media (max-width: 1023px) {
+    .ps-small { animation-duration: 70s !important; }
+    .ps-medium { animation-duration: 58s !important; }
+    .ps-large { animation-duration: 48s !important; }
+}
+
+/* --- Leaf particles (Green Mode) --- */
+
+.particle-leaf {
+    left: var(--particle-x);
+    font-size: var(--particle-size);
+    line-height: 1;
+    text-align: center;
+}
+
+@keyframes leafFall1 {
+    0%   { transform: translate3d(0, -120px, 0) rotate(0deg); }
+    40%  { transform: translate3d(15px, 40vh, 0) rotate(40deg); }
+    70%  { transform: translate3d(25px, 70vh, 0) rotate(80deg); }
+    100% { transform: translate3d(30px, calc(100vh + 120px), 0) rotate(120deg); }
+}
+
+@keyframes leafFall2 {
+    0%   { transform: translate3d(0, -120px, 0) rotate(0deg); }
+    45%  { transform: translate3d(-10px, 45vh, 0) rotate(-30deg); }
+    75%  { transform: translate3d(-20px, 75vh, 0) rotate(-70deg); }
+    100% { transform: translate3d(-25px, calc(100vh + 120px), 0) rotate(-100deg); }
+}
+
+@keyframes leafFall3 {
+    0%   { transform: translate3d(0, -120px, 0) rotate(0deg); }
+    35%  { transform: translate3d(8px, 35vh, 0) rotate(20deg); }
+    60%  { transform: translate3d(-12px, 60vh, 0) rotate(60deg); }
+    85%  { transform: translate3d(4px, 85vh, 0) rotate(100deg); }
+    100% { transform: translate3d(6px, calc(100vh + 120px), 0) rotate(120deg); }
+}
+
+/* --- Snow particles (Winter Mode) --- */
+
+.particle-snow {
+    left: var(--particle-x);
+    font-size: var(--particle-size);
+    line-height: 1;
+    text-align: center;
+}
+
+@keyframes snowFall1 {
+    0%   { transform: translate3d(0, -120px, 0); }
+    50%  { transform: translate3d(8px, 50vh, 0); }
+    100% { transform: translate3d(12px, calc(100vh + 120px), 0); }
+}
+
+@keyframes snowFall2 {
+    0%   { transform: translate3d(0, -120px, 0); }
+    50%  { transform: translate3d(-5px, 50vh, 0); }
+    100% { transform: translate3d(-8px, calc(100vh + 120px), 0); }
 }

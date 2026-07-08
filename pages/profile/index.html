@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>try{var t=localStorage.getItem('lx-theme');if(t==='winter')document.documentElement.classList.add('winter');}catch(e){}</script>
+
+
+<title>My Profile - Flamingo aur Maina | FAM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="../../js/tailwind-config.js"></script>
+<link href="../../css/shared.css" rel="stylesheet"/>
+<script src="../../js/auth.js"></script>
+<script src="../../js/toast.js"></script>
+<script src="../../js/theme.js"></script>
+<style>
+.animate-profile-in { animation: profileFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
+@keyframes profileFadeIn { to { opacity: 1; transform: translateY(0); } }
+.section-card { animation: cardSlideUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
+@keyframes cardSlideUp { to { opacity: 1; transform: translateY(0); } }
+.card-delay-1 { animation-delay: 0.1s; }
+.card-delay-2 { animation-delay: 0.2s; }
+.card-delay-3 { animation-delay: 0.3s; }
+.card-delay-4 { animation-delay: 0.4s; }
+.card-delay-5 { animation-delay: 0.5s; }
+.avatar-upload-btn { opacity: 0; transition: opacity 0.3s; }
+.avatar-wrap:hover .avatar-upload-btn { opacity: 1; }
+.tab-btn.active-tab { border-bottom: 2px solid var(--secondary); color: var(--on-surface); }
+input, select { background: transparent; border: none; border-bottom: 1px solid var(--outline-variant); padding: 8px 0; outline: none; width: 100%; transition: border-color 0.3s; }
+input:focus, select:focus { border-bottom-color: var(--secondary); }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md">
+<nav class="bg-surface/15 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/10 shadow-sm transition-[background-color,border-color,box-shadow] duration-300">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary" href="../../index.html">FAM</a>
+<div class="flex items-center gap-3" id="profileNavRight">
+
+<button onclick="handleLogout()" class="hidden md:flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-full text-label-md font-label-md text-on-surface-variant hover:bg-error-container hover:text-error hover:border-error transition-[background-color,color,border-color,opacity] duration-300">
+    <span class="material-symbols-outlined text-[16px]">logout</span> Sign Out
+</button>
+<button class="md:hidden text-primary" data-drawer-open><span class="material-symbols-outlined text-[28px]">menu</span></button>
+</div>
+</div>
+</nav>
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="mobile-drawer bg-surface/95 backdrop-blur-2xl shadow-2xl border-l border-outline-variant/10 p-6 flex flex-col gap-4" id="mobileDrawer">
+<div class="flex justify-between items-center mb-6">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">FAM</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary" onclick="closeDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<hr class="border-outline-variant/20"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../../index.html"><span class="material-symbols-outlined text-[20px]">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../rooms/index.html"><span class="material-symbols-outlined text-[20px]">bed</span> Rooms</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../about/index.html"><span class="material-symbols-outlined text-[20px]">info</span> About</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="../contact/index.html"><span class="material-symbols-outlined text-[20px]">mail</span> Contact</a>
+<hr class="border-outline-variant/20"/>
+<div class="mt-auto flex flex-col gap-3 pt-4">
+<button onclick="handleLogout(); closeDrawer();" class="flex items-center justify-center gap-2 w-full py-3.5 border border-error text-error rounded-full text-label-md font-label-md active:scale-[0.97] transition-transform"><span class="material-symbols-outlined text-[18px]">logout</span> Sign Out</button>
+</div>
+</div>
+
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-24 md:pt-28 pb-12 md:pb-16">
+<div class="animate-profile-in" style="transform:translateY(20px)">
+    <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
+        <div class="relative avatar-wrap shrink-0">
+            <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-surface-container-lowest shadow-md bg-surface-container-high flex items-center justify-center" id="avatarContainer">
+                <span class="material-symbols-outlined text-[64px] text-on-surface-variant" id="avatarPlaceholder">person</span>
+                <img id="profileAvatar" class="w-full h-full object-cover hidden" src="" alt="Avatar"/>
+            </div>
+            <button onclick="document.getElementById('avatarInput').click()" class="avatar-upload-btn absolute bottom-1 right-1 w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer">
+                <span class="material-symbols-outlined text-[16px]">camera_alt</span>
+            </button>
+            <input id="avatarInput" type="file" accept="image/*" class="hidden"/>
+        </div>
+        <div class="flex-1 min-w-0">
+            <h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-1" id="profileName">Loading...</h1>
+            <p class="text-body-md text-on-surface-variant mb-1" id="profileEmail"></p>
+            <p class="text-body-md text-on-surface-variant mb-3" id="profilePhone"></p>
+            <p class="text-label-md font-label-md text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> Member since <span id="profileMemberSince">—</span></p>
+            <div class="flex gap-3 mt-4">
+                <button onclick="openEditProfile()" class="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-105 transition-transform duration-300 shadow-md">Edit Profile</button>
+                <button onclick="openChangePassword()" class="flex items-center gap-2 px-5 py-2.5 border border-outline-variant text-on-surface-variant rounded-full text-label-md font-label-md hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300">Change Password</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-4 space-y-6">
+            <div class="section-card card-delay-1 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 shadow-sm">
+                <h2 class="text-headline-md font-headline-md text-primary mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">info</span> Profile Info</h2>
+                <div class="space-y-4" id="profileInfoDisplay">
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5">Full Name</label><p class="text-body-md" id="infoName">—</p></div>
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5">Email</label><p class="text-body-md" id="infoEmail">—</p></div>
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5">Phone</label><p class="text-body-md" id="infoPhone">—</p></div>
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5">Address</label><p class="text-body-md" id="infoAddress">—</p></div>
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5" for="infoCity">City</label><p class="text-body-md" id="infoCity">—</p></div>
+                    <div><label class="text-label-md font-label-md text-on-surface-variant block mb-0.5">Country</label><p class="text-body-md" id="infoCountry">—</p></div>
+                </div>
+            </div>
+
+            <div class="section-card card-delay-2 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 shadow-sm">
+                <h2 class="text-headline-md font-headline-md text-primary mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">settings</span> Account Settings</h2>
+                <div class="space-y-3">
+                    <button onclick="openChangePassword()" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300 text-left">
+                        <span class="material-symbols-outlined text-[20px] text-secondary">lock</span>
+                        <span class="flex-1 text-body-md">Change Password</span>
+                        <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+                    </button>
+                    <button onclick="document.getElementById('avatarInput').click()" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300 text-left">
+                        <span class="material-symbols-outlined text-[20px] text-secondary">photo_camera</span>
+                        <span class="flex-1 text-body-md">Update Profile Image</span>
+                        <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+                    </button>
+<button onclick="__toggleTheme()" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300 text-left">
+    <span class="flex-1 text-body-md theme-toggle-text">?? Winter</span>
+    <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chevron_right</span>
+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-6">
+            <div class="section-card card-delay-3 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 shadow-sm">
+                <h2 class="text-headline-md font-headline-md text-primary mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">calendar_month</span> My Bookings</h2>
+                <div class="flex gap-4 mb-6 border-b border-outline-variant/20">
+                    <button class="tab-btn active-tab pb-3 text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchBookingTab('upcoming', this)">Upcoming</button>
+                    <button class="tab-btn pb-3 text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchBookingTab('history', this)">History</button>
+                    <button class="tab-btn pb-3 text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchBookingTab('cancelled', this)">Cancelled</button>
+                </div>
+                <div id="bookingsContainer">
+                    <div class="flex items-center justify-center py-12 text-on-surface-variant" id="bookingsLoading">
+                        <span class="material-symbols-outlined animate-spin text-[28px]">progress_activity</span>
+                        <span class="ml-3">Loading bookings...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card card-delay-4 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 shadow-sm">
+                <h2 class="text-headline-md font-headline-md text-primary mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">receipt_long</span> Payment History</h2>
+                <div id="paymentsContainer">
+                    <div class="flex items-center justify-center py-12 text-on-surface-variant" id="paymentsLoading">
+                        <span class="material-symbols-outlined animate-spin text-[28px]">progress_activity</span>
+                        <span class="ml-3">Loading payments...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card card-delay-5 bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 shadow-sm">
+                <h2 class="text-headline-md font-headline-md text-primary mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-[22px]">info</span> Account Details</h2>
+                <div class="text-body-md text-on-surface-variant space-y-2">
+                    <p>Member since: <strong id="detailMemberSince">—</strong></p>
+                    <p>User ID: <strong id="detailUserId">—</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm hidden" id="editProfileModal">
+<div class="bg-surface-container-lowest rounded-2xl p-8 w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto shadow-2xl animate-slide-up">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-headline-md font-headline-md text-primary">Edit Profile</h2>
+        <button onclick="closeEditProfile()" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+    </div>
+    <form id="editProfileForm" class="space-y-5" novalidate>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Full Name</label><input id="editName" required type="text"/></div>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Email</label><input id="editEmail" disabled type="email" class="opacity-60 cursor-not-allowed"/></div>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Phone</label><input id="editPhone" type="tel"/></div>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Address</label><input id="editAddress" type="text"/></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">City</label><input id="editCity" type="text"/></div>
+            <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Country</label><input id="editCountry" type="text"/></div>
+        </div>
+        <div class="flex gap-3 pt-2">
+            <button type="submit" class="flex-1 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-[1.02] transition-transform duration-300 shadow-md" id="saveProfileBtn">Save Changes</button>
+            <button type="button" onclick="closeEditProfile()" class="px-6 py-3 border border-outline-variant rounded-full text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300">Cancel</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm hidden" id="changePasswordModal">
+<div class="bg-surface-container-lowest rounded-2xl p-8 w-full max-w-lg mx-4 shadow-2xl animate-slide-up">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-headline-md font-headline-md text-primary">Change Password</h2>
+        <button onclick="closeChangePassword()" class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+    </div>
+    <form id="changePasswordForm" class="space-y-5" novalidate>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Current Password</label><input id="currentPwd" required type="password"/></div>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">New Password</label><input id="newPwd" required type="password"/></div>
+        <div><label class="text-label-md font-label-md text-on-surface-variant block mb-1">Confirm New Password</label><input id="confirmPwd" required type="password"/></div>
+        <div class="flex gap-3 pt-2">
+            <button type="submit" class="flex-1 py-3 bg-primary text-on-primary rounded-full text-label-md font-label-md hover:scale-[1.02] transition-transform duration-300 shadow-md" id="changePwdBtn">Update Password</button>
+            <button type="button" onclick="closeChangePassword()" class="px-6 py-3 border border-outline-variant rounded-full text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-high transition-[background-color,color,border-color,opacity] duration-300">Cancel</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<script src="../../js/shared.js"></script>
+<script src="../../js/profile.js"></script>
+<!-- Floating Theme Toggle Button -->
+<button onclick="__toggleTheme()" class="theme-toggle fixed top-24 right-6 z-50 flex items-center px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-xl border border-outline-variant/30 shadow-lg hover:bg-white/80 hover:scale-105 transition-[background-color,color,opacity,transform,box-shadow] duration-500" aria-label="Toggle theme">
+    <span class="theme-toggle-text text-label-md font-label-md text-primary font-bold">?? Winter</span>
+</button>
+</body>
+</html>
