@@ -1029,7 +1029,7 @@ footer { width: 100%; }
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
-  background: linear-gradient(135deg, #059669 0%, #10b981 45%, #0d9488 75%, #14b8a6 100%);
+  background: linear-gradient(135deg, #047857 0%, #059669 40%, #0f766e 70%, #0d9488 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1044,7 +1044,7 @@ footer { width: 100%; }
 }
 
 .winter .fam-logo-text {
-  background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 40%, #a5f3fc 70%, #c4b5fd 100%);
+  background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 40%, #0ea5e9 70%, #6366f1 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
