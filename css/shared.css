@@ -1029,12 +1029,11 @@ footer { width: 100%; }
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
-  background: linear-gradient(135deg, #047857 0%, #059669 40%, #0f766e 70%, #0d9488 100%);
-  background-size: 200% 200%;
+  background: #000000;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: famGradShift 5s ease infinite, famFloat 4s ease-in-out infinite;
+  animation: famFloat 4s ease-in-out infinite;
   display: inline-block;
   position: relative;
 }
@@ -1072,13 +1071,15 @@ footer { width: 100%; }
   pointer-events: none;
   z-index: -1;
   filter: blur(12px);
-  opacity: 0.35;
-  animation: famGlowPulse 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .winter .fam-logo-glow::after {
+  background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 40%, #0ea5e9 70%, #6366f1 100%);
   filter: blur(16px);
   opacity: 0.3;
+  animation: famGlowPulse 3s ease-in-out infinite;
 }
 
 /* ── Shimmer ── */
@@ -1155,11 +1156,6 @@ footer { width: 100%; }
 }
 
 /* ── Keyframes ── */
-
-@keyframes famGradShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
 
 @keyframes famFloat {
   0%, 100% { transform: translateY(0); }
