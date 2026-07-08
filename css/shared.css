@@ -1011,6 +1011,428 @@ footer { width: 100%; }
     75% { transform: rotate(3deg) translate(-0.5px, -0.5px); opacity: 0.55; }
 }
 
+/* ═══════════════════════════════════════════
+   FAM PREMIUM NAVBAR
+   ═══════════════════════════════════════════ */
+
+.fam-navbar {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.5s ease, border-color 0.5s ease;
+  will-change: transform;
+}
+
+.winter .fam-navbar {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Brand ── */
+
+.fam-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fam-logo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.fam-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #059669 0%, #10b981 45%, #0d9488 75%, #14b8a6 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: famGradShift 5s ease infinite, famFloat 4s ease-in-out infinite;
+  display: inline-block;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .fam-logo-text { font-size: 40px; }
+}
+
+.winter .fam-logo-text {
+  background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 40%, #a5f3fc 70%, #c4b5fd 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.fam-logo-glow {
+  position: relative;
+}
+
+.fam-logo-glow::after {
+  content: 'FAM';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.35;
+  animation: famGlowPulse 3s ease-in-out infinite;
+}
+
+.winter .fam-logo-glow::after {
+  filter: blur(16px);
+  opacity: 0.3;
+}
+
+/* ── Shimmer overlay on logo ── */
+
+.fam-logo-shimmer {
+  position: relative;
+  display: inline-block;
+}
+
+.fam-logo-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: -30% -40%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255,255,255,0.25) 47%,
+    rgba(255,255,255,0.35) 50%,
+    rgba(255,255,255,0.25) 53%,
+    transparent 65%
+  );
+  background-size: 300% 300%;
+  pointer-events: none;
+  animation: famShimmerSweep 8s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+  transform: translateX(0);
+}
+
+/* ── Tagline ── */
+
+.fam-tagline {
+  display: none;
+  flex-direction: column;
+  line-height: 1.15;
+  border-left: 1px solid rgba(255,255,255,0.15);
+  padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .fam-tagline { display: flex; }
+}
+
+.fam-tagline-top {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--on-surface-variant);
+}
+
+.fam-tagline-bottom {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
+
+/* ── Perched Birds ── */
+
+.fam-bird {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fam-bird svg {
+  display: block;
+}
+
+/* Flamingo perched on "F" */
+.fam-bird-flamingo {
+  top: -10px;
+  left: 2px;
+}
+
+.fam-bird-flamingo.active {
+  opacity: 0.8;
+  animation: famBob 2.8s ease-in-out infinite;
+}
+
+/* Maina perched on "M" */
+.fam-bird-maina {
+  top: -6px;
+  right: -4px;
+}
+
+.fam-bird-maina.active {
+  opacity: 0.7;
+  animation: famBob 3.2s ease-in-out infinite 0.4s;
+}
+
+/* ── Nav Particles ── */
+
+.fam-nav-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fam-nav-particle {
+  position: absolute;
+  opacity: 0;
+}
+
+/* ── Nav Links ── */
+
+.fam-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.fam-nav-link {
+  position: relative;
+  padding: 6px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  border-radius: 8px;
+  transition: color 0.3s ease, background 0.3s ease;
+  white-space: nowrap;
+}
+
+.fam-nav-link:hover,
+.fam-nav-link.active {
+  color: var(--primary);
+  background: rgba(5, 150, 105, 0.06);
+}
+
+.winter .fam-nav-link:hover,
+.winter .fam-nav-link.active {
+  background: rgba(125, 211, 252, 0.08);
+}
+
+/* Gradient underline */
+.fam-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #059669, #0d9488);
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.winter .fam-nav-link::after {
+  background: linear-gradient(90deg, #7dd3fc, #a5f3fc);
+}
+
+.fam-nav-link:hover::after,
+.fam-nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ── Book Now Button ── */
+
+.fam-btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  color: #fff;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.fam-btn-book::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: inherit;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity 0.4s ease;
+}
+
+.fam-btn-book:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 28px rgba(5, 150, 105, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.fam-btn-book:hover::before {
+  opacity: 0.45;
+}
+
+.fam-btn-book:active {
+  transform: scale(0.97);
+}
+
+.winter .fam-btn-book {
+  background: linear-gradient(135deg, #7dd3fc, #a5f3fc);
+  color: #064e3b;
+  box-shadow: 0 4px 16px rgba(125, 211, 252, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.winter .fam-btn-book:hover {
+  box-shadow: 0 8px 28px rgba(125, 211, 252, 0.4), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+/* ── Nav entrance animation ── */
+
+.fam-nav-enter {
+  animation: famNavSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes famNavSlide {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ── Keyframes ── */
+
+@keyframes famGradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes famFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes famGlowPulse {
+  0%, 100% { filter: blur(12px); opacity: 0.3; }
+  50% { filter: blur(18px); opacity: 0.45; }
+}
+
+@keyframes famShimmerSweep {
+  0%, 100% { background-position: 200% 50%; opacity: 0; transform: translateX(-10%); }
+  3% { opacity: 1; }
+  10% { opacity: 1; }
+  13% { opacity: 0; transform: translateX(10%); }
+}
+
+@keyframes famBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(2deg); }
+  50% { transform: translateY(-1px) rotate(-1deg); }
+  75% { transform: translateY(-4px) rotate(1deg); }
+}
+
+@keyframes famNavLeafFall {
+  0%   { transform: translate3d(0, -20px, 0) rotate(0deg); opacity: 0; }
+  15%  { opacity: 0.4; }
+  85%  { opacity: 0.4; }
+  100% { transform: translate3d(var(--dx,20px), calc(100% + 20px), 0) rotate(120deg); opacity: 0; }
+}
+
+@keyframes famNavSnowFall {
+  0%   { transform: translateY(-20px) translateX(0); opacity: 0; }
+  15%  { opacity: 0.6; }
+  85%  { opacity: 0.6; }
+  100% { transform: translateY(calc(100% + 20px)) translateX(var(--sx, 15px)); opacity: 0; }
+}
+
+/* ── Mobile drawer header refresh ── */
+
+.fam-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.fam-drawer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.fam-drawer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.winter .fam-drawer-logo {
+  background: linear-gradient(135deg, #bae6fd, #a5f3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fam-drawer-sub {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+  margin-top: 1px;
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .fam-logo-text,
+  .fam-logo-glow::after,
+  .fam-logo-shimmer::after,
+  .fam-bird-flamingo.active,
+  .fam-bird-maina.active,
+  .fam-nav-particle,
+  .fam-btn-book,
+  .fam-nav-enter {
+    animation: none !important;
+  }
+  .fam-logo-shimmer::after { display: none; }
+  .fam-nav-particles { display: none; }
+}
+
 /* === Particle Overlay System === */
 
 .particle-overlay {
