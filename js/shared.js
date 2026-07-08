@@ -454,7 +454,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'payment': 'https://images.unsplash.com/photo-1582719508461-905c1a81d3a1?w=1600&q=80',
             'about-hero': 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600&q=80',
             'about-vision': 'https://images.unsplash.com/photo-1582582622105-ed1b5ecde48b?w=1600&q=80',
-            'contact-map': 'https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=1600&q=80',
             'auth-bg': 'https://images.unsplash.com/photo-1478265409131-1f941d3c386e?w=1600&q=80'
         };
 
