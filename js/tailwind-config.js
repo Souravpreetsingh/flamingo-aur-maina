@@ -67,14 +67,14 @@ tailwind.config = {
                 "margin-desktop": "64px"
             },
             "fontFamily": {
-                "headline-lg-mobile": ["Playfair Display"],
-                "display-lg": ["Playfair Display"],
-                "headline-md": ["Playfair Display"],
-                "body-lg": ["Inter"],
-                "body-md": ["Inter"],
-                "label-md": ["Inter"],
-                "headline-lg": ["Playfair Display"],
-                "display-lg-mobile": ["Playfair Display"]
+                "headline-lg-mobile": ["Fraunces", "serif"],
+                "display-lg": ["Fraunces", "serif"],
+                "headline-md": ["Fraunces", "serif"],
+                "body-lg": ["Fraunces", "serif"],
+                "body-md": ["Fraunces", "serif"],
+                "label-md": ["Fraunces", "serif"],
+                "headline-lg": ["Fraunces", "serif"],
+                "display-lg-mobile": ["Fraunces", "serif"]
             },
             "fontSize": {
                 "headline-lg-mobile": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],

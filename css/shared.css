@@ -98,6 +98,20 @@
     --on-secondary-fixed: #191c1e;
 }
 
+/* ═══════════════════════════════════════════
+   FRAUNCES GLOBAL TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+
+body {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+}
+
 .glass-panel {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
@@ -1024,7 +1038,7 @@ footer { width: 100%; }
 /* ── Logo text: gradient + float ── */
 
 .fam-logo-text {
-  font-family: 'Playfair Display', serif;
+  font-family: "Fraunces", serif;
   font-size: 34px;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -1061,7 +1075,7 @@ footer { width: 100%; }
   position: absolute;
   left: 0;
   top: 0;
-  font-family: 'Playfair Display', serif;
+  font-family: "Fraunces", serif;
   font-size: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
