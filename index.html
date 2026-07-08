@@ -391,16 +391,15 @@ document.addEventListener('DOMContentLoaded', function() {
   spawnParticles();
 
   function updateBirdColors() {
-    var winter = isWinterNav();
     if (birdF) {
-      birdF.querySelector('path:first-child').setAttribute('fill', winter ? 'rgba(255,255,255,0.85)' : 'rgba(236,72,153,0.5)');
-      birdF.querySelector('path:nth-child(2)').setAttribute('fill', winter ? 'rgba(255,255,255,0.7)' : 'rgba(244,114,182,0.4)');
-      birdF.querySelector('circle').setAttribute('fill', winter ? 'rgba(255,255,255,0.9)' : 'rgba(236,72,153,0.6)');
+      birdF.querySelector('path:first-child').setAttribute('fill', 'rgba(236,72,153,0.5)');
+      birdF.querySelector('path:nth-child(2)').setAttribute('fill', 'rgba(244,114,182,0.4)');
+      birdF.querySelector('circle').setAttribute('fill', 'rgba(236,72,153,0.6)');
     }
     if (birdM) {
-      birdM.querySelector('path:first-child').setAttribute('fill', winter ? 'rgba(255,255,255,0.85)' : 'rgba(59,130,246,0.5)');
-      birdM.querySelector('path:nth-child(2)').setAttribute('fill', winter ? 'rgba(255,255,255,0.7)' : 'rgba(96,165,250,0.4)');
-      birdM.querySelector('circle').setAttribute('fill', winter ? 'rgba(255,255,255,0.9)' : 'rgba(59,130,246,0.6)');
+      birdM.querySelector('path:first-child').setAttribute('fill', 'rgba(59,130,246,0.5)');
+      birdM.querySelector('path:nth-child(2)').setAttribute('fill', 'rgba(96,165,250,0.4)');
+      birdM.querySelector('circle').setAttribute('fill', 'rgba(59,130,246,0.6)');
     }
   }
 
