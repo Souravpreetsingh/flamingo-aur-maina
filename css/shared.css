@@ -1320,11 +1320,6 @@ footer { width: 100%; }
     font-size: var(--particle-size);
     line-height: 1;
     text-align: center;
-    color: #ffffff;
-}
-
-.winter .particle-snow {
-    color: #ffffff;
 }
 
 @keyframes snowFall1 {

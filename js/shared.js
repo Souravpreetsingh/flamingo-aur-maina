@@ -413,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.style.setProperty('--particle-size', size);
                 el.style.setProperty('--particle-x', x);
                 el.style.opacity = opacity;
+                if (isWinter) el.style.color = i % 2 === 0 ? '#ffffff' : '#87ceeb';
 
                 overlay.appendChild(el);
             }
