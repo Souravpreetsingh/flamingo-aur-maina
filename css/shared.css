@@ -1284,6 +1284,11 @@ footer { width: 100%; }
     font-size: var(--particle-size);
     line-height: 1;
     text-align: center;
+    color: #2d7a3a;
+}
+
+.winter .particle-leaf {
+    color: #2d7a3a;
 }
 
 @keyframes leafFall1 {
@@ -1315,6 +1320,11 @@ footer { width: 100%; }
     font-size: var(--particle-size);
     line-height: 1;
     text-align: center;
+    color: #ffffff;
+}
+
+.winter .particle-snow {
+    color: #ffffff;
 }
 
 @keyframes snowFall1 {
